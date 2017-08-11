@@ -18,29 +18,27 @@ package scoundrel
 package mongodb
 package record
 
-import java.util.{Calendar, Date, UUID}
 import java.util.regex.Pattern
+import java.util.{Calendar, Date, UUID}
+import scala.xml._
 
-import org.bson.types.ObjectId
+import net.liftweb.common._
+import net.liftweb.http.js.JE._
+import net.liftweb.http.js.JsExp
+import net.liftweb.http.{LiftSession, S}
+import net.liftweb.json.JValue
+import net.liftweb.json.JsonAST._
+import net.liftweb.record._
+import net.liftweb.util.Helpers._
+import net.liftweb.util.{FieldError, Helpers}
+import org.specs2.execute.AsResult
 import org.specs2.mutable._
 import org.specs2.specification._
-import org.specs2.execute.AsResult
-import org.joda.time.DateTime
-import common._
-import json._
-import mongodb.BsonDSL._
-import util.Helpers.randomString
-import http.{LiftSession, S}
-import http.js.JE._
-import http.js.JsExp
-import net.liftweb.record._
-import common.Box._
 
-import xml.{Elem, NodeSeq, Text}
-import util.{FieldError, Helpers}
-import Helpers._
 import org.bson.Document
 import org.bson.types.ObjectId
+import org.joda.time.DateTime
+import scoundrel.mongodb.BsonDSL._
 
 /**
  * Systems under specification for MongoField.

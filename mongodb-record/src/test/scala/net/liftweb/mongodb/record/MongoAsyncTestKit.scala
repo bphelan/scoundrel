@@ -18,21 +18,17 @@ package scoundrel
 package mongodb
 package record
 
-import util.{ConnectionIdentifier, DefaultConnectionIdentifier, Props}
-
-import scala.collection.JavaConverters._
-import scala.concurrent.{Await, Promise}
-import scala.concurrent.duration._
 import java.util.concurrent.TimeoutException
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Promise}
 
+import net.liftweb.util.{ConnectionIdentifier, _}
 import org.specs2.mutable.Specification
 import org.specs2.specification.BeforeAfterEach
 
-import org.bson.Document
-
 import com.mongodb.Block
 import com.mongodb.async.SingleResultCallback
-import com.mongodb.async.client.{MongoClients, MongoDatabase}
+import com.mongodb.async.client.MongoClients
 
 // The sole mongo object for testing async
 object TestMongoAsync {

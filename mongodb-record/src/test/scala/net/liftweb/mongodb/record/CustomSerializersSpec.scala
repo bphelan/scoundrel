@@ -18,21 +18,20 @@ package scoundrel
 package mongodb
 package record
 
-import common._
 import field._
-import http.js.JE._
-import http.{LiftSession, S}
-import json.JsonAST._
-import util.Helpers._
-
+import net.liftweb.util.Helpers._
 import java.util.{Calendar, Date}
 
 import org.bson.types.ObjectId
 import org.specs2.mutable.Specification
-
 import net.liftweb.record.field._
 import xml.{Elem, NodeSeq}
-import util.Helpers
+
+import net.liftweb.common.{Empty, Failure}
+import net.liftweb.http.{LiftSession, S}
+import net.liftweb.http.js.JE.Str
+import net.liftweb.util.Helpers
+import net.liftweb.json.JsonAST._
 
 package customserializersspecs {
 

@@ -22,17 +22,15 @@ package field
 import scala.collection.JavaConversions._
 import scala.xml.NodeSeq
 
-import common.{Box, Empty, Failure, Full}
-import http.SHtml
-import http.js.JE.{JsNull, JsRaw}
-import json._
-import net.liftweb.record.{Field, FieldHelpers, MandatoryTypedField, Record}
-import util.Helpers._
+import net.liftweb.common._
+import net.liftweb.http.SHtml
+import net.liftweb.json.JsonAST._
+import net.liftweb.json.{JValue, JsonParser}
+import net.liftweb.record._
+import net.liftweb.util.Helpers._
 
 import com.mongodb._
 import org.bson.Document
-import org.bson.types.ObjectId
-import org.joda.time.DateTime
 
 /**
   * List field.
@@ -95,14 +93,14 @@ class MongoListField[OwnerType <: BsonRecord[OwnerType], ListType: Manifest](rec
 
   def setFromJValue(jvalue: JValue): Box[MyType] = jvalue match {
     case JNothing|JNull if optional_? => setBox(Empty)
-    case JArray(array) => setBox(Full((array.map {
+    case JArray(array) => setBox(Full(array.map {
       case JsonObjectId(objectId) => objectId
       case JsonRegex(regex) => regex
       case JsonUUID(uuid) => uuid
-      case JsonDateTime(dt) if (mf.toString == "org.joda.time.DateTime") => dt
+      case JsonDateTime(dt) if mf.toString == "org.joda.time.DateTime" => dt
       case JsonDate(date) => date
       case other => other.values
-    }).asInstanceOf[MyType]))
+    }.asInstanceOf[MyType]))
     case other => setBox(FieldHelpers.expectedA("JArray", other))
   }
 
@@ -120,17 +118,17 @@ class MongoListField[OwnerType <: BsonRecord[OwnerType], ListType: Manifest](rec
     def elem0 = SHtml.multiSelectObj[ListType](
       options,
       value,
-      set(_)
+      set
     ) % ("tabindex" -> tabIndex.toString)
 
     SHtml.hidden(() => set(Nil)) ++ (uniqueFieldId match {
-      case Full(id) => (elem0 % ("id" -> id))
+      case Full(id) => elem0 % ("id" -> id)
       case _ => elem0
     })
   }
 
   def toForm: Box[NodeSeq] =
-    if (options.length > 0) Full(elem)
+    if (options.nonEmpty) Full(elem)
     else Empty
 
   def asJValue: JValue = JArray(value.map(li => li.asInstanceOf[AnyRef] match {

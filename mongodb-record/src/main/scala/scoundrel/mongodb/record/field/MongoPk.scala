@@ -19,14 +19,13 @@ package mongodb
 package record
 package field
 
-import common.{Box, Empty, Full}
-import util.StringHelpers
-
-import scala.util.Random
 import java.util.UUID
+import scala.util.Random
+
+import net.liftweb.record.field._
+import net.liftweb.util.StringHelpers
 
 import org.bson.types.ObjectId
-import net.liftweb.record.field.{IntField, LongField, StringField}
 
 /*
  * Trait for creating a "Primary Key" Field. These are all an id field

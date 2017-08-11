@@ -18,27 +18,23 @@ package scoundrel
 package mongodb
 package record
 
-import java.util.{Calendar, Date, UUID}
 import java.util.regex.Pattern
+import java.util.{Calendar, Date}
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
+import net.liftweb.common._
+import net.liftweb.http.{LiftSession, S}
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.JsonDSL._
-import net.liftweb.json.JsonAST.JObject
 import net.liftweb.record.field._
-import net.liftweb.util.TimeHelpers._
-import net.liftweb.mongodb.record.field._
-
 import org.specs2.mutable.Specification
 
 import com.mongodb._
 import org.bson.types.ObjectId
-import http.{S, LiftSession}
 
 
 package mongotestrecords {
 
-  import field._
+  import scoundrel.mongodb.record.field._
 
   class TstRecord private () extends MongoRecord[TstRecord] with UUIDPk[TstRecord] {
 
@@ -194,8 +190,9 @@ package mongotestrecords {
 class MongoRecordExamplesSpec extends Specification with MongoTestKit {
   "MongoRecordExamples Specification".title
 
-  import mongotestrecords._
   import net.liftweb.util.TimeHelpers._
+
+  import mongotestrecords._
 
   val session = new LiftSession("hello", "", Empty)
   "TstRecord example" in {

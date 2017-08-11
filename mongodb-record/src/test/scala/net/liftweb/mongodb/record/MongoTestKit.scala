@@ -18,9 +18,7 @@ package scoundrel
 package mongodb
 package record
 
-import util.{ConnectionIdentifier, DefaultConnectionIdentifier, Props}
-
-
+import net.liftweb.util._
 import org.specs2.mutable.Specification
 import org.specs2.specification.BeforeAfterEach
 

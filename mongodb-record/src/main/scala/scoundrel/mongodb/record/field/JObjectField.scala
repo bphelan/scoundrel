@@ -19,13 +19,14 @@ package mongodb
 package record
 package field
 
-import common._
-import http.js.JE._
-import json._
-import util.Helpers.tryo
-import net.liftweb.record.{Field, FieldHelpers, MandatoryTypedField}
+import net.liftweb.util.Helpers.tryo
 
+import net.liftweb.record._
 import scala.xml.NodeSeq
+
+import net.liftweb.common._
+import net.liftweb.json.JsonAST.{JNothing, JNull}
+import net.liftweb.json._
 
 import com.mongodb._
 import org.bson.Document

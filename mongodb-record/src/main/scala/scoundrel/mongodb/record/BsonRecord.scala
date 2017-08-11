@@ -18,16 +18,17 @@ package scoundrel
 package mongodb
 package record
 
-import common._
-
 import java.util.regex.Pattern
 import scala.collection.JavaConversions._
 
-import net.liftweb.record.{Field, MetaRecord, Record}
+import net.liftweb.record._
 import net.liftweb.record.field._
 
 import com.mongodb._
 import java.util.prefs.BackingStoreException
+
+import net.liftweb.common._
+
 import org.bson.Document
 
 /** Specialized Record that can be encoded and decoded from BSON (DBObject) */

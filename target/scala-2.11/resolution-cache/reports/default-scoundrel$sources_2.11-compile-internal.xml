@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="scoundrel$sources_2.11"
+		revision="0.1-SNAPSHOT"
+		conf="compile-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20170811121202"/>
+	<dependencies>
+		<module organisation="org.mongodb" name="mongodb-driver">
+			<revision name="3.4.1" status="release" pubdate="20161220022627" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.mongodb.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="3">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2807" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/mongodb-driver/ivy-3.4.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/mongodb/mongodb-driver/3.4.1/mongodb-driver-3.4.1.pom"/>
+				<caller organisation="default" name="scoundrel$sources_2.11" conf="compile-internal, compile, provided, optional" rev="3.4.1" rev-constraint-default="3.4.1" rev-constraint-dynamic="3.4.1" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="mongodb-driver" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="291364" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/mongodb-driver/srcs/mongodb-driver-3.4.1-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/mongodb/mongodb-driver/3.4.1/mongodb-driver-3.4.1-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.mongodb" name="mongodb-driver-async">
+			<revision name="3.4.1" status="release" pubdate="20161220022629" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.mongodb.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="2">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2832" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/mongodb-driver-async/ivy-3.4.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-async/3.4.1/mongodb-driver-async-3.4.1.pom"/>
+				<caller organisation="default" name="scoundrel$sources_2.11" conf="compile-internal, compile, provided, optional" rev="3.4.1" rev-constraint-default="3.4.1" rev-constraint-dynamic="3.4.1" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="mongodb-driver-async" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="88494" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/mongodb-driver-async/srcs/mongodb-driver-async-3.4.1-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-async/3.4.1/mongodb-driver-async-3.4.1-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.mongodb" name="mongodb-driver-core">
+			<revision name="3.4.1" status="release" pubdate="20161220022633" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.mongodb.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3222" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/mongodb-driver-core/ivy-3.4.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-core/3.4.1/mongodb-driver-core-3.4.1.pom"/>
+				<caller organisation="default" name="scoundrel$sources_2.11" conf="compile-internal, compile, provided, optional" rev="3.4.1" rev-constraint-default="3.4.1" rev-constraint-dynamic="3.4.1" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="mongodb-driver-core" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="656312" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/mongodb-driver-core/srcs/mongodb-driver-core-3.4.1-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-core/3.4.1/mongodb-driver-core-3.4.1-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.11.8" status="release" pubdate="20160305022633" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.8/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="1">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2653" time="0" location="/home/alexd/.ivy2/cache/org.scala-lang/scala-library/ivy-2.11.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.pom"/>
+				<caller organisation="default" name="scoundrel$sources_2.11" conf="compile-internal, compile, provided, optional" rev="2.11.8" rev-constraint-default="2.11.8" rev-constraint-dynamic="2.11.8" callerrev="0.1-SNAPSHOT" extra-info.apiURL="http://www.scala-lang.org/api/2.11.8/"/>
+				<artifacts>
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="911686" time="0" location="/home/alexd/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.8-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.mongodb" name="bson">
+			<revision name="3.4.1" status="release" pubdate="20161220022620" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://bsonspec.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="0">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2499" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/bson/ivy-3.4.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/mongodb/bson/3.4.1/bson-3.4.1.pom"/>
+				<caller organisation="default" name="scoundrel$sources_2.11" conf="compile-internal, compile, provided, optional" rev="3.4.1" rev-constraint-default="3.4.1" rev-constraint-dynamic="3.4.1" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="bson" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="202204" time="0" location="/home/alexd/.ivy2/cache/org.mongodb/bson/srcs/bson-3.4.1-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/mongodb/bson/3.4.1/bson-3.4.1-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

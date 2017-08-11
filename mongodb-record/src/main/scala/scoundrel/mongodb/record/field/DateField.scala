@@ -18,16 +18,13 @@ package field
 
 import java.util.Date
 
-import scala.xml.NodeSeq
-
-import common._
-import http.js.JE.{JsNull, JsRaw}
-import http.S
-import json._
-import mongodb.record._
+import net.liftweb.common._
+import net.liftweb.http.S
+import net.liftweb.http.js.JE.{JsNull, JsRaw}
+import net.liftweb.json.JsonAST._
+import net.liftweb.json.{Formats, JValue}
 import net.liftweb.record._
-import net.liftweb.record.field._
-import util.Helpers._
+import net.liftweb.util.Helpers._
 
 trait DateTypedField extends TypedField[Date] {
 

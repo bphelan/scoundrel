@@ -19,15 +19,17 @@ package mongodb
 package record
 package field
 
-import common._
-import http.js.JsExp
-import http.js.JE.JsNull
-import json._
 import net.liftweb.record._
+
 import com.mongodb._
 import org.bson.Document
-
 import scala.xml._
+
+import net.liftweb.common._
+import net.liftweb.http.js.JE.JsNull
+import net.liftweb.http.js.JsExp
+import net.liftweb.json.JValue
+import net.liftweb.json.JsonAST._
 
 /** Field that contains an entire record represented as an inline object value. Inspired by JSONSubRecordField */
 class BsonRecordField[OwnerType <: BsonRecord[OwnerType], SubRecordType <: BsonRecord[SubRecordType]]

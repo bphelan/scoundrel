@@ -18,14 +18,12 @@ package scoundrel
 package mongodb
 package record
 
-import net.liftweb.record.{MetaRecord, Record}
+import scala.concurrent.Future
+
+import net.liftweb.common.Box
 import net.liftweb.util.Helpers.tryo
 
-import com.mongodb.{BasicDBObject, DBObject, DBRef, WriteConcern}
-
-import org.bson.types.ObjectId
-import common.{Full, Box}
-import scala.concurrent.Future
+import com.mongodb.WriteConcern
 
 trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   self: MyType =>

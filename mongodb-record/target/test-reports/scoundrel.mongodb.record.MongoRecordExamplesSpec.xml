@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="alexd-VirtualBox" name="scoundrel.mongodb.record.MongoRecordExamplesSpec" tests="6" errors="1" failures="3" skipped="1" time="18.792">
+                     <properties>
+      <property name="jline.esc.timeout" value="0"/><property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/><property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/><property name="java.vm.version" value="25.144-b01"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="java.vendor.url" value="http://java.oracle.com/"/><property name="path.separator" value=":"/><property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/><property name="file.encoding.pkg" value="sun.io"/><property name="user.country" value="AU"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="sun.os.patch.level" value="unknown"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="user.dir" value="/home/alexd/hg/scoundrel"/><property name="java.runtime.version" value="1.8.0_144-b01"/><property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/><property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/><property name="os.arch" value="amd64"/><property name="java.io.tmpdir" value="/tmp"/><property name="line.separator" value="
+"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="os.name" value="Linux"/><property name="sun.jnu.encoding" value="UTF-8"/><property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.class.version" value="52.0"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="os.version" value="4.4.0-89-generic"/><property name="user.home" value="/home/alexd"/><property name="user.timezone" value="Australia/Sydney"/><property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/><property name="file.encoding" value="UTF-8"/><property name="java.specification.version" value="1.8"/><property name="java.class.path" value="/usr/share/sbt/bin/sbt-launch.jar"/><property name="user.name" value="alexd"/><property name="jline.shutdownhook" value="false"/><property name="java.vm.specification.version" value="1.8"/><property name="sun.java.command" value="/usr/share/sbt/bin/sbt-launch.jar"/><property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/><property name="sun.arch.data.model" value="64"/><property name="user.language" value="en"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="awt.toolkit" value="sun.awt.X11.XToolkit"/><property name="java.vm.info" value="mixed mode"/><property name="java.version" value="1.8.0_144"/><property name="java.ext.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/ext:/usr/java/packages/lib/ext"/><property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/><property name="java.vendor" value="Oracle Corporation"/><property name="file.separator" value="/"/><property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/><property name="sun.io.unicode.encoding" value="UnicodeLittle"/><property name="sun.cpu.endian" value="little"/><property name="sun.cpu.isalist" value=""/>
+    </properties>
+                     <testcase classname="scoundrel.mongodb.record.MongoRecordExamplesSpec" name="TstRecord example" time="0.609">
+                                                 <failure message="the value is not equal to 'true'" type="java.lang.Exception">java.lang.Exception: the value is not equal to 'true'
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$4$$anonfun$apply$1.apply$mcV$sp(MongoRecordExamplesSpec.scala:231)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$4$$anonfun$apply$1.apply(MongoRecordExamplesSpec.scala:204)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$4$$anonfun$apply$1.apply(MongoRecordExamplesSpec.scala:204)
+	at net.liftweb.http.S$class.net$liftweb$http$S$$wrapQuery(S.scala:1571)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_nest2InnerInit$1$$anonfun$apply$40.apply(S.scala:1727)
+	at net.liftweb.http.S$class.net$liftweb$http$S$$doAround(S.scala:1500)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_nest2InnerInit$1.apply(S.scala:1725)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$class.net$liftweb$http$S$$_nest2InnerInit(S.scala:1724)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_innerInit$1$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46$$anonfun$apply$47.apply(S.scala:1771)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$withReq$2.apply(S.scala:1781)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$class.withReq(S.scala:1780)
+	at net.liftweb.http.S$.withReq(S.scala:46)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_innerInit$1$$anonfun$apply$44$$anonfun$apply$45$$anonfun$apply$46.apply(S.scala:1766)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_innerInit$1$$anonfun$apply$44$$anonfun$apply$45.apply(S.scala:1764)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_innerInit$1$$anonfun$apply$44.apply(S.scala:1763)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_innerInit$1.apply(S.scala:1762)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$class.net$liftweb$http$S$$_innerInit(S.scala:1761)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_init$2$$anonfun$apply$52$$anonfun$apply$53$$anonfun$apply$54$$anonfun$apply$55$$anonfun$apply$56.apply(S.scala:1804)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_init$2$$anonfun$apply$52$$anonfun$apply$53$$anonfun$apply$54$$anonfun$apply$55.apply(S.scala:1802)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18$$anonfun$apply$19.apply(Vars.scala:611)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.apply(Vars.scala:610)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16$$anonfun$apply$17.apply(Vars.scala:609)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16.apply(Vars.scala:608)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$class.apply(Vars.scala:607)
+	at net.liftweb.http.RequestVarHandler$.apply(Vars.scala:507)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_init$2$$anonfun$apply$52$$anonfun$apply$53$$anonfun$apply$54.apply(S.scala:1801)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18$$anonfun$apply$19.apply(Vars.scala:611)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16$$anonfun$apply$17$$anonfun$apply$18.apply(Vars.scala:610)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16$$anonfun$apply$17.apply(Vars.scala:609)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$$anonfun$apply$16.apply(Vars.scala:608)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.CoreRequestVarHandler$class.apply(Vars.scala:607)
+	at net.liftweb.http.TransientRequestVarHandler$.apply(Vars.scala:520)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_init$2$$anonfun$apply$52$$anonfun$apply$53.apply(S.scala:1800)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_init$2$$anonfun$apply$52.apply(S.scala:1799)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$$anonfun$net$liftweb$http$S$$_init$2.apply(S.scala:1798)
+	at net.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)
+	at net.liftweb.http.S$class.net$liftweb$http$S$$_init(S.scala:1797)
+	at net.liftweb.http.S$class.init(S.scala:1375)
+	at net.liftweb.http.S$.init(S.scala:46)
+	at net.liftweb.http.S$class.initIfUninitted(S.scala:2198)
+	at net.liftweb.http.S$.initIfUninitted(S.scala:46)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$4.apply(MongoRecordExamplesSpec.scala:204)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$4.apply(MongoRecordExamplesSpec.scala:200)
+</failure>
+                                               </testcase><testcase classname="scoundrel.mongodb.record.MongoRecordExamplesSpec" name="Ref example" time="0.229">
+                                                 <failure message="the value is not equal to 'true'" type="java.lang.Exception">java.lang.Exception: the value is not equal to 'true'
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$5.apply(MongoRecordExamplesSpec.scala:321)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$5.apply(MongoRecordExamplesSpec.scala:267)
+</failure>
+                                               </testcase><testcase classname="scoundrel.mongodb.record.MongoRecordExamplesSpec" name="List example" time="0.166">
+                                                 <failure message="the value is not equal to 'true'" type="java.lang.Exception">java.lang.Exception: the value is not equal to 'true'
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$15.apply(MongoRecordExamplesSpec.scala:428)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec$$anonfun$15.apply(MongoRecordExamplesSpec.scala:398)
+</failure>
+                                               </testcase><testcase classname="scoundrel.mongodb.record.MongoRecordExamplesSpec" name="Map Example" time="0.203">
+                                                 
+                                               </testcase><testcase classname="scoundrel.mongodb.record.MongoRecordExamplesSpec" name="Optional Example" time="17.585">
+                                                 <error message="Mongo not found: ConnectionIdentifier(lift)" type="com.mongodb.MongoException">com.mongodb.MongoException: Mongo not found: ConnectionIdentifier(lift)
+	at scoundrel.mongodb.MongoDB$.use(Mongo.scala:74)
+	at scoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:76)
+	at scoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:75)
+	at scoundrel.mongodb.record.MongoTestKit$class.after(MongoTestKit.scala:75)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec.after(MongoRecordExamplesSpec.scala:193)
+	at scoundrel.mongodb.record.MongoRecordExamplesSpec.after(MongoRecordExamplesSpec.scala:193)
+</error>
+                                               </testcase><testcase classname="scoundrel.mongodb.record.MongoRecordExamplesSpec" name="Strict Example" time="0.0">
+                                                 <skipped/>
+                                               </testcase>
+                     <system-out></system-out>
+                     <system-err></system-err>
+                   </testsuite>

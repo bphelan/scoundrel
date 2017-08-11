@@ -1,0 +1,32 @@
+[0m[[0minfo[0m] [0mQueryExamples Specification[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[31merror[0m] [0m[31m![0m Query examples[0m
+[0m[[31merror[0m] [0m com.mongodb.MongoException: Mongo not found: persons. ConnectionIdentifier: ConnectionIdentifier(lift) (Mongo.scala:101)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.MongoDB$.useCollection(Mongo.scala:101)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoMetaRecord$class.useColl(MongoMetaRecord.scala:57)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.queryexamplesfixtures.Person$.useColl(QueryExamplesSpec.scala:43)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoMetaRecord$$anonfun$save$2.apply$mcV$sp(MongoMetaRecord.scala:282)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoMetaRecord$class.saveOp(MongoMetaRecord.scala:244)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.queryexamplesfixtures.Person$.saveOp(QueryExamplesSpec.scala:43)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoMetaRecord$class.save(MongoMetaRecord.scala:281)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.queryexamplesfixtures.Person$.save(QueryExamplesSpec.scala:43)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecord$$anonfun$save$1.apply$mcZ$sp(MongoRecord.scala:50)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecord$$anonfun$save$1.apply(MongoRecord.scala:50)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecord$$anonfun$save$1.apply(MongoRecord.scala:50)[0m
+[0m[[31merror[0m] [0mnet.liftweb.util.ThreadGlobal.doWith(ThreadGlobal.scala:71)[0m
+[0m[[31merror[0m] [0mnet.liftweb.util.Safe$.runSafe(Safe.scala:36)[0m
+[0m[[31merror[0m] [0mnet.liftweb.record.Record$class.runSafe(Record.scala:53)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.queryexamplesfixtures.Person.runSafe(QueryExamplesSpec.scala:33)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecord$class.save(MongoRecord.scala:49)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.queryexamplesfixtures.Person.save(QueryExamplesSpec.scala:33)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecord$class.save(MongoRecord.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.queryexamplesfixtures.Person.save(QueryExamplesSpec.scala:33)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.QueryExamplesSpec$$anonfun$2.apply(QueryExamplesSpec.scala:87)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.QueryExamplesSpec$$anonfun$2.apply(QueryExamplesSpec.scala:57)[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification QueryExamples Specification[0m
+[0m[[0minfo[0m] [0m[36mFinished in 2 seconds, 785 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m1 example, 0 failure, 1 error[0m[0m
+[0m[[0minfo[0m] [0m[0m

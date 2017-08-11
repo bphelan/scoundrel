@@ -16,20 +16,17 @@ package mongodb
 package record
 package field
 
-import net.liftweb.record._
-import net.liftweb.record.RecordHelpers.jvalueToJsExp
-import net.liftweb.record.field._
-import net.liftweb.http.js.JE.{JsObj, Num, Str, JsNull}
-import xml.{Text, NodeSeq}
-import net.liftweb.mongodb.JObjectParser
-import com.mongodb.{BasicDBList, DBObject}
-import net.liftweb.common.{Failure, Empty, Full, Box}
-import net.liftweb.util.Helpers
-import net.liftweb.json._
-import reflect.Manifest
-import net.liftweb.http.js.JsExp
-import org.bson.Document
 import scala.collection.JavaConverters._
+import scala.reflect.Manifest
+import scala.xml.{NodeSeq, Text}
+
+import net.liftweb.common._
+import net.liftweb.json._
+import net.liftweb.record._
+import net.liftweb.util.Helpers
+
+import com.mongodb.{BasicDBList, DBObject}
+import org.bson.Document
 class MongoCaseClassField[OwnerType <: Record[OwnerType],CaseType](rec: OwnerType)( implicit mf: Manifest[CaseType]) extends Field[CaseType, OwnerType] with MandatoryTypedField[CaseType] with MongoFieldFlavor[CaseType] {
 
   // override this for custom formats

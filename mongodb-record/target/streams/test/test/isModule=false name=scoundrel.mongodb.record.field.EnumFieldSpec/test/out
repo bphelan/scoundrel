@@ -1,0 +1,24 @@
+[0m[[0minfo[0m] [0mEnumField Specification[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mEnumField should[0m
+[0m[[31merror[0m] [0m  [31m![0m work with default values[0m
+[0m[[31merror[0m] [0m   com.mongodb.MongoException: Fatal execution error, caused by Mongo not found: ConnectionIdentifier(lift) (Mongo.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.MongoDB$.use(Mongo.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:76)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:75)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$class.after(MongoTestKit.scala:75)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.field.EnumFieldSpec.after(EnumFieldSpec.scala:71)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.field.EnumFieldSpec.after(EnumFieldSpec.scala:71)[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m  [35mo[0m work with set values[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m work with Empty optional values[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m work with Full optional values[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification EnumField Specification[0m
+[0m[[0minfo[0m] [0m[36mFinished in 452 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m4 examples, 10 expectations, 0 failure, 1 error, 9 skipped[0m[0m
+[0m[[0minfo[0m] [0m[0m

@@ -24,14 +24,14 @@ import java.util.regex.Pattern
 import org.bson.types.ObjectId
 import org.joda.time.DateTime
 import org.specs2.mutable.Specification
-
-import common._
-import http.{S, LiftSession}
-import http.js.JsExp
-import json._
-import JsonDSL._
-import util.Helpers.snakify
-
+import net.liftweb.util.Helpers.snakify
+import net.liftweb.common._
+import net.liftweb.http.{LiftSession, S}
+import net.liftweb.http.js.JsExp
+import net.liftweb.json._
+import net.liftweb.json.JsonDSL._
+import net.liftweb.json.JObject
+import net.liftweb.json.JsonAST.{JArray, JNothing}
 import net.liftweb.record.RecordRules
 import net.liftweb.record.field.Countries
 

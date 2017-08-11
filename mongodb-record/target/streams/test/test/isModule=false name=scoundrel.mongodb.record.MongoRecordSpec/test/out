@@ -1,0 +1,88 @@
+[0m[[0minfo[0m] [0mMongoRecord Specification[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mMongoRecord field introspection should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m introspect only the expected fields[0m
+[0m[[0minfo[0m] [0m  [32m+[0m correctly look up fields by name[0m
+[0m[[0minfo[0m] [0m  [32m+[0m not look up fields by bogus names[0m
+[0m[[0minfo[0m] [0mMongoRecord lifecycle callbacks should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m be called before validation when specified at the field level[0m
+[0m[[31merror[0m] [0m  [31m![0m be called after validation when specified at the field level[0m
+[0m[[31merror[0m] [0m   com.mongodb.MongoException: Fatal execution error, caused by Mongo not found: ConnectionIdentifier(lift) (Mongo.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.MongoDB$.use(Mongo.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:76)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:75)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$class.after(MongoTestKit.scala:75)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecordSpec.after(MongoRecordSpec.scala:44)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoRecordSpec.after(MongoRecordSpec.scala:44)[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called around validate when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called before save when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called before create when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called before update when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called after save when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called after create when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called after update when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called before delete when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m be called after delete when specified at the field level[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0mMongoRecord should[0m
+[0m[[0minfo[0m] [0m  [35mo[0m save and retrieve 'standard' type fields[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m delete record properly[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m save and retrieve Mongo type fields with set values[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m save and retrieve Mongo type fields with default values[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m convert Mongo type fields to JValue[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m convert pattern field to JValue[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m convert list fields to JValue[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m convert map fields to JValue[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m convert JObject fields to JValue[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m convert BsonRecord fields to JValue[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m get set from json string using lift-json parser[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m handle null[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m handle Box using JsonBoxSerializer[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m retrieve MongoRef objects properly[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m use defaultValue when field is not present in the database[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m reset dirty flags on save[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m update dirty fields for a FieldTypeTestRecord[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m update dirty fields for a MongoFieldTypeTestRecord[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m update dirty fields for a PatternFieldTestRecord[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m update dirty fields for a ListTestRecord[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m update dirty fields for a MapTestRecord[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m update dirty fields for a SubRecordTestRecord[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m  [35mo[0m support custom field name[0m
+[0m[[0minfo[0m] [0mSKIPPED[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification MongoRecord Specification[0m
+[0m[[0minfo[0m] [0m[36mFinished in 2 seconds, 156 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m37 examples, 78 expectations, 0 failure, 1 error, 73 skipped[0m[0m
+[0m[[0minfo[0m] [0m[0m

@@ -19,11 +19,11 @@ package mongodb
 package record
 package field
 
-import common.{Box, Empty, Full}
-import http.SHtml
-import util.Helpers._
-
+import net.liftweb.util.Helpers._
 import java.util.UUID
+
+import net.liftweb.common._
+import net.liftweb.http.SHtml
 
 import org.bson.types.ObjectId
 import net.liftweb.record.TypedField

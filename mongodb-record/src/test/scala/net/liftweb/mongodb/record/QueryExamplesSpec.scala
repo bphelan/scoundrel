@@ -19,12 +19,12 @@ package mongodb
 package record
 
 import BsonDSL._
-import json.JObject
 import field._
 import net.liftweb.record.field._
-
 import java.util.{Calendar, Date, UUID}
 import java.util.regex.Pattern
+
+import net.liftweb.json.JsonAST.JObject
 
 import org.bson.types.ObjectId
 import org.specs2.mutable.Specification

@@ -1,0 +1,17 @@
+[0m[[0minfo[0m] [0mMongoClientSave Specification[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[31merror[0m] [0m[31m![0m MongoMetaRecord with Mongo save[0m
+[0m[[31merror[0m] [0m com.mongodb.MongoException: Fatal execution error, caused by Mongo not found: ConnectionIdentifier(lift) (Mongo.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.MongoDB$.use(Mongo.scala:74)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:76)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$$anonfun$after$1.apply(MongoTestKit.scala:75)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoTestKit$class.after(MongoTestKit.scala:75)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoClientSaveSpec.after(MongoClientSaveSpec.scala:49)[0m
+[0m[[31merror[0m] [0mscoundrel.mongodb.record.MongoClientSaveSpec.after(MongoClientSaveSpec.scala:49)[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification MongoClientSave Specification[0m
+[0m[[0minfo[0m] [0m[36mFinished in 525 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m1 example, 2 expectations, 0 failure, 1 error, 1 skipped[0m[0m
+[0m[[0minfo[0m] [0m[0m

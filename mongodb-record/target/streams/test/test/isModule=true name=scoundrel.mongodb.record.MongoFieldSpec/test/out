@@ -1,0 +1,315 @@
+[0m[[0minfo[0m] [0mMongoField Specification[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mDateField should[0m
+[0m[[0minfo[0m] [0m  support mandatory fields[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m  support 'legacy' optional fields (override optional_?)[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to Empty[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which do not fail when set to Empty[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mJsonObjectField should[0m
+[0m[[0minfo[0m] [0m  support mandatory fields[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m  support 'legacy' optional fields (override optional_?)[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to Empty[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which do not fail when set to Empty[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mObjectIdField should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m work and provide the appropriate date[0m
+[0m[[0minfo[0m] [0mPatternField should[0m
+[0m[[0minfo[0m] [0m  support mandatory fields[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m  support 'legacy' optional fields (override optional_?)[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to Empty[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which do not fail when set to Empty[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mUUIDField should[0m
+[0m[[0minfo[0m] [0m  support mandatory fields[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m  support 'legacy' optional fields (override optional_?)[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which initialize to Empty[0m
+[0m[[0minfo[0m] [0m    common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m      [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m    [32m+[0m which do not fail when set to Empty[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mPasswordField should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m require a nonempty password[0m
+[0m[[0minfo[0m] [0m  [32m+[0m require at least 3 character password[0m
+[0m[[0minfo[0m] [0mMongoListField (String) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoListField (Int) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoListField (ObjectId) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoListField (Pattern) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoListField (Date) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoListField (UUID) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoListField (DateTime) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoJsonObjectListField should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoCaseClassListField should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m setFromAny a List[0m
+[0m[[0minfo[0m] [0mMongoMapField (String) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoMapField (Int) should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mMongoMapField should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m create itself from bson doc[0m
+[0m[[0minfo[0m] [0mBsonRecordField should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    support 'legacy' optional fields (override optional_?)[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to Empty[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which do not fail when set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mBsonRecordListField should[0m
+[0m[[0minfo[0m] [0m  function correctly[0m
+[0m[[0minfo[0m] [0m    support mandatory fields[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to some value[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which correctly fail to be set to Empty[0m
+[0m[[0minfo[0m] [0m    support 'legacy' optional fields (override optional_?)[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which are configured correctly[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which initialize to Empty[0m
+[0m[[0minfo[0m] [0m      common behaviors for all flavors[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which have the correct initial value[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are readable and writable[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which correctly clear back to the default[0m
+[0m[[0minfo[0m] [0m        [36m*[0m which capture error conditions set in PENDING[0m
+[0m[[0minfo[0m] [0m        [32m+[0m which are only flagged as dirty_? when setBox is called with a different value[0m
+[0m[[0minfo[0m] [0m      [32m+[0m which do not fail when set to Empty[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m    [32m+[0m convert to form XML[0m
+[0m[[0minfo[0m] [0mJObjectField should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m convert to JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get set from JValue[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get set from JValue after BSON roundtrip[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification MongoField Specification[0m
+[0m[[0minfo[0m] [0m[36mFinished in 20 seconds, 8 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m230 examples, 0 failure, 0 error, 22 pending[0m[0m
+[0m[[0minfo[0m] [0m[0m

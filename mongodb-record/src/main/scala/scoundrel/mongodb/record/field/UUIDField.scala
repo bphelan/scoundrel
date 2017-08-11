@@ -18,14 +18,11 @@ package field
 
 import java.util.UUID
 
-import scala.xml.NodeSeq
-
-import net.liftweb.common.{Box, Empty, Failure, Full}
-import net.liftweb.http.js.JE.{JsNull, JsRaw}
+import net.liftweb.common._
 import net.liftweb.http.S
+import net.liftweb.http.js.JE.{JsNull, JsRaw}
 import net.liftweb.json._
-import net.liftweb.mongodb.record._
-import net.liftweb.record.{Field, FieldHelpers, MandatoryTypedField}
+import net.liftweb.record._
 import net.liftweb.util.Helpers._
 
 class UUIDField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)

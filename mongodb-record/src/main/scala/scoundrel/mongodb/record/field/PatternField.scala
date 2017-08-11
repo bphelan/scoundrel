@@ -19,11 +19,10 @@ package field
 import java.util.regex.Pattern
 import scala.xml.NodeSeq
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
+import net.liftweb.common._
 import net.liftweb.http.js.JE.{JsNull, Str}
 import net.liftweb.json._
-import net.liftweb.mongodb.record._
-import net.liftweb.record.{Field, FieldHelpers, MandatoryTypedField}
+import net.liftweb.record._
 import net.liftweb.util.Helpers.tryo
 
 class PatternField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)

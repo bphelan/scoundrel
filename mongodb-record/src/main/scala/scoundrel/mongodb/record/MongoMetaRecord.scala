@@ -19,19 +19,19 @@ package mongodb
 package record
 
 import java.util.UUID
+import scala.collection.JavaConversions._
+import scala.concurrent.{Future, Promise}
+
+import net.liftweb.common._
+import net.liftweb.json.JsonAST._
+import net.liftweb.record.MandatoryTypedField
 
 import com.mongodb._
 import com.mongodb.async.SingleResultCallback
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.result.UpdateResult
-import net.liftweb.common._
-import net.liftweb.json.JsonAST._
-import net.liftweb.record.MandatoryTypedField
 import org.bson.Document
 import org.bson.types.ObjectId
-
-import scala.collection.JavaConversions._
-import scala.concurrent.{Future, Promise}
 
 trait MongoMetaRecord[BaseRecord <: MongoRecord[BaseRecord]]
   extends BsonMetaRecord[BaseRecord] with MongoMeta[BaseRecord] {

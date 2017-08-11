@@ -19,25 +19,19 @@ package mongodb
 package record
 package fixtures
 
-import field._
-
-import common._
-import json._
-import json.ext.{EnumSerializer, JsonBoxSerializer}
-import http.SHtml
-import util.{FieldError, Helpers}
-
 import java.math.MathContext
-import java.util.{Date, UUID}
 import java.util.regex.Pattern
-import scala.xml.Text
+import java.util.{Date, UUID}
 
+import net.liftweb.common._
+import net.liftweb.json.DefaultFormats
+import net.liftweb.json.ext.{EnumSerializer, JsonBoxSerializer}
 import net.liftweb.record._
 import net.liftweb.record.field._
 import net.liftweb.record.field.joda._
 
-import org.bson.types.ObjectId
 import org.joda.time.DateTime
+import scoundrel.mongodb.record.field._
 
 object MyTestEnum extends Enumeration {
   val ONE = Value("ONE")
@@ -150,7 +144,7 @@ class BinaryFieldTestRecord extends MongoRecord[BinaryFieldTestRecord] with IntP
     // compare the elements of the Array
     override def equals(other: Any): Boolean = other match {
       case that: BinaryField[_] =>
-        this.value.zip(that.value).filter(t => t._1 != t._2).length == 0
+        !this.value.zip(that.value).exists(t => t._1 != t._2)
       case _ => false
     }
   }
@@ -161,7 +155,7 @@ class BinaryFieldTestRecord extends MongoRecord[BinaryFieldTestRecord] with IntP
       case that: BinaryField[_] => (this.valueBox, that.valueBox) match {
         case (Empty, Empty) => true
         case (Full(a), Full(b)) =>
-          a.zip(b).filter(t => t._1 != t._2).length == 0
+          !a.zip(b).exists(t => t._1 != t._2)
         case _ => false
       }
       case _ => false
@@ -173,7 +167,7 @@ class BinaryFieldTestRecord extends MongoRecord[BinaryFieldTestRecord] with IntP
       case that: OptionalBinaryField[_] => (this.valueBox, that.valueBox) match {
         case (Empty, Empty) => true
         case (Full(a), Full(b)) =>
-          a.zip(b).filter(t => t._1 != t._2).length == 0
+          !a.zip(b).exists(t => t._1 != t._2)
         case _ => false
       }
       case _ => false
@@ -239,8 +233,6 @@ object MongoFieldTypeTestRecord extends MongoFieldTypeTestRecord with MongoMetaR
 
 class PatternFieldTestRecord private () extends MongoRecord[PatternFieldTestRecord] with ObjectIdPk[PatternFieldTestRecord] {
   def meta = PatternFieldTestRecord
-
-  import java.util.regex.Pattern
 
   object mandatoryPatternField extends PatternField(this)
   object legacyOptionalPatternField extends PatternField(this) { override def optional_? = true }
