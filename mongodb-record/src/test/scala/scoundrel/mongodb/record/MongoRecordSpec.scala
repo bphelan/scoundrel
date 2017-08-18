@@ -18,24 +18,23 @@ package scoundrel
 package mongodb
 package record
 
-import java.util.{Date, Locale, UUID}
 import java.util.regex.Pattern
+import java.util.{Date, Locale, UUID}
 
-import org.bson.types.ObjectId
-import org.joda.time.DateTime
-import org.specs2.mutable.Specification
-import net.liftweb.util.Helpers.snakify
 import net.liftweb.common._
 import net.liftweb.http.{LiftSession, S}
-import net.liftweb.http.js.JsExp
-import net.liftweb.json._
-import net.liftweb.json.JsonDSL._
-import net.liftweb.json.JObject
 import net.liftweb.json.JsonAST.{JArray, JNothing}
+import net.liftweb.json.JsonDSL._
+import net.liftweb.json.{JObject, _}
 import net.liftweb.record.RecordRules
 import net.liftweb.record.field.Countries
+import net.liftweb.util.Helpers.snakify
+import org.specs2.mutable.Specification
 
 import com.mongodb._
+import org.bson.types.ObjectId
+import org.joda.time.DateTime
+import fixtures._
 
 
 /**
@@ -43,8 +42,6 @@ import com.mongodb._
  */
 class MongoRecordSpec extends Specification with MongoTestKit {
   "MongoRecord Specification".title
-
-  import fixtures._
   val session = new LiftSession("hello", "", Empty)
 
   override def before = {

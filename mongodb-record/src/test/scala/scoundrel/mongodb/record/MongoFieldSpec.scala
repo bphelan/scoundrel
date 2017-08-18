@@ -39,6 +39,7 @@ import org.bson.Document
 import org.bson.types.ObjectId
 import org.joda.time.DateTime
 import scoundrel.mongodb.BsonDSL._
+import fixtures._
 
 /**
  * Systems under specification for MongoField.
@@ -46,8 +47,6 @@ import scoundrel.mongodb.BsonDSL._
 object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
   "MongoField Specification".title
   sequential
-
-  import fixtures._
 
   lazy val session = new LiftSession("", randomString(20), Empty)
 

@@ -52,7 +52,7 @@ object JsonObjectId {
   private def isObjectIdSerializerUsed(formats: Formats): Boolean =
     formats.customSerializers.exists(_.getClass == objectIdSerializerClass)
 
-  private val objectIdSerializerClass = classOf[mongodb.ObjectIdSerializer]
+  private val objectIdSerializerClass = classOf[scoundrel.mongodb.ObjectIdSerializer]
 }
 
 object JsonRegex {

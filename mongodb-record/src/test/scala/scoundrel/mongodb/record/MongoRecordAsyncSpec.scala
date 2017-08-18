@@ -18,14 +18,13 @@ package scoundrel
 package mongodb
 package record
 
+import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
 
-import org.specs2.concurrent.ExecutionEnv
+import fixtures._
 
 class MongoRecordAsyncSpec(implicit ee: ExecutionEnv) extends Specification with MongoAsyncTestKit {
   "MongoRecord Async Specification".title
-
-  import fixtures.FieldTypeTestRecord
 
   "MongoRecord Async" should {
 

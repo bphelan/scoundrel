@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2015 WorldWide Conferencing, LLC
+ * Copyright 2011-2014 WorldWide Conferencing, LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,22 @@
 
 package scoundrel
 package mongodb
-package record
 
 import BsonDSL._
-import field._
-import net.liftweb.record.field._
+import net.liftweb.json.JObject
+
 import java.util.{Calendar, Date, UUID}
 import java.util.regex.Pattern
-
-import net.liftweb.json.JsonAST.JObject
 
 import org.bson.types.ObjectId
 import org.specs2.mutable.Specification
 
 package queryexamplesfixtures {
-  class Person private () extends MongoRecord[Person] with ObjectIdPk[Person] {
+  case class Person(_id: ObjectId, name: String, birthDate: Date, childId: UUID, petId: Option[ObjectId]) extends MongoDocument[Person] {
     def meta = Person
-
-    object name extends StringField(this, 100)
-    object birthDate extends DateField(this)
-    object childId extends UUIDField(this)
-    object petId extends ObjectIdField(this) {
-      override def optional_? = true
-    }
   }
-  object Person extends Person with MongoMetaRecord[Person] {
+  object Person extends MongoDocumentMeta[Person] {
+    override def formats = allFormats
     // index name
     createIndex(("name" -> 1))
 
@@ -73,37 +64,24 @@ object QueryExamplesSpec extends Specification with MongoTestKit {
     val pebblesId = UUID.randomUUID
     val bammbammId = UUID.randomUUID
 
-    val fred = Person.createRecord
-      .name("Flinstone, Fred")
-      .birthDate(fredsBirthDate.getTime)
-      .childId(pebblesId)
-      .petId(dinoId)
-      .save()
-    val wilma = Person.createRecord
-      .name("Flinstone, Wilma")
-      .birthDate(wilmasBirthDate.getTime)
-      .childId(pebblesId)
-      .petId(dinoId)
-      .save()
-    val barney = Person.createRecord
-      .name("Rubble, Barney")
-      .birthDate(barneysBirthDate.getTime)
-      .childId(bammbammId)
-      .save()
-    val betty = Person.createRecord
-      .name("Rubble, Betty")
-      .birthDate(bettysBirthDate.getTime)
-      .childId(bammbammId)
-      .save()
+    val fred = Person(ObjectId.get, "Flinstone, Fred", fredsBirthDate.getTime, pebblesId, Some(dinoId))
+    val wilma = Person(ObjectId.get, "Flinstone, Wilma", wilmasBirthDate.getTime, pebblesId, Some(dinoId))
+    val barney = Person(ObjectId.get, "Rubble, Barney", barneysBirthDate.getTime, bammbammId, None)
+    val betty = Person(ObjectId.get, "Rubble, Betty", bettysBirthDate.getTime, bammbammId, None)
 
-    val flinstonesIds = List(fred.id.get, wilma.id.get)
-    val rubblesIds = List(barney.id.get, betty.id.get)
+    fred.save
+    wilma.save
+    barney.save
+    betty.save
 
-    // query for Bamm-Bamm's parents (UUID)
+    val flinstonesIds = List(fred._id, wilma._id)
+    val rubblesIds = List(barney._id, betty._id)
+
+    // query for Bamm-Bamm's parents (UUID) by childId
     val pebblesParents = Person.findAll(("childId" -> bammbammId))
 
     pebblesParents.length must_== 2
-    pebblesParents.map(_.id.get).filterNot(rubblesIds.contains(_)) must_== List()
+    pebblesParents.map(_._id).filterNot(rubblesIds.contains(_)) must_== List()
 
     // query for Bamm-Bamm's and Pebbles' parents using List[UUID]
     val pebblesAndBammBammsParents = Person.findAll(("childId" -> ("$in" -> List(pebblesId, bammbammId))))
@@ -114,25 +92,25 @@ object QueryExamplesSpec extends Specification with MongoTestKit {
     val dinosOwners = Person.findAll(("petId" -> dinoId))
 
     dinosOwners.length must_== 2
-    dinosOwners.map(_.id.get).filterNot(flinstonesIds.contains(_)) must_== List()
+    dinosOwners.map(_._id).filterNot(flinstonesIds.contains(_)) must_== List()
 
     // query for the Rubbles using a Regex
     val rubbles = Person.findAll(("name" -> "^Rubble".r))
 
     rubbles.length must_== 2
-    rubbles.map(_.id.get).filterNot(rubblesIds.contains(_)) must_== List()
+    rubbles.map(_._id).filterNot(rubblesIds.contains(_)) must_== List()
 
     // query for the Flinstones using a Pattern
     val flinstones = Person.findAll(("name" -> Pattern.compile("^flinst", Pattern.CASE_INSENSITIVE)))
 
     flinstones.length must_== 2
-    flinstones.map(_.id.get).filterNot(flinstonesIds.contains(_)) must_== List()
+    flinstones.map(_._id).filterNot(flinstonesIds.contains(_)) must_== List()
 
     // query for the Flinstones using a List[ObjectId]
     val flinstones2 = Person.findAll(("_id" -> ("$in" -> flinstonesIds)))
 
     flinstones2.length must_== 2
-    flinstones2.map(_.id.get).filterNot(flinstonesIds.contains(_)) must_== List()
+    flinstones2.map(_._id).filterNot(flinstonesIds.contains(_)) must_== List()
 
     // query using Dates
     implicit val formats = Person.formats // this is needed for Dates
@@ -141,23 +119,23 @@ object QueryExamplesSpec extends Specification with MongoTestKit {
     val people = Person.findAll(("birthDate" -> ("$gt" -> qryDate.getTime)))
 
     people.length must_== 3
-    people.map(_.id.get).filterNot(List(wilma.id.get, barney.id.get, betty.id.get).contains(_)) must_== List()
+    people.map(_._id).filterNot(List(wilma._id, barney._id, betty._id).contains(_)) must_== List()
 
-    // you do not need to define the implicit formats val if you write your query in the MongoMetaRecord object.
+    // you do not need to define the implicit formats val if you write your query in the DocumentMeta object.
     val people2 = Person.findAllBornAfter(qryDate.getTime)
 
     people2.length must_== 3
-    people2.map(_.id.get).filterNot(List(wilma.id.get, barney.id.get, betty.id.get).contains(_)) must_== List()
+    people2.map(_._id).filterNot(List(wilma._id, barney._id, betty._id).contains(_)) must_== List()
 
-    // query with Sort
+    // query all with Sort
     val people3 = Person.findAll(JObject(Nil), ("birthDate" -> -1))
 
     people3.length must_== 4
-    people3.map(_.id.get) must_== List(betty.id.get, barney.id.get, wilma.id.get, fred.id.get)
+    people3.map(_._id) must_== List(betty._id, barney._id, wilma._id, fred._id)
 
     val people4 = Person.findAll(JObject(Nil), ("birthDate" -> 1))
 
     people4.length must_== 4
-    people4.map(_.id.get) must_== List(fred.id.get, wilma.id.get, barney.id.get, betty.id.get)
+    people4.map(_._id) must_== List(fred._id, wilma._id, barney._id, betty._id)
   }
 }

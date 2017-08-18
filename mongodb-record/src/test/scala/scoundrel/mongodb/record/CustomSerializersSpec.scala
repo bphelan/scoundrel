@@ -18,140 +18,141 @@ package scoundrel
 package mongodb
 package record
 
+import net.liftweb.common._
 import field._
+import net.liftweb.http.js.JE._
+import net.liftweb.http.{LiftSession, S}
+import net.liftweb.json.JsonAST._
 import net.liftweb.util.Helpers._
+
 import java.util.{Calendar, Date}
 
 import org.bson.types.ObjectId
 import org.specs2.mutable.Specification
+
 import net.liftweb.record.field._
 import xml.{Elem, NodeSeq}
-
-import net.liftweb.common.{Empty, Failure}
-import net.liftweb.http.{LiftSession, S}
-import net.liftweb.http.js.JE.Str
 import net.liftweb.util.Helpers
-import net.liftweb.json.JsonAST._
 
 package customserializersspecs {
 
-case class Child(name: String, birthdate: Date) extends JsonObject[Child] {
-  def meta = Child
-}
-
-object Child extends JsonObjectMeta[Child]
-
-/*
-* Date as String
-*/
-class Person extends MongoRecord[Person] with ObjectIdPk[Person] {
-  def meta = Person
-
-  object children extends MongoJsonObjectListField(this, Child)
-
-  object firstBorn extends JsonObjectField(this, Child) {
-    def defaultValue = Child("", now)
+  case class Child(name: String, birthdate: Date) extends JsonObject[Child] {
+    def meta = Child
   }
 
-}
+  object Child extends JsonObjectMeta[Child]
 
-object Person extends Person with MongoMetaRecord[Person]
+  /*
+  * Date as String
+  */
+  class Person extends MongoRecord[Person] with ObjectIdPk[Person] {
+    def meta = Person
 
-/*
-* Date as Date
-*/
-class Person2 extends MongoRecord[Person2] with ObjectIdPk[Person2] {
-  def meta = Person2
+    object children extends MongoJsonObjectListField(this, Child)
 
-  object children extends MongoJsonObjectListField(this, Child)
+    object firstBorn extends JsonObjectField(this, Child) {
+      def defaultValue = Child("", now)
+    }
 
-  object firstBorn extends JsonObjectField(this, Child) {
-    def defaultValue = Child("", now)
   }
 
-}
+  object Person extends Person with MongoMetaRecord[Person]
 
-object Person2 extends Person2 with MongoMetaRecord[Person2] {
-  override def formats = allFormats
-}
+  /*
+  * Date as Date
+  */
+  class Person2 extends MongoRecord[Person2] with ObjectIdPk[Person2] {
+    def meta = Person2
 
-class Player extends MongoRecord[Player] with ObjectIdPk[Player] {
-  def meta = Player
+    object children extends MongoJsonObjectListField(this, Child)
 
-  object name extends StringField(this, 256)
+    object firstBorn extends JsonObjectField(this, Child) {
+      def defaultValue = Child("", now)
+    }
 
-}
-
-object Player extends Player with MongoMetaRecord[Player]
-
-/*
-* ObjectId as String
-*/
-case class Team(id: String, name: String, qb: String) extends JsonObject[Team] {
-  def meta = Team
-}
-
-object Team extends JsonObjectMeta[Team]
-
-class League extends MongoRecord[League] with ObjectIdPk[League] {
-  def meta = League
-
-  object teams extends MongoJsonObjectListField(this, Team)
-
-  object champion extends JsonObjectField(this, Team) {
-    def defaultValue = Team("", "", "")
   }
 
-}
-
-object League extends League with MongoMetaRecord[League]
-
-/*
-* ObjectId as ObjectId
-*/
-case class Team2(id: ObjectId, name: String, qb: ObjectId) extends JsonObject[Team2] {
-  def meta = Team2
-}
-
-object Team2 extends JsonObjectMeta[Team2]
-
-class League2 extends MongoRecord[League2] with ObjectIdPk[League2] {
-  def meta = League2
-
-  object teams extends MongoJsonObjectListField(this, Team2)
-
-  object champion extends JsonObjectField(this, Team2) {
-    def defaultValue = Team2(ObjectId.get, "", ObjectId.get)
+  object Person2 extends Person2 with MongoMetaRecord[Person2] {
+    override def formats = allFormats
   }
 
-}
+  class Player extends MongoRecord[Player] with ObjectIdPk[Player] {
+    def meta = Player
 
-object League2 extends League2 with MongoMetaRecord[League2] {
-  override def formats = super.formats + new ObjectIdSerializer
-}
+    object name extends StringField(this, 256)
 
-object WeekDay extends Enumeration {
-  type WeekDay = Value
-  val Mon, Tue, Wed, Thu, Fri, Sat, Sun = Value
-}
+  }
 
-class EnumRec extends MongoRecord[EnumRec] with ObjectIdPk[EnumRec] {
-  def meta = EnumRec
+  object Player extends Player with MongoMetaRecord[Player]
 
-  object dow extends EnumField(this, WeekDay)
+  /*
+  * ObjectId as String
+  */
+  case class Team(id: String, name: String, qb: String) extends JsonObject[Team] {
+    def meta = Team
+  }
 
-}
+  object Team extends JsonObjectMeta[Team]
 
-object EnumRec extends EnumRec with MongoMetaRecord[EnumRec] {
-  override def collectionName = "enumrecs"
-}
+  class League extends MongoRecord[League] with ObjectIdPk[League] {
+    def meta = League
+
+    object teams extends MongoJsonObjectListField(this, Team)
+
+    object champion extends JsonObjectField(this, Team) {
+      def defaultValue = Team("", "", "")
+    }
+
+  }
+
+  object League extends League with MongoMetaRecord[League]
+
+  /*
+  * ObjectId as ObjectId
+  */
+  case class Team2(id: ObjectId, name: String, qb: ObjectId) extends JsonObject[Team2] {
+    def meta = Team2
+  }
+
+  object Team2 extends JsonObjectMeta[Team2]
+
+  class League2 extends MongoRecord[League2] with ObjectIdPk[League2] {
+    def meta = League2
+
+    object teams extends MongoJsonObjectListField(this, Team2)
+
+    object champion extends JsonObjectField(this, Team2) {
+      def defaultValue = Team2(ObjectId.get, "", ObjectId.get)
+    }
+
+  }
+
+  object League2 extends League2 with MongoMetaRecord[League2] {
+    override def formats = super.formats + new ObjectIdSerializer
+  }
+
+  object WeekDay extends Enumeration {
+    type WeekDay = Value
+    val Mon, Tue, Wed, Thu, Fri, Sat, Sun = Value
+  }
+
+  class EnumRec extends MongoRecord[EnumRec] with ObjectIdPk[EnumRec] {
+    def meta = EnumRec
+
+    object dow extends EnumField(this, WeekDay)
+
+  }
+
+  object EnumRec extends EnumRec with MongoMetaRecord[EnumRec] {
+    override def collectionName = "enumrecs"
+  }
 
 }
 
 
 /**
- * Systems under specification for CustomSerializers.
- */
+  * Systems under specification for CustomSerializers.
+  */
 object CustomSerializersSpec extends Specification  with MongoTestKit {
   "CustomSerializers Specification".title
 

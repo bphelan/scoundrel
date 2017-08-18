@@ -16,7 +16,8 @@ package mongodb
 
 import scala.reflect.Manifest
 
-import net.liftweb.json.{Formats, JObject}
+import net.liftweb.json.Formats
+import net.liftweb.json.JsonAST.JObject
 
 import org.bson.types.ObjectId
 

@@ -18,23 +18,27 @@ package scoundrel
 package mongodb
 package record
 
+import java.util.{Calendar, Date, UUID}
 import java.util.regex.Pattern
-import java.util.{Calendar, Date}
 
-import net.liftweb.common._
-import net.liftweb.http.{LiftSession, S}
+import net.liftweb.common.{Box, Empty, Failure, Full}
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.JsonDSL._
+import net.liftweb.json.JsonAST.JObject
 import net.liftweb.record.field._
+import net.liftweb.util.TimeHelpers._
+import mongodb.record.field._
+
 import org.specs2.mutable.Specification
 
 import com.mongodb._
 import org.bson.types.ObjectId
+import net.liftweb.http.{S, LiftSession}
 
 
 package mongotestrecords {
 
-  import scoundrel.mongodb.record.field._
+  import field._
 
   class TstRecord private () extends MongoRecord[TstRecord] with UUIDPk[TstRecord] {
 
@@ -185,14 +189,13 @@ package mongotestrecords {
 
 
 /**
- * Systems under specification for MongoRecordExamples.
- */
+  * Systems under specification for MongoRecordExamples.
+  */
 class MongoRecordExamplesSpec extends Specification with MongoTestKit {
   "MongoRecordExamples Specification".title
 
-  import net.liftweb.util.TimeHelpers._
-
   import mongotestrecords._
+  import net.liftweb.util.TimeHelpers._
 
   val session = new LiftSession("hello", "", Empty)
   "TstRecord example" in {
@@ -232,7 +235,7 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
         t.id.value must_== tr.id.value
         t.booleanfield.value must_== tr.booleanfield.value
         TstRecord.formats.dateFormat.format(t.datetimefield.value.getTime) must_==
-        TstRecord.formats.dateFormat.format(tr.datetimefield.value.getTime)
+          TstRecord.formats.dateFormat.format(tr.datetimefield.value.getTime)
         t.doublefield.value must_== tr.doublefield.value
         t.intfield.value must_== tr.intfield.value
         t.localefield.value must_== tr.localefield.value
