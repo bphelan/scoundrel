@@ -78,7 +78,7 @@ trait MongoAsyncTestKit extends Specification with BeforeAfterEach {
 
   protected def dbName = "lift_record_"+this.getClass.getName
     .replace("$", "")
-    .replace("net.liftweb.mongodb.record.", "")
+    .replace("scoundrel.mongodb.record.", "")
     .replace(".", "_")
     .toLowerCase
 
