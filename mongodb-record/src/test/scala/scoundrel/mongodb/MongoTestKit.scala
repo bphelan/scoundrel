@@ -73,7 +73,6 @@ trait MongoTestKit extends Specification with BeforeAfterEach {
     if (!debug && TestMongo.isMongoRunning) {
       // drop the databases
       dbs.foreach { case (id, _) =>
-        println(s"      Connection Identifier:      ${id.jndiName}")
         MongoDB.use(id) { db => db.dropDatabase }
       }
     }
