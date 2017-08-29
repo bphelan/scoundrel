@@ -21,17 +21,17 @@ package record
 import net.liftweb.common._
 import field._
 import net.liftweb.http.js.JE._
-import net.liftweb.http.{LiftSession, S}
+import net.liftweb.http.{ LiftSession, S }
 import net.liftweb.json.JsonAST._
 import net.liftweb.util.Helpers._
 
-import java.util.{Calendar, Date}
+import java.util.{ Calendar, Date }
 
 import org.bson.types.ObjectId
 import org.specs2.mutable.Specification
 
 import net.liftweb.record.field._
-import xml.{Elem, NodeSeq}
+import xml.{ Elem, NodeSeq }
 import net.liftweb.util.Helpers
 
 package customserializersspecs {
@@ -149,11 +149,10 @@ package customserializersspecs {
 
 }
 
-
 /**
-  * Systems under specification for CustomSerializers.
-  */
-object CustomSerializersSpec extends Specification  with MongoTestKit {
+ * Systems under specification for CustomSerializers.
+ */
+object CustomSerializersSpec extends Specification with MongoTestKit {
   "CustomSerializers Specification".title
 
   import customserializersspecs._
@@ -199,7 +198,8 @@ object CustomSerializersSpec extends Specification  with MongoTestKit {
         )),
         JObject(List(
           JField("name", JString("Jill")),
-          JField("birthdate", JString("2010-11-03T00:08:00.000Z"))))
+          JField("birthdate", JString("2010-11-03T00:08:00.000Z"))
+        ))
       ))
       mother.children.toForm must beEmpty
       /*
@@ -309,7 +309,7 @@ object CustomSerializersSpec extends Specification  with MongoTestKit {
       nfl.id.asJs mustEqual Str(nfl.id.value.toString)
       nfl.id.asJValue mustEqual JString(nfl.id.value.toString)
       val session = new LiftSession("", randomString(20), Empty)
-      val formPattern = <input name=".*" type="text" tabindex="1" value={nfl.id.value.toString} id="_id_id"></input>
+      val formPattern = <input name=".*" type="text" tabindex="1" value={ nfl.id.value.toString } id="_id_id"></input>
       S.initIfUninitted(session) {
         val form = nfl.id.toForm
         form.isDefined must_== true
@@ -380,7 +380,7 @@ object CustomSerializersSpec extends Specification  with MongoTestKit {
       nfl.id.asJs.toJsCmd mustEqual """{"$oid":"%s"}""".format(nfl.id.value.toString)
       nfl.id.asJValue mustEqual JObject(List(JField("$oid", JString(nfl.id.value.toString))))
       val session = new LiftSession("", randomString(20), Empty)
-      val formPattern = <input name=".*" type="text" tabindex="1" value={nfl.id.value.toString} id="_id_id"></input>
+      val formPattern = <input name=".*" type="text" tabindex="1" value={ nfl.id.value.toString } id="_id_id"></input>
       S.initIfUninitted(session) {
         val form = nfl.id.toForm
         form.isDefined must_== true

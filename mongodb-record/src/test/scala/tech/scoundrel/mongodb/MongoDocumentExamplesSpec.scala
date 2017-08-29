@@ -18,9 +18,9 @@ package tech.scoundrel
 package mongodb
 
 import BsonDSL._
-import net.liftweb.util.{Helpers, ConnectionIdentifier, DefaultConnectionIdentifier}
+import net.liftweb.util.{ Helpers, ConnectionIdentifier, DefaultConnectionIdentifier }
 
-import java.util.{Calendar, Date, UUID}
+import java.util.{ Calendar, Date, UUID }
 import java.util.regex.Pattern
 
 import org.bson.types.ObjectId
@@ -30,7 +30,6 @@ import org.specs2.mutable.Specification
 
 import net.liftweb.json.DefaultFormats
 import net.liftweb.common.Failure
-
 
 package mongotestdocs {
   /*
@@ -64,7 +63,7 @@ package mongotestdocs {
   * _id as UUID
   */
   case class Person(_id: UUID, name: String, age: Int, address: Address, children: List[Child], dob: Date)
-    extends MongoDocument[Person] {
+      extends MongoDocument[Person] {
 
     def meta = Person
   }
@@ -80,7 +79,7 @@ package mongotestdocs {
   */
   case class TCInfo(x: Int, y: Int, uuid: UUID)
   case class TstCollection(_id: String, name: String, dbtype: String, count: Int, info: TCInfo)
-    extends MongoDocument[TstCollection] {
+      extends MongoDocument[TstCollection] {
 
     def meta = TstCollection
   }
@@ -105,7 +104,7 @@ package mongotestdocs {
   }
 
   case class SessCollection(_id: ObjectId, name: String, dbtype: String, count: Int)
-    extends MongoDocument[SessCollection] {
+      extends MongoDocument[SessCollection] {
 
     def meta = SessCollection
   }
@@ -120,16 +119,16 @@ package mongotestdocs {
   * mongo-java-driver is not compatible with numbers that have an e in them
   */
   case class Primitive(
-    _id: ObjectId,
-    intfield: Int,
-    longfield: Long,
-    doublefield: Double,
-    floatfield: Float,
-    bigintfield: BigInt,
-    bytefield: Byte,
-    booleanfield: Boolean,
-    shortfield: Short,
-    datefield: Date
+      _id: ObjectId,
+      intfield: Int,
+      longfield: Long,
+      doublefield: Double,
+      floatfield: Float,
+      bigintfield: BigInt,
+      bytefield: Byte,
+      booleanfield: Boolean,
+      shortfield: Short,
+      datefield: Date
   ) extends MongoDocument[Primitive] {
 
     def meta = Primitive
@@ -173,7 +172,6 @@ package mongotestdocs {
 
 }
 
-
 /**
  * Systems under specification for MongoDocumentExamples.
  */
@@ -211,7 +209,7 @@ class MongoDocumentExamplesSpec extends Specification with MongoTestKit {
     p mustEqual pFromDbViaJson.get
 
     // modify and save the person
-    val p2 = p.copy(name="Timm", age=27)
+    val p2 = p.copy(name = "Timm", age = 27)
     p2.save
     pFromDb.isDefined must_== true
     p2 must_== pFromDb.get
@@ -335,7 +333,7 @@ class MongoDocumentExamplesSpec extends Specification with MongoTestKit {
     checkMongoIsRunning
 
     // get the indexes
-    val ixs = MongoDB.useCollection(TstCollection.collectionName)( coll => {
+    val ixs = MongoDB.useCollection(TstCollection.collectionName)(coll => {
       coll.getIndexInfo
     })
 
@@ -448,7 +446,7 @@ class MongoDocumentExamplesSpec extends Specification with MongoTestKit {
     var cntr4 = 0
     for (idoc <- list4) {
       cntr4 += 1
-      idoc.i must_== 60+cntr4
+      idoc.i must_== 60 + cntr4
     }
 
     // skip and limit (get first 10, skipping the first 5, where i > 50)
@@ -456,7 +454,7 @@ class MongoDocumentExamplesSpec extends Specification with MongoTestKit {
     var cntr5 = 0
     for (idoc <- list5) {
       cntr5 += 1
-      idoc.i must_== 55+cntr5
+      idoc.i must_== 55 + cntr5
     }
     list5.length must_== 10
 
@@ -487,7 +485,7 @@ class MongoDocumentExamplesSpec extends Specification with MongoTestKit {
     val tc3 = SessCollection(ObjectId.get, "MongoDB", "db", 1)
 
     // use a Mongo instance directly
-    MongoDB.use( db => {
+    MongoDB.use(db => {
 
       // save to db
       Helpers.tryo(SessCollection.save(tc, db)).toOption must beSome

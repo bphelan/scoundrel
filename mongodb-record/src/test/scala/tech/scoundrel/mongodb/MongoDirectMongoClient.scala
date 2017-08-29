@@ -32,7 +32,7 @@ class MongoDirectMongoClientSpec extends Specification with MongoTestKit {
     checkMongoIsRunning
 
     // use a Mongo instance directly
-    MongoDB.use( db => {
+    MongoDB.use(db => {
       val coll = db.getCollection("testCollection")
 
       // create a unique index on name

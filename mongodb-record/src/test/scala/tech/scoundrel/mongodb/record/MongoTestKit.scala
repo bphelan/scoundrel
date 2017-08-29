@@ -46,7 +46,7 @@ object TestMongo {
 trait MongoTestKit extends Specification with BeforeAfterEach {
   sequential
 
-  def dbName = "lift_record_"+this.getClass.getName
+  def dbName = "lift_record_" + this.getClass.getName
     .replace("$", "")
     .replace("tech.scoundrel.mongodb.record.", "")
     .replace(".", "_")
@@ -60,8 +60,9 @@ trait MongoTestKit extends Specification with BeforeAfterEach {
 
   def before = {
     // define the dbs
-    dbs.foreach { case (id, db) =>
-      MongoDB.defineDb(id, TestMongo.mongo, db)
+    dbs.foreach {
+      case (id, db) =>
+        MongoDB.defineDb(id, TestMongo.mongo, db)
     }
   }
 
@@ -72,14 +73,16 @@ trait MongoTestKit extends Specification with BeforeAfterEach {
   def after = {
     if (!debug && TestMongo.isMongoRunning) {
       // drop the databases
-      dbs.foreach { case (id, _) =>
-        MongoDB.use(id) { db => db.dropDatabase }
+      dbs.foreach {
+        case (id, _) =>
+          MongoDB.use(id) { db => db.dropDatabase }
       }
     }
 
     // clear the mongo instances
-    dbs.foreach { case (id, _) =>
-      MongoDB.remove(id)
+    dbs.foreach {
+      case (id, _) =>
+        MongoDB.remove(id)
     }
   }
 }

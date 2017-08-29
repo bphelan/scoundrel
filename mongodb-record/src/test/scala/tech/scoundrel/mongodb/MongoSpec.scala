@@ -17,14 +17,14 @@
 package tech.scoundrel
 package mongodb
 
-import net.liftweb.util.{ConnectionIdentifier, DefaultConnectionIdentifier}
+import net.liftweb.util.{ ConnectionIdentifier, DefaultConnectionIdentifier }
 
 import org.specs2.mutable.Specification
 import org.specs2.execute.Result
 
 import com.mongodb._
 
-class MongoSpec extends Specification  {
+class MongoSpec extends Specification {
   "Mongo Specification".title
 
   case object TestMongoIdentifier extends ConnectionIdentifier {

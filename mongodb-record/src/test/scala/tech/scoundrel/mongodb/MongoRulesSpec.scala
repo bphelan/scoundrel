@@ -1,18 +1,18 @@
 /**
-  * Copyright 2014 WorldWide Conferencing, LLC
-  *
-  * Licensed under the Apache License, Version 2.0 (the "License");
-  * you may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at
-  *
-  *     http://www.apache.org/licenses/LICENSE-2.0
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  */
+ * Copyright 2014 WorldWide Conferencing, LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package tech.scoundrel
 package mongodb
@@ -28,8 +28,8 @@ case class CollectionNameTestDoc(_id: ObjectId) extends MongoDocument[Collection
 object CollectionNameTestDoc extends MongoDocumentMeta[CollectionNameTestDoc]
 
 /**
-  * Systems under specification for MongoRules.
-  */
+ * Systems under specification for MongoRules.
+ */
 object MongoRulesSpec extends Specification {
   "Mongo Rules Specification".title
   sequential
@@ -39,8 +39,8 @@ object MongoRulesSpec extends Specification {
       CollectionNameTestDoc.collectionName must_== "collectionnametestdocs"
     }
     "snakify collection name" in {
-      MongoRules.collectionName.doWith((_, name) => snakify(name)+"s") {
-        CollectionNameTestDoc.collectionName must_== "scoundrel.mongodb.collection_name_test_docs"
+      MongoRules.collectionName.doWith((_, name) => snakify(name) + "s") {
+        CollectionNameTestDoc.collectionName must_== "tech.scoundrel.mongodb.collection_name_test_docs"
       }
     }
   }

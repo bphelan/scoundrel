@@ -24,7 +24,7 @@ import org.specs2.mutable.Specification
 
 import net.liftweb.common._
 import net.liftweb.json.ext.EnumSerializer
-import net.liftweb.record.field.{EnumField, OptionalEnumField}
+import net.liftweb.record.field.{ EnumField, OptionalEnumField }
 import net.liftweb.util.Helpers._
 
 import com.mongodb._
@@ -52,9 +52,9 @@ package enumfieldspecs {
     override def equals(other: Any): Boolean = other match {
       case that: EnumRec =>
         this.id.get == that.id.get &&
-        this.dow.value == that.dow.value &&
-        this.dowOptional.valueBox == that.dowOptional.valueBox &&
-        this.jsonobj.value == that.jsonobj.value
+          this.dow.value == that.dow.value &&
+          this.dowOptional.valueBox == that.dowOptional.valueBox &&
+          this.jsonobj.value == that.jsonobj.value
       case _ => false
     }
   }
@@ -64,11 +64,10 @@ package enumfieldspecs {
   }
 }
 
-
 /**
  * Systems under specification for EnumField.
  */
-class EnumFieldSpec extends Specification  with MongoTestKit {
+class EnumFieldSpec extends Specification with MongoTestKit {
   "EnumField Specification".title
 
   import enumfieldspecs._

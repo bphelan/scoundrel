@@ -19,18 +19,18 @@ package mongodb
 package record
 
 import java.util.regex.Pattern
-import java.util.{Calendar, Date, UUID}
+import java.util.{ Calendar, Date, UUID }
 import scala.xml._
 
 import net.liftweb.common._
 import net.liftweb.http.js.JE._
 import net.liftweb.http.js.JsExp
-import net.liftweb.http.{LiftSession, S}
+import net.liftweb.http.{ LiftSession, S }
 import net.liftweb.json.JValue
 import net.liftweb.json.JsonAST._
 import net.liftweb.record._
 import net.liftweb.util.Helpers._
-import net.liftweb.util.{FieldError, Helpers}
+import net.liftweb.util.{ FieldError, Helpers }
 import org.specs2.execute.AsResult
 import org.specs2.mutable._
 import org.specs2.specification._
@@ -51,8 +51,8 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
   lazy val session = new LiftSession("", randomString(20), Empty)
 
   // One of these is for specs2 2.x, the other for specs2 1.x
-  protected def around[T : AsResult](t: =>T) = S.initIfUninitted(session) { AsResult(t) }
-  protected def around[T <% org.specs2.execute.Result](t: =>T) = S.initIfUninitted(session) { t }
+  protected def around[T: AsResult](t: => T) = S.initIfUninitted(session) { AsResult(t) }
+  protected def around[T <% org.specs2.execute.Result](t: => T) = S.initIfUninitted(session) { t }
 
   def passBasicTests[A](
     example: A,
@@ -221,14 +221,14 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
     val now = new Date
     val nowStr = rec.meta.formats.dateFormat.format(now)
     val now2 = Calendar.getInstance()
-      now2.add(Calendar.DATE, 1)
+    now2.add(Calendar.DATE, 1)
     passBasicTests(now, now2.getTime, rec.mandatoryDateField, Full(rec.legacyOptionalDateField), false)
     passConversionTests(
       now,
       rec.mandatoryDateField,
       JsObj(("$dt", Str(nowStr))),
       JObject(List(JField("$dt", JString(nowStr)))),
-      Full(<input name=".*" type="text" tabindex="1" value={nowStr} id="mandatoryDateField_id"></input>)
+      Full(<input name=".*" type="text" tabindex="1" value={ nowStr } id="mandatoryDateField_id"></input>)
     )
   }
 
@@ -261,7 +261,7 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
         rec.mandatoryObjectIdField,
         JsObj(("$oid", oid.toString)),
         JObject(List(JField("$oid", JString(oid.toString)))),
-        Full(<input name=".*" type="text" tabindex="1" value={oid.toString} id="mandatoryObjectIdField_id"></input>)
+        Full(<input name=".*" type="text" tabindex="1" value={ oid.toString } id="mandatoryObjectIdField_id"></input>)
       )
       rec.mandatoryObjectIdField(oid)
 
@@ -294,7 +294,7 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
       rec.mandatoryUUIDField,
       JsObj(("$uuid", Str(uuid.toString))),
       JObject(List(JField("$uuid", JString(uuid.toString)))),
-      Full(<input name=".*" type="text" tabindex="1" value={uuid.toString} id="mandatoryUUIDField_id"></input>)
+      Full(<input name=".*" type="text" tabindex="1" value={ uuid.toString } id="mandatoryUUIDField_id"></input>)
     )
   }
 
@@ -503,7 +503,7 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
   "MongoCaseClassListField" should {
     "setFromAny a List" in {
       val rec = ListTestRecord.createRecord
-      val lst = List(MongoCaseClassTestObject(1,"str1", MyTestEnum.THREE))
+      val lst = List(MongoCaseClassTestObject(1, "str1", MyTestEnum.THREE))
       rec.mongoCaseClassListField.setFromAny(lst)
       rec.mongoCaseClassListField.value must_== lst
     }
@@ -570,17 +570,16 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
 
       val srJson =
         ("name" -> "subrecord") ~
-        ("subsub" -> ("name" -> "subsub")) ~
-        ("subsublist" -> JArray(Nil)) ~
-        ("when" -> ("$dt" -> rec.meta.formats.dateFormat.format(subRec.when.value))) ~
-        ("slist" -> JArray(Nil)) ~
-        ("smap" -> JObject(Nil)) ~
-        ("oid" -> ("$oid" -> subRec.oid.value.toString)) ~
-        ("pattern" ->
+          ("subsub" -> ("name" -> "subsub")) ~
+          ("subsublist" -> JArray(Nil)) ~
+          ("when" -> ("$dt" -> rec.meta.formats.dateFormat.format(subRec.when.value))) ~
+          ("slist" -> JArray(Nil)) ~
+          ("smap" -> JObject(Nil)) ~
+          ("oid" -> ("$oid" -> subRec.oid.value.toString)) ~
+          ("pattern" ->
             ("$regex" -> subRec.pattern.value.pattern) ~
-            ("$flags" -> subRec.pattern.value.flags)
-        ) ~
-        ("uuid" -> ("$uuid" -> subRec.uuid.value.toString))
+            ("$flags" -> subRec.pattern.value.flags)) ~
+            ("uuid" -> ("$uuid" -> subRec.uuid.value.toString))
 
       val srJsExp = new JsExp {
         def toJsCmd = compactRender(srJson)
@@ -605,31 +604,29 @@ object MongoFieldSpec extends Specification with MongoTestKit with AroundEach {
       val lst2 = List(SubRecord.createRecord.name("subrec3"), SubRecord.createRecord.name("subrec4"))
       val sr1Json =
         ("name" -> "subrec1") ~
-        ("subsub" -> ("name" -> "subsub")) ~
-        ("subsublist" -> JArray(Nil)) ~
-        ("when" -> ("$dt" -> rec.meta.formats.dateFormat.format(lst(0).when.value))) ~
-        ("slist" -> JArray(Nil)) ~
-        ("smap" -> JObject(Nil)) ~
-        ("oid" -> ("$oid" -> lst(0).oid.value.toString)) ~
-        ("pattern" ->
+          ("subsub" -> ("name" -> "subsub")) ~
+          ("subsublist" -> JArray(Nil)) ~
+          ("when" -> ("$dt" -> rec.meta.formats.dateFormat.format(lst(0).when.value))) ~
+          ("slist" -> JArray(Nil)) ~
+          ("smap" -> JObject(Nil)) ~
+          ("oid" -> ("$oid" -> lst(0).oid.value.toString)) ~
+          ("pattern" ->
             ("$regex" -> lst(0).pattern.value.pattern) ~
-            ("$flags" -> lst(0).pattern.value.flags)
-        ) ~
-        ("uuid" -> ("$uuid" -> lst(0).uuid.value.toString))
+            ("$flags" -> lst(0).pattern.value.flags)) ~
+            ("uuid" -> ("$uuid" -> lst(0).uuid.value.toString))
 
       val sr2Json =
         ("name" -> "subrec2") ~
-        ("subsub" -> ("name" -> "subsub")) ~
-        ("subsublist" -> JArray(Nil)) ~
-        ("when" -> ("$dt" -> rec.meta.formats.dateFormat.format(lst(1).when.value))) ~
-        ("slist" -> JArray(Nil)) ~
-        ("smap" -> JObject(Nil)) ~
-        ("oid" -> ("$oid" -> lst(1).oid.value.toString)) ~
-        ("pattern" ->
+          ("subsub" -> ("name" -> "subsub")) ~
+          ("subsublist" -> JArray(Nil)) ~
+          ("when" -> ("$dt" -> rec.meta.formats.dateFormat.format(lst(1).when.value))) ~
+          ("slist" -> JArray(Nil)) ~
+          ("smap" -> JObject(Nil)) ~
+          ("oid" -> ("$oid" -> lst(1).oid.value.toString)) ~
+          ("pattern" ->
             ("$regex" -> lst(1).pattern.value.pattern) ~
-            ("$flags" -> lst(1).pattern.value.flags)
-        ) ~
-        ("uuid" -> ("$uuid" -> lst(1).uuid.value.toString))
+            ("$flags" -> lst(1).pattern.value.flags)) ~
+            ("uuid" -> ("$uuid" -> lst(1).uuid.value.toString))
 
       val sr1JsExp = new JsExp {
         def toJsCmd = compactRender(sr1Json)

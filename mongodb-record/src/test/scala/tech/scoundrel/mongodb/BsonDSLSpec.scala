@@ -23,16 +23,16 @@ import net.liftweb.json._
 import scala.collection.JavaConversions._
 import scala.util.matching.Regex
 
-import java.util.{Date, UUID}
+import java.util.{ Date, UUID }
 import java.util.regex.Pattern
 
 import org.bson.types.ObjectId
 import org.joda.time.DateTime
 import org.specs2.mutable.Specification
 
-import com.mongodb.{BasicDBList, DBObject}
+import com.mongodb.{ BasicDBList, DBObject }
 
-object BsonDSLSpec extends Specification  {
+object BsonDSLSpec extends Specification {
   "BsonDSL Specification".title
 
   "BsonDSL" should {
@@ -66,8 +66,8 @@ object BsonDSLSpec extends Specification  {
     "Convert List[Pattern] properly" in {
       val ptrnList =
         Pattern.compile("^Mongo1", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE) ::
-        Pattern.compile("^Mongo2", Pattern.CASE_INSENSITIVE) ::
-        Pattern.compile("^Mongo3") :: Nil
+          Pattern.compile("^Mongo2", Pattern.CASE_INSENSITIVE) ::
+          Pattern.compile("^Mongo3") :: Nil
       val qry: JObject = ("ptrns" -> ptrnList)
       val dbo: DBObject = JObjectParser.parse(qry)(DefaultFormats)
       val ptrnList2: List[Pattern] = dbo.get("ptrns").asInstanceOf[BasicDBList].toList.map(_.asInstanceOf[Pattern])

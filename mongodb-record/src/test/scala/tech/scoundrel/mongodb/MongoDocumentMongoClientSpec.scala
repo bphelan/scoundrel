@@ -25,7 +25,7 @@ import tech.scoundrel.mongodb.BsonDSL._
 
 package mongoclienttestdocs {
   case class SessCollection(_id: ObjectId, name: String, dbtype: String, count: Int)
-    extends MongoDocument[SessCollection] {
+      extends MongoDocument[SessCollection] {
 
     def meta = SessCollection
   }

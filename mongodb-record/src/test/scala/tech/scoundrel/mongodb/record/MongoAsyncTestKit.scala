@@ -20,9 +20,9 @@ package record
 
 import java.util.concurrent.TimeoutException
 import scala.concurrent.duration._
-import scala.concurrent.{Await, Promise}
+import scala.concurrent.{ Await, Promise }
 
-import net.liftweb.util.{ConnectionIdentifier, _}
+import net.liftweb.util.{ ConnectionIdentifier, _ }
 import org.specs2.mutable.Specification
 import org.specs2.specification.BeforeAfterEach
 
@@ -59,7 +59,7 @@ object TestMongoAsync {
 
       res.forEach(
         new Block[String]() {
-          override def apply(name: String): Unit = { }
+          override def apply(name: String): Unit = {}
         },
         cb
       )
@@ -76,7 +76,7 @@ object TestMongoAsync {
 trait MongoAsyncTestKit extends Specification with BeforeAfterEach {
   sequential
 
-  protected def dbName = "lift_record_"+this.getClass.getName
+  protected def dbName = "lift_record_" + this.getClass.getName
     .replace("$", "")
     .replace("tech.scoundrel.mongodb.record.", "")
     .replace(".", "_")
@@ -90,9 +90,10 @@ trait MongoAsyncTestKit extends Specification with BeforeAfterEach {
 
   def before = {
     // define the dbs
-    dbs.foreach { case (id, db) =>
-      MongoAsync.defineDb(id, TestMongoAsync.mongo.getDatabase(db))
-      MongoDB.defineDb(id, TestMongo.mongo, db)
+    dbs.foreach {
+      case (id, db) =>
+        MongoAsync.defineDb(id, TestMongoAsync.mongo.getDatabase(db))
+        MongoDB.defineDb(id, TestMongo.mongo, db)
     }
   }
 
@@ -104,29 +105,33 @@ trait MongoAsyncTestKit extends Specification with BeforeAfterEach {
   def after = {
     if (!debug && TestMongoAsync.isMongoRunning) {
       val cb = new SingleResultCallback[Void] {
-        override def onResult(result: Void, t: Throwable) = { }
+        override def onResult(result: Void, t: Throwable) = {}
       }
       // drop the databases
-      dbs.foreach { case (id, _) =>
-        MongoAsync.use(id) { _.drop(cb) }
+      dbs.foreach {
+        case (id, _) =>
+          MongoAsync.use(id) { _.drop(cb) }
       }
     }
 
     // clear the mongo instances
-    dbs.foreach { case (id, _) =>
-      MongoAsync.remove(id)
+    dbs.foreach {
+      case (id, _) =>
+        MongoAsync.remove(id)
     }
 
     if (!debug && TestMongo.isMongoRunning) {
       // drop the databases
-      dbs.foreach { case (id, _) =>
-        MongoDB.use(id) { db => db.dropDatabase }
+      dbs.foreach {
+        case (id, _) =>
+          MongoDB.use(id) { db => db.dropDatabase }
       }
     }
 
     // clear the mongo instances
-    dbs.foreach { case (id, _) =>
-      MongoDB.remove(id)
+    dbs.foreach {
+      case (id, _) =>
+        MongoDB.remove(id)
     }
   }
 }

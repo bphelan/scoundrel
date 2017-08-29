@@ -17,15 +17,14 @@
 package tech.scoundrel
 package mongodb
 
-import java.util.{Calendar, Date, TimeZone, UUID}
+import java.util.{ Calendar, Date, TimeZone, UUID }
 import java.util.regex.Pattern
 
 import org.bson.types.ObjectId
 
-import org.joda.time.{Instant, DateTime}
+import org.joda.time.{ Instant, DateTime }
 
 import org.specs2.mutable.Specification
-
 
 package customserializersspecs {
 
@@ -33,8 +32,7 @@ package customserializersspecs {
   * ObjectId as String
   */
   case class Person(_id: String)
-    extends MongoDocument[Person]
-  {
+      extends MongoDocument[Person] {
     def meta = Person
   }
   object Person extends MongoDocumentMeta[Person]
@@ -43,8 +41,7 @@ package customserializersspecs {
   * ObjectId as ObjectId
   */
   case class PersonWithObjectId(_id: ObjectId)
-    extends MongoDocument[PersonWithObjectId]
-  {
+      extends MongoDocument[PersonWithObjectId] {
     def meta = PersonWithObjectId
   }
   object PersonWithObjectId extends MongoDocumentMeta[PersonWithObjectId] {
@@ -54,7 +51,7 @@ package customserializersspecs {
   /*
    * Pattern as Pattern
    */
-  case class PersonWithPattern(_id:ObjectId, pattern: Pattern) extends MongoDocument[PersonWithPattern] {
+  case class PersonWithPattern(_id: ObjectId, pattern: Pattern) extends MongoDocument[PersonWithPattern] {
     def meta = PersonWithPattern
   }
   object PersonWithPattern extends MongoDocumentMeta[PersonWithPattern] {
@@ -91,7 +88,6 @@ package customserializersspecs {
     override def formats = allFormats
   }
 }
-
 
 /**
  * Systems under specification for CustomSerializers.

@@ -21,11 +21,11 @@ package fixtures
 
 import java.math.MathContext
 import java.util.regex.Pattern
-import java.util.{Date, UUID}
+import java.util.{ Date, UUID }
 
 import net.liftweb.common._
 import net.liftweb.json.DefaultFormats
-import net.liftweb.json.ext.{EnumSerializer, JsonBoxSerializer}
+import net.liftweb.json.ext.{ EnumSerializer, JsonBoxSerializer }
 import net.liftweb.record._
 import net.liftweb.record.field._
 import net.liftweb.record.field.joda._
@@ -175,23 +175,21 @@ class BinaryFieldTestRecord extends MongoRecord[BinaryFieldTestRecord] with IntP
   }
 
   override def equals(other: Any): Boolean = other match {
-    case that:BinaryFieldTestRecord =>
+    case that: BinaryFieldTestRecord =>
       this.id.value == that.id.value &&
-      this.mandatoryBinaryField == that.mandatoryBinaryField &&
-      this.legacyOptionalBinaryField == that.legacyOptionalBinaryField &&
-      this.optionalBinaryField == that.optionalBinaryField
+        this.mandatoryBinaryField == that.mandatoryBinaryField &&
+        this.legacyOptionalBinaryField == that.legacyOptionalBinaryField &&
+        this.optionalBinaryField == that.optionalBinaryField
     case _ => false
   }
 }
 object BinaryFieldTestRecord extends BinaryFieldTestRecord with MongoMetaRecord[BinaryFieldTestRecord]
 
-
 case class TypeTestJsonObject(
-  intField: Int,
-  stringField: String,
-  mapField: Map[String, String]
-) extends JsonObject[TypeTestJsonObject]
-{
+    intField: Int,
+    stringField: String,
+    mapField: Map[String, String]
+) extends JsonObject[TypeTestJsonObject] {
   // TODO: Add more types
   def meta = TypeTestJsonObject
 }
@@ -302,9 +300,8 @@ object MapTestRecord extends MapTestRecord with MongoMetaRecord[MapTestRecord] {
 }
 
 class LifecycleTestRecord private ()
-  extends MongoRecord[LifecycleTestRecord]
-  with ObjectIdPk[LifecycleTestRecord]
-{
+    extends MongoRecord[LifecycleTestRecord]
+    with ObjectIdPk[LifecycleTestRecord] {
   def meta = LifecycleTestRecord
 
   def foreachCallback(f: LifecycleCallbacks => Any): Unit =
@@ -385,7 +382,7 @@ class NullTestRecord private () extends MongoRecord[NullTestRecord] with IntPk[N
 object NullTestRecord extends NullTestRecord with MongoMetaRecord[NullTestRecord]
 
 case class BoxTestJsonObj(id: String, boxEmpty: Box[String], boxFull: Box[String], boxFail: Box[String])
-extends JsonObject[BoxTestJsonObj] {
+    extends JsonObject[BoxTestJsonObj] {
   def meta = BoxTestJsonObj
 }
 object BoxTestJsonObj extends JsonObjectMeta[BoxTestJsonObj]
@@ -426,8 +423,7 @@ object RefFieldTestRecord extends RefFieldTestRecord with MongoMetaRecord[RefFie
   override def formats = allFormats
 }
 
-
-class JObjectFieldTestRecord private () extends MongoRecord[JObjectFieldTestRecord]  with ObjectIdPk[JObjectFieldTestRecord] {
+class JObjectFieldTestRecord private () extends MongoRecord[JObjectFieldTestRecord] with ObjectIdPk[JObjectFieldTestRecord] {
   def meta = JObjectFieldTestRecord
 
   object mandatoryJObjectField extends JObjectField(this)

@@ -25,7 +25,6 @@ import org.specs2.mutable.Specification
 
 import com.mongodb._
 
-
 package mongoclientsaverecords {
 
   import field._
@@ -42,10 +41,9 @@ package mongoclientsaverecords {
   }
 }
 
-
 /**
-  * Systems under specification for MongoClientSave.
-  */
+ * Systems under specification for MongoClientSave.
+ */
 class MongoClientSaveSpec extends Specification with MongoTestKit {
   "MongoClientSave Specification".title
 

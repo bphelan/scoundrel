@@ -18,10 +18,10 @@ package tech.scoundrel
 package mongodb
 package record
 
-import java.util.{Calendar, Date, UUID}
+import java.util.{ Calendar, Date, UUID }
 import java.util.regex.Pattern
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
+import net.liftweb.common.{ Box, Empty, Failure, Full }
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.JsonDSL._
 import net.liftweb.json.JsonAST.JObject
@@ -33,8 +33,7 @@ import org.specs2.mutable.Specification
 
 import com.mongodb._
 import org.bson.types.ObjectId
-import net.liftweb.http.{S, LiftSession}
-
+import net.liftweb.http.{ S, LiftSession }
 
 package mongotestrecords {
 
@@ -44,7 +43,7 @@ package mongotestrecords {
 
     def meta = TstRecord
 
-    object booleanfield	extends BooleanField(this)
+    object booleanfield extends BooleanField(this)
     object datetimefield extends DateTimeField(this)
     object doublefield extends DoubleField(this)
     object emailfield extends EmailField(this, 220)
@@ -69,7 +68,7 @@ package mongotestrecords {
   case class Child(name: String, age: Int, birthdate: Option[Date])
 
   case class Person(name: String, age: Int, address: Address, children: List[Child])
-    extends JsonObject[Person] {
+      extends JsonObject[Person] {
     def meta = Person
   }
 
@@ -121,15 +120,16 @@ package mongotestrecords {
         val dbl = new BasicDBList
 
         value.foreach {
-          m => {
-            val dbo = new BasicDBObject
+          m =>
+            {
+              val dbo = new BasicDBObject
 
-            m.keys.foreach(k => {
-              dbo.put(k.toString, m.getOrElse(k, ""))
-            })
+              m.keys.foreach(k => {
+                dbo.put(k.toString, m.getOrElse(k, ""))
+              })
 
-            dbl.add(dbo)
-          }
+              dbl.add(dbo)
+            }
         }
 
         dbl
@@ -140,7 +140,7 @@ package mongotestrecords {
           dbo.keySet.toList.map(k => {
             dbo.get(k.toString) match {
               case bdbo: BasicDBObject if (bdbo.containsField("name") && bdbo.containsField("type")) =>
-                Map("name"-> bdbo.getString("name"), "type" -> bdbo.getString("type"))
+                Map("name" -> bdbo.getString("name"), "type" -> bdbo.getString("type"))
               case _ => null
             }
           }).filter(_ != null)
@@ -187,10 +187,9 @@ package mongotestrecords {
   }
 }
 
-
 /**
-  * Systems under specification for MongoRecordExamples.
-  */
+ * Systems under specification for MongoRecordExamples.
+ */
 class MongoRecordExamplesSpec extends Specification with MongoTestKit {
   "MongoRecordExamples Specification".title
 
@@ -202,7 +201,7 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
 
     checkMongoIsRunning
 
-    S.initIfUninitted(session){
+    S.initIfUninitted(session) {
 
       val pwd = "test"
       val cal = Calendar.getInstance
@@ -252,7 +251,7 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
         t.person.value.address.street must_== tr.person.value.address.street
         t.person.value.address.city must_== tr.person.value.address.city
         t.person.value.children.size must_== tr.person.value.children.size
-        for (i <- List.range(0, t.person.value.children.size-1)) {
+        for (i <- List.range(0, t.person.value.children.size - 1)) {
           t.person.value.children(i).name must_== tr.person.value.children(i).name
           t.person.value.children(i).age must_== tr.person.value.children(i).age
           t.person.value.children(i).birthdate must_== tr.person.value.children(i).birthdate
@@ -372,7 +371,7 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
     // get the doc back from the db and compare
     val mdq5 = MainDoc.find("_id", md1.id.get)
     mdq5.isDefined must_== true
-    mdq5.map ( m => {
+    mdq5.map(m => {
       m.name.value must_== "md1a"
       m.cnt.value must_== 1
     })
@@ -412,9 +411,9 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
     val ld1 = ListDoc.createRecord
     ld1.name.set(name)
     ld1.stringlist.set(strlist)
-    ld1.intlist.set(List(99988,88, 88))
-    ld1.doublelist.set(List(997655.998,88.8))
-    ld1.boollist.set(List(true,true,false))
+    ld1.intlist.set(List(99988, 88, 88))
+    ld1.doublelist.set(List(997655.998, 88.8))
+    ld1.boollist.set(List(true, true, false))
     ld1.objidlist.set(List(ObjectId.get, ObjectId.get))
     ld1.dtlist.set(List(now, now))
     ld1.jsonobjlist.set(List(jd1, JsonDoc("2", "jsondoc2"), jd1))
@@ -437,11 +436,11 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
       l.objidlist.value must_== ld1.objidlist.value
       l.dtlist.value must_== ld1.dtlist.value
       l.jsonobjlist.value must_== ld1.jsonobjlist.value
-      for (i <- List.range(0, l.patternlist.value.size-1)) {
+      for (i <- List.range(0, l.patternlist.value.size - 1)) {
         l.patternlist.value(i).pattern must_== ld1.patternlist.value(i).pattern
       }
       l.maplist.value must_== ld1.maplist.value
-      for (i <- List.range(0, l.jsonobjlist.value.size-1)) {
+      for (i <- List.range(0, l.jsonobjlist.value.size - 1)) {
         l.jsonobjlist.value(i).id must_== ld1.jsonobjlist.value(i).id
         l.jsonobjlist.value(i).name must_== ld1.jsonobjlist.value(i).name
       }
@@ -487,7 +486,6 @@ class MongoRecordExamplesSpec extends Specification with MongoTestKit {
       od1FromDB =>
         od1FromDB.stringbox.valueBox must_== od1.stringbox.valueBox
     }
-
 
     val od2 = OptionalDoc.createRecord
     od1.stringbox.valueBox must_== Empty

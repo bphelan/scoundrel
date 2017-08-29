@@ -17,18 +17,17 @@
 package tech.scoundrel
 package mongodb
 
-import net.liftweb.util.{Helpers, DefaultConnectionIdentifier}
+import net.liftweb.util.{ Helpers, DefaultConnectionIdentifier }
 
 import java.util.UUID
 import java.util.regex.Pattern
 
-import com.mongodb.{WriteConcern, BasicDBObject, BasicDBObjectBuilder, MongoException}
+import com.mongodb.{ WriteConcern, BasicDBObject, BasicDBObjectBuilder, MongoException }
 
 import org.specs2.mutable.Specification
 
 import net.liftweb.json.DefaultFormats
 import net.liftweb.common.Failure
-
 
 /**
  * System under specification for MongoDirect.
@@ -57,7 +56,7 @@ class MongoDirectSpec extends Specification with MongoTestKit {
     doc.put("info", info)
 
     // use the Mongo instance directly
-    MongoDB.use(DefaultConnectionIdentifier) ( db => {
+    MongoDB.use(DefaultConnectionIdentifier)(db => {
       val coll = db.getCollection("testCollection")
 
       // save the doc to the db
@@ -107,14 +106,14 @@ class MongoDirectSpec extends Specification with MongoTestKit {
     checkMongoIsRunning
 
     // use a DBCollection directly
-    MongoDB.useCollection("iDoc") ( coll => {
+    MongoDB.useCollection("iDoc")(coll => {
       // insert multiple documents
       for (i <- List.range(1, 101)) {
         coll.insert(new BasicDBObject().append("i", i))
       }
 
       // create an index
-      coll.createIndex(new BasicDBObject("i", 1))  // create index on "i", ascending
+      coll.createIndex(new BasicDBObject("i", 1)) // create index on "i", ascending
 
       // count the docs
       coll.getCount must_== 100
@@ -149,7 +148,7 @@ class MongoDirectSpec extends Specification with MongoTestKit {
       val cur5 = coll.find(new BasicDBObject("i", new BasicDBObject("$gt", 50))).limit(3)
 
       var cntr5 = 0
-      while(cur5.hasNext) {
+      while (cur5.hasNext) {
         cur5.next
         cntr5 += 1
       }
@@ -159,9 +158,9 @@ class MongoDirectSpec extends Specification with MongoTestKit {
       val cur6 = coll.find(new BasicDBObject("i", new BasicDBObject("$gt", 50))).skip(10)
 
       var cntr6 = 0
-      while(cur6.hasNext) {
+      while (cur6.hasNext) {
         cntr6 += 1
-        cur6.next.get("i") must_== 60+cntr6
+        cur6.next.get("i") must_== 60 + cntr6
       }
       cntr6 must_== 40
 
@@ -169,9 +168,9 @@ class MongoDirectSpec extends Specification with MongoTestKit {
       val cur7 = coll.find.skip(10).limit(20)
 
       var cntr7 = 0
-      while(cur7.hasNext) {
+      while (cur7.hasNext) {
         cntr7 += 1
-        cur7.next.get("i") must_== 10+cntr7
+        cur7.next.get("i") must_== 10 + cntr7
       }
       cntr7 must_== 20
 
@@ -179,7 +178,7 @@ class MongoDirectSpec extends Specification with MongoTestKit {
       val cur8 = coll.find.sort(new BasicDBObject("i", -1)) // descending
 
       var cntr8 = 100
-      while(cur8.hasNext) {
+      while (cur8.hasNext) {
         cur8.next.get("i") must_== cntr8
         cntr8 -= 1
       }
@@ -204,7 +203,7 @@ class MongoDirectSpec extends Specification with MongoTestKit {
     checkMongoIsRunning
 
     // use a Mongo instance directly
-    MongoDB.use ( db => {
+    MongoDB.use(db => {
       val coll = db.getCollection("testCollection")
 
       // create a unique index on name
@@ -253,12 +252,14 @@ class MongoDirectSpec extends Specification with MongoTestKit {
       val key = "name"
       val regex = "^Mongo"
       val cur = coll.find(
-          BasicDBObjectBuilder.start.add(key, Pattern.compile(regex)).get)
+        BasicDBObjectBuilder.start.add(key, Pattern.compile(regex)).get
+      )
       cur.count must_== 2
 
       // use regex and another dbobject
       val cur2 = coll.find(
-          BasicDBObjectBuilder.start.add(key, Pattern.compile(regex)).add("count", 1).get)
+        BasicDBObjectBuilder.start.add(key, Pattern.compile(regex)).add("count", 1).get
+      )
       cur2.count must_== 1
 
       if (!debug) {

@@ -24,7 +24,7 @@ import org.specs2.mutable.Specification
 
 import net.liftweb.common._
 import net.liftweb.json.ext.EnumNameSerializer
-import net.liftweb.record.field.{EnumNameField, OptionalEnumNameField}
+import net.liftweb.record.field.{ EnumNameField, OptionalEnumNameField }
 import net.liftweb.util.Helpers._
 
 import com.mongodb._
@@ -52,9 +52,9 @@ package enumnamefieldspecs {
     override def equals(other: Any): Boolean = other match {
       case that: EnumNameRec =>
         this.id.get == that.id.get &&
-        this.dow.value == that.dow.value &&
-        this.dowOptional.valueBox == that.dowOptional.valueBox &&
-        this.jsonobj.value == that.jsonobj.value
+          this.dow.value == that.dow.value &&
+          this.dowOptional.valueBox == that.dowOptional.valueBox &&
+          this.jsonobj.value == that.jsonobj.value
       case _ => false
     }
   }
@@ -63,7 +63,6 @@ package enumnamefieldspecs {
     override def formats = super.formats + new EnumNameSerializer(WeekDay)
   }
 }
-
 
 /**
  * Systems under specification for EnumNameField.

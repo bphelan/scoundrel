@@ -25,26 +25,25 @@ import org.specs2.execute.Result
 import net.liftweb.common._
 import net.liftweb.json.ext._
 
-
 package mongodocumentspecs {
   case class Primitives(
-    _id: ObjectId,
-    s: String,
-    i: Int,
-    l: Long,
-    d: Double,
-    f: Float,
-    b: Byte,
-    bi: BigInt,
-    bool: Boolean,
-    sh: Short,
-    jli: java.lang.Integer,
-    jll: java.lang.Long,
-    jld: java.lang.Double,
-    jlf: java.lang.Float,
-    jlb: java.lang.Byte,
-    jlbool: java.lang.Boolean,
-    jlsh: java.lang.Short
+      _id: ObjectId,
+      s: String,
+      i: Int,
+      l: Long,
+      d: Double,
+      f: Float,
+      b: Byte,
+      bi: BigInt,
+      bool: Boolean,
+      sh: Short,
+      jli: java.lang.Integer,
+      jll: java.lang.Long,
+      jld: java.lang.Double,
+      jlf: java.lang.Float,
+      jlb: java.lang.Byte,
+      jlbool: java.lang.Boolean,
+      jlsh: java.lang.Short
   ) extends MongoDocument[Primitives] {
 
     def meta = Primitives
@@ -55,7 +54,7 @@ package mongodocumentspecs {
 
   case class NullTestEmbed(nul: String)
   case class NullTestDoc(_id: ObjectId, nul: String, ent: NullTestEmbed)
-  extends MongoDocument[NullTestDoc] {
+      extends MongoDocument[NullTestDoc] {
     def meta = NullTestDoc
   }
   object NullTestDoc extends MongoDocumentMeta[NullTestDoc] {
@@ -64,7 +63,7 @@ package mongodocumentspecs {
 
   case class OptionTestDoc(_id: ObjectId, optNone: Option[String],
     optSome: Option[String])
-  extends MongoDocument[OptionTestDoc] {
+      extends MongoDocument[OptionTestDoc] {
     def meta = OptionTestDoc
   }
   object OptionTestDoc extends MongoDocumentMeta[OptionTestDoc] {
@@ -73,7 +72,7 @@ package mongodocumentspecs {
 
   case class BoxTestDoc(_id: ObjectId, boxEmpty: Box[String],
     boxFull: Box[String], boxFail: Box[String])
-  extends MongoDocument[BoxTestDoc] {
+      extends MongoDocument[BoxTestDoc] {
     def meta = BoxTestDoc
   }
   object BoxTestDoc extends MongoDocumentMeta[BoxTestDoc] {
@@ -81,7 +80,7 @@ package mongodocumentspecs {
   }
 
   case class MapTestDoc(_id: ObjectId, aMap: Map[String, String])
-  extends MongoDocument[MapTestDoc] {
+      extends MongoDocument[MapTestDoc] {
     def meta = MapTestDoc
   }
   object MapTestDoc extends MongoDocumentMeta[MapTestDoc] {

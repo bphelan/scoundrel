@@ -20,7 +20,7 @@ package mongodb
 import BsonDSL._
 import net.liftweb.json.JObject
 
-import java.util.{Calendar, Date, UUID}
+import java.util.{ Calendar, Date, UUID }
 import java.util.regex.Pattern
 
 import org.bson.types.ObjectId
