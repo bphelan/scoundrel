@@ -1,4 +1,4 @@
-package me.sgrouples.rogue
+package tech.scoundrel.rogue
 import org.bson.types.ObjectId
 import org.junit.Test
 import org.specs2.matcher.JUnitMustMatchers

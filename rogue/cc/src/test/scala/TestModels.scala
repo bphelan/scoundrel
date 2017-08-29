@@ -1,13 +1,13 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 import java.time.{ Instant, LocalDateTime }
 import java.util.{ Currency, UUID }
 
 import io.fsq.rogue.EnumerationListModifyField
-import me.sgrouples.rogue._
+import tech.scoundrel.rogue._
 import org.bson.types.ObjectId
 import BsonFormats._
 import EnumNameFormats._
-import me.sgrouples.rogue.naming.PluralLowerCase
+import tech.scoundrel.rogue.naming.PluralLowerCase
 import shapeless.tag.@@
 import shapeless.tag
 
