@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
+import net.liftweb.common.{ Box, Empty, Failure, Full }
 import net.liftweb.http.js.JE.Str
-import net.liftweb.json.JsonAST.{JNothing, JObject, JValue}
-import net.liftweb.record.{Field, MandatoryTypedField, Record}
+import net.liftweb.json.JsonAST.{ JNothing, JObject, JValue }
+import net.liftweb.record.{ Field, MandatoryTypedField, Record }
 import scala.xml.NodeSeq
 
-import com.mongodb.{BasicDBObject, BasicDBObjectBuilder, DBObject, DBRef}
+import com.mongodb.{ BasicDBObject, BasicDBObjectBuilder, DBObject, DBRef }
 import com.mongodb.util.JSON
 import org.bson.types.ObjectId
 
@@ -33,7 +33,7 @@ import org.bson.types.ObjectId
 * Field for storing a DBRef
 */
 class DBRefField[OwnerType <: BsonRecord[OwnerType], RefType <: MongoRecord[RefType]](rec: OwnerType, ref: RefType)
-  extends Field[DBRef, OwnerType] with MandatoryTypedField[DBRef] {
+    extends Field[DBRef, OwnerType] with MandatoryTypedField[DBRef] {
 
   /*
   * get the referenced object

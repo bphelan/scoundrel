@@ -1,8 +1,8 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import org.scalatest.{ FlatSpec, Matchers }
-import me.sgrouples.rogue.BsonFormats._
-import me.sgrouples.rogue.EnumNameFormats._
+import tech.scoundrel.rogue.BsonFormats._
+import tech.scoundrel.rogue.EnumNameFormats._
 
 case class CaseClass1(id: Long)
 

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
 
 import scala.xml.NodeSeq
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
-import net.liftweb.http.js.JE.{JsNull, JsRaw}
+import net.liftweb.common.{ Box, Empty, Failure, Full }
+import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json._
 import net.liftweb.record._
 import net.liftweb.util.Helpers.tryo
@@ -31,11 +31,11 @@ import com.mongodb._
 import org.bson.Document
 
 /**
-  * Note: setting optional_? = false will result in incorrect equals behavior when using setFromJValue
-  */
+ * Note: setting optional_? = false will result in incorrect equals behavior when using setFromJValue
+ */
 class MongoMapField[OwnerType <: BsonRecord[OwnerType], MapValueType](rec: OwnerType)
-  extends Field[Map[String, MapValueType], OwnerType] with MandatoryTypedField[Map[String, MapValueType]]
-  with MongoFieldFlavor[Map[String, MapValueType]] {
+    extends Field[Map[String, MapValueType], OwnerType] with MandatoryTypedField[Map[String, MapValueType]]
+    with MongoFieldFlavor[Map[String, MapValueType]] {
 
   import mongodb.Meta.Reflection._
 
@@ -54,14 +54,14 @@ class MongoMapField[OwnerType <: BsonRecord[OwnerType], MapValueType](rec: Owner
       case s: String => setFromString(s)
       case Some(s: String) => setFromString(s)
       case Full(s: String) => setFromString(s)
-      case null|None|Empty => setBox(defaultValueBox)
+      case null | None | Empty => setBox(defaultValueBox)
       case f: Failure => setBox(f)
       case o => setFromString(o.toString)
     }
   }
 
   def setFromJValue(jvalue: JValue) = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case JObject(obj) => setBox(Full(
       Map() ++ obj.map(jf => (jf.name, jf.value.values.asInstanceOf[MapValueType]))
     ))
@@ -71,7 +71,7 @@ class MongoMapField[OwnerType <: BsonRecord[OwnerType], MapValueType](rec: Owner
   def setFromString(in: String): Box[Map[String, MapValueType]] = tryo(JsonParser.parse(in)) match {
     case Full(jv: JValue) => setFromJValue(jv)
     case f: Failure => setBox(f)
-    case other => setBox(Failure("Error parsing String into a JValue: "+in))
+    case other => setBox(Failure("Error parsing String into a JValue: " + in))
   }
 
   def toForm: Box[NodeSeq] = Empty
@@ -115,7 +115,7 @@ class MongoMapField[OwnerType <: BsonRecord[OwnerType], MapValueType](rec: Owner
     import scala.collection.JavaConverters._
     val map: Map[String, MapValueType] = doc.asScala.map {
       case (k, v) => k -> v.asInstanceOf[MapValueType]
-    } (scala.collection.breakOut)
+    }(scala.collection.breakOut)
 
     setBox {
       Full(map)
@@ -126,14 +126,14 @@ class MongoMapField[OwnerType <: BsonRecord[OwnerType], MapValueType](rec: Owner
     import scala.collection.JavaConverters._
     val map: Map[String, AnyRef] = {
       value.keys.map {
-        k => k -> value.getOrElse(k, "")
-          .asInstanceOf[AnyRef]
-      } (scala.collection.breakOut)
+        k =>
+          k -> value.getOrElse(k, "")
+            .asInstanceOf[AnyRef]
+      }(scala.collection.breakOut)
     }
 
     new Document(map.asJava)
   }
-
 
 }
 

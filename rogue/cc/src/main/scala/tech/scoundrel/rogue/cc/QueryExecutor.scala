@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 // Copyright 2012 Foursquare Labs Inc. All Rights Reserved.
 

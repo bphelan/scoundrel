@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.util
 

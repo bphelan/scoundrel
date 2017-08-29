@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package fixtures
@@ -31,7 +31,7 @@ import net.liftweb.record.field._
 import net.liftweb.record.field.joda._
 
 import org.joda.time.DateTime
-import scoundrel.mongodb.record.field._
+import tech.scoundrel.mongodb.record.field._
 
 object MyTestEnum extends Enumeration {
   val ONE = Value("ONE")

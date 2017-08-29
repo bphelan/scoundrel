@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import org.specs2.mutable.Specification
 
 import com.mongodb._
 import org.bson.types.ObjectId
-import scoundrel.mongodb.BsonDSL._
+import tech.scoundrel.mongodb.BsonDSL._
 
 package mongoclienttestdocs {
   case class SessCollection(_id: ObjectId, name: String, dbtype: String, count: Int)

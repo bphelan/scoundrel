@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import net.liftweb.util.{ConnectionIdentifier, DefaultConnectionIdentifier, Props}
@@ -48,7 +48,7 @@ trait MongoTestKit extends Specification with BeforeAfterEach {
 
   def dbName = "lift_"+this.getClass.getName
     .replace("$", "")
-    .replace("scoundrel.mongodb.", "")
+    .replace("tech.scoundrel.mongodb.", "")
     .replace(".", "_")
     .toLowerCase
 

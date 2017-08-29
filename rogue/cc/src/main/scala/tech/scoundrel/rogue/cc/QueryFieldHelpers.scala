@@ -1,9 +1,9 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.util.concurrent.atomic.{ AtomicBoolean, AtomicInteger }
 
-import me.sgrouples.rogue._
-import me.sgrouples.rogue.cc.debug.Debug
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.cc.debug.Debug
 import org.bson.types.ObjectId
 import shapeless.tag
 import shapeless.tag._
@@ -13,7 +13,7 @@ import scala.reflect.runtime.universe
 import scala.reflect.runtime.universe._
 import scala.reflect.{ ClassTag, api }
 import Debug.DefaultImplicits._
-import me.sgrouples.rogue.map.MapKeyFormat
+import tech.scoundrel.rogue.map.MapKeyFormat
 
 private[cc] sealed trait Marker
 

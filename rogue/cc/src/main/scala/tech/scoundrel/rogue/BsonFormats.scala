@@ -1,11 +1,11 @@
-package me.sgrouples.rogue
+package tech.scoundrel.rogue
 
 import java.nio.{ ByteBuffer, ByteOrder }
 import java.time.{ Instant, LocalDateTime, ZoneOffset }
 import java.util.{ Currency, Locale, TimeZone, UUID }
 
-import me.sgrouples.rogue.enums.ReflectEnumInstance
-import me.sgrouples.rogue.map.{ MapKeyFormat, MapKeyFormats }
+import tech.scoundrel.rogue.enums.ReflectEnumInstance
+import tech.scoundrel.rogue.map.{ MapKeyFormat, MapKeyFormats }
 import org.bson._
 import org.bson.types.{ Decimal128, ObjectId }
 import shapeless._
@@ -105,7 +105,7 @@ object EnumValueFormats extends EnumValueFormats
 
 /**
  * Sometimes it is necessary to use Enumerations that are serialized to Ints and others that serialize to Strings
- * within the same [[me.sgrouples.rogue.cc.RCcMeta]]. It can be obtained by using [[EnumSerializeValue]] annotation
+ * within the same [[tech.scoundrel.rogue.cc.RCcMeta]]. It can be obtained by using [[EnumSerializeValue]] annotation
  * @see EnumAnnotationTest
  * example:
  * {{{

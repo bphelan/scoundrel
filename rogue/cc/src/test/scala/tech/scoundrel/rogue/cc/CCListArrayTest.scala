@@ -1,10 +1,10 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
-import me.sgrouples.rogue._
-import me.sgrouples.rogue.cc.CcRogue._
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.cc.CcRogue._
 import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, MustMatchers }
-import me.sgrouples.rogue.BsonFormats._
+import tech.scoundrel.rogue.BsonFormats._
 
 case class Inner(a: Int, b: String, c: Array[String] = Array.empty)
 

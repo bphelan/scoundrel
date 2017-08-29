@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
-import net.liftweb.http.js.JE.{JsNull, JsRaw}
+import net.liftweb.common.{ Box, Empty, Failure, Full }
+import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json._
 import com.mongodb.DBObject
 
 /**
-* Describes common aspects related to Mongo fields
-*/
+ * Describes common aspects related to Mongo fields
+ */
 trait MongoFieldFlavor[MyType] {
 
   /*
@@ -38,8 +38,8 @@ trait MongoFieldFlavor[MyType] {
   def setFromDBObject(obj: DBObject): Box[MyType]
 
   /**
-  * Returns the field's value as a valid JavaScript expression
-  */
+   * Returns the field's value as a valid JavaScript expression
+   */
   def asJs = asJValue match {
     case JNothing => JsNull
     case jv => JsRaw(compactRender(jv))

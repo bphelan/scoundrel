@@ -11,8 +11,8 @@
 * limitations under the License.
 */
 
-package scoundrel
-package mongodb 
+package tech.scoundrel
+package mongodb
 
 import scala.reflect.Manifest
 

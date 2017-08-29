@@ -1,13 +1,13 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.time.LocalDateTime
 import java.util.regex.Pattern
 
 import com.mongodb.client.MongoDatabase
 import io.fsq.rogue._
-import me.sgrouples.rogue.LongField
+import tech.scoundrel.rogue.LongField
 //import io.fsq.rogue.test.TrivialORMTests
-import me.sgrouples.rogue.cc.CcRogue._
+import tech.scoundrel.rogue.cc.CcRogue._
 import org.bson.types.ObjectId
 import org.junit.{ After, Before, Test }
 import org.specs2.matcher.JUnitMustMatchers

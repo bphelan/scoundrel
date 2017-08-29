@@ -11,7 +11,7 @@
 * limitations under the License.
 */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
@@ -20,15 +20,14 @@ import java.util.UUID
 
 import net.liftweb.common._
 import net.liftweb.http.S
-import net.liftweb.http.js.JE.{JsNull, JsRaw}
+import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json._
 import net.liftweb.record._
 import net.liftweb.util.Helpers._
 
 class UUIDField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
-  extends Field[UUID, OwnerType]
-  with MandatoryTypedField[UUID]
-{
+    extends Field[UUID, OwnerType]
+    with MandatoryTypedField[UUID] {
 
   def owner = rec
 
@@ -42,13 +41,13 @@ class UUIDField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
     case s: String => setFromString(s)
     case Some(s: String) => setFromString(s)
     case Full(s: String) => setFromString(s)
-    case null|None|Empty => setBox(defaultValueBox)
+    case null | None | Empty => setBox(defaultValueBox)
     case f: Failure => setBox(f)
     case o => setFromString(o.toString)
   }
 
   def setFromJValue(jvalue: JValue): Box[UUID] = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case JObject(JField("$uuid", JString(s)) :: Nil) => setFromString(s)
     case other => setBox(FieldHelpers.expectedA("JObject", other))
   }
@@ -56,15 +55,12 @@ class UUIDField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
   def setFromString(in: String): Box[UUID] = tryo(UUID.fromString(in)) match {
     case Full(uid: UUID) => setBox(Full(uid))
     case f: Failure => setBox(f)
-    case other => setBox(Failure("Invalid UUID string: "+in))
+    case other => setBox(Failure("Invalid UUID string: " + in))
   }
 
   private def elem =
-    S.fmapFunc(S.SFuncHolder(this.setFromAny(_))){funcName =>
-      <input type="text"
-        name={funcName}
-        value={valueBox.map(v => v.toString) openOr ""}
-        tabindex={tabIndex.toString}/>
+    S.fmapFunc(S.SFuncHolder(this.setFromAny(_))) { funcName =>
+      <input type="text" name={ funcName } value={ valueBox.map(v => v.toString) openOr "" } tabindex={ tabIndex.toString }/>
     }
 
   def toForm =

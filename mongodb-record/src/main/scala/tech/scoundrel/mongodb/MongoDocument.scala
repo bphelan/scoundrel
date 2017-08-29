@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import java.util.UUID
 
 import net.liftweb.json.JObject
-import net.liftweb.util.{ConnectionIdentifier, DefaultConnectionIdentifier}
+import net.liftweb.util.{ ConnectionIdentifier, DefaultConnectionIdentifier }
 
 import com.mongodb._
 import org.bson.types.ObjectId
@@ -53,8 +53,8 @@ trait MongoDocument[BaseDocument] extends JsonObject[BaseDocument] {
 trait MongoDocumentMeta[BaseDocument] extends JsonObjectMeta[BaseDocument] with MongoMeta[BaseDocument] {
 
   /**
-    * Override this to specify a ConnectionIdentifier.
-    */
+   * Override this to specify a ConnectionIdentifier.
+   */
   def connectionIdentifier: ConnectionIdentifier = DefaultConnectionIdentifier
 
   /*
@@ -73,22 +73,21 @@ trait MongoDocumentMeta[BaseDocument] extends JsonObjectMeta[BaseDocument] with 
   }
 
   /**
-  * Find a single row by a qry, using a DBObject.
-  */
+   * Find a single row by a qry, using a DBObject.
+   */
   def find(qry: DBObject): Option[BaseDocument] = {
-    MongoDB.useCollection(connectionIdentifier, collectionName) ( coll =>
+    MongoDB.useCollection(connectionIdentifier, collectionName)(coll =>
       coll.findOne(qry) match {
         case null => None
         case dbo => {
           Some(create(dbo))
         }
-      }
-    )
+      })
   }
 
   /**
-  * Find a single document by _id using a String.
-  */
+   * Find a single document by _id using a String.
+   */
   def find(s: String): Option[BaseDocument] =
     if (ObjectId.isValid(s))
       find(new BasicDBObject("_id", new ObjectId(s)))
@@ -96,33 +95,34 @@ trait MongoDocumentMeta[BaseDocument] extends JsonObjectMeta[BaseDocument] with 
       find(new BasicDBObject("_id", s))
 
   /**
-  * Find a single document by _id using an ObjectId.
-  */
+   * Find a single document by _id using an ObjectId.
+   */
   def find(oid: ObjectId): Option[BaseDocument] = find(new BasicDBObject("_id", oid))
 
   /**
-  * Find a single document by _id using a UUID.
-  */
+   * Find a single document by _id using a UUID.
+   */
   def find(uuid: UUID): Option[BaseDocument] = find(new BasicDBObject("_id", uuid))
 
   /**
-  * Find a single document by a qry using String, Any inputs
-  */
+   * Find a single document by a qry using String, Any inputs
+   */
   def find(k: String, v: Any): Option[BaseDocument] = find(new BasicDBObject(k, v))
 
   /**
-  * Find a single document by a qry using a json query
-  */
+   * Find a single document by a qry using a json query
+   */
   def find(json: JObject): Option[BaseDocument] = find(JObjectParser.parse(json))
 
   /**
-  * Find all documents in this collection
-  */
+   * Find all documents in this collection
+   */
   def findAll: List[BaseDocument] = {
     import scala.collection.JavaConversions._
 
     MongoDB.useCollection(connectionIdentifier, collectionName)(coll => {
-      /** Mongo Cursors are both Iterable and Iterator,
+      /**
+       * Mongo Cursors are both Iterable and Iterator,
        * so we need to reduce ambiguity for implicits
        */
       (coll.find: Iterator[DBObject]).map(create).toList
@@ -130,21 +130,22 @@ trait MongoDocumentMeta[BaseDocument] extends JsonObjectMeta[BaseDocument] with 
   }
 
   /**
-  * Find all documents using a DBObject query.
-  */
+   * Find all documents using a DBObject query.
+   */
   def findAll(qry: DBObject, sort: Option[DBObject], opts: FindOption*): List[BaseDocument] = {
     import scala.collection.JavaConversions._
 
     val findOpts = opts.toList
 
-    MongoDB.useCollection(connectionIdentifier, collectionName) ( coll => {
+    MongoDB.useCollection(connectionIdentifier, collectionName)(coll => {
       val cur = coll.find(qry).limit(
         findOpts.find(_.isInstanceOf[Limit]).map(x => x.value).getOrElse(0)
       ).skip(
-        findOpts.find(_.isInstanceOf[Skip]).map(x => x.value).getOrElse(0)
-      )
-      sort.foreach( s => cur.sort(s))
-      /** Mongo Cursors are both Iterable and Iterator,
+          findOpts.find(_.isInstanceOf[Skip]).map(x => x.value).getOrElse(0)
+        )
+      sort.foreach(s => cur.sort(s))
+      /**
+       * Mongo Cursors are both Iterable and Iterator,
        * so we need to reduce ambiguity for implicits
        */
       (cur: Iterator[DBObject]).map(create).toList
@@ -152,46 +153,46 @@ trait MongoDocumentMeta[BaseDocument] extends JsonObjectMeta[BaseDocument] with 
   }
 
   /**
-  * Find all documents using a DBObject query.
-  */
+   * Find all documents using a DBObject query.
+   */
   def findAll(qry: DBObject, opts: FindOption*): List[BaseDocument] =
-    findAll(qry, None, opts :_*)
+    findAll(qry, None, opts: _*)
 
   /**
-  * Find all documents using a DBObject query with sort
-  */
+   * Find all documents using a DBObject query with sort
+   */
   def findAll(qry: DBObject, sort: DBObject, opts: FindOption*): List[BaseDocument] =
-    findAll(qry, Some(sort), opts :_*)
+    findAll(qry, Some(sort), opts: _*)
 
   /**
-  * Find all documents using a JObject query
-  */
+   * Find all documents using a JObject query
+   */
   def findAll(qry: JObject, opts: FindOption*): List[BaseDocument] =
-    findAll(JObjectParser.parse(qry), None, opts :_*)
+    findAll(JObjectParser.parse(qry), None, opts: _*)
 
   /**
-  * Find all documents using a JObject query with sort
-  */
+   * Find all documents using a JObject query with sort
+   */
   def findAll(qry: JObject, sort: JObject, opts: FindOption*): List[BaseDocument] =
-    findAll(JObjectParser.parse(qry), Some(JObjectParser.parse(sort)), opts :_*)
+    findAll(JObjectParser.parse(qry), Some(JObjectParser.parse(sort)), opts: _*)
 
   /**
-  * Find all documents using a k, v query
-  */
+   * Find all documents using a k, v query
+   */
   def findAll(k: String, o: Any, opts: FindOption*): List[BaseDocument] =
-    findAll(new BasicDBObject(k, o), None, opts :_*)
+    findAll(new BasicDBObject(k, o), None, opts: _*)
 
   /**
-  * Find all documents using a k, v query with JObject sort
-  */
+   * Find all documents using a k, v query with JObject sort
+   */
   def findAll(k: String, o: Any, sort: JObject, opts: FindOption*): List[BaseDocument] =
-    findAll(new BasicDBObject(k, o), Some(JObjectParser.parse(sort)), opts :_*)
+    findAll(new BasicDBObject(k, o), Some(JObjectParser.parse(sort)), opts: _*)
 
   /*
   * Save a document to the db
   */
   def save(in: BaseDocument) {
-    MongoDB.use(connectionIdentifier) ( db => {
+    MongoDB.use(connectionIdentifier)(db => {
       save(in, db)
     })
   }
@@ -207,15 +208,15 @@ trait MongoDocumentMeta[BaseDocument] extends JsonObjectMeta[BaseDocument] with 
   * Update document with a JObject query using the given Mongo instance
   */
   def update(qry: JObject, newbd: BaseDocument, db: DB, opts: UpdateOption*) {
-    update(qry, toJObject(newbd), db, opts :_*)
+    update(qry, toJObject(newbd), db, opts: _*)
   }
 
   /*
   * Update document with a JObject query
   */
   def update(qry: JObject, newbd: BaseDocument, opts: UpdateOption*) {
-    MongoDB.use(connectionIdentifier) ( db => {
-      update(qry, newbd, db, opts :_*)
+    MongoDB.use(connectionIdentifier)(db => {
+      update(qry, newbd, db, opts: _*)
     })
   }
 

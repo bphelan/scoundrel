@@ -11,7 +11,7 @@
 * limitations under the License.
 */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
@@ -20,9 +20,9 @@ import java.util.Date
 
 import net.liftweb.common._
 import net.liftweb.http.S
-import net.liftweb.http.js.JE.{JsNull, JsRaw}
+import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json.JsonAST._
-import net.liftweb.json.{Formats, JValue}
+import net.liftweb.json.{ Formats, JValue }
 import net.liftweb.record._
 import net.liftweb.util.Helpers._
 
@@ -38,28 +38,25 @@ trait DateTypedField extends TypedField[Date] {
     case s: String => setFromString(s)
     case Some(s: String) => setFromString(s)
     case Full(s: String) => setFromString(s)
-    case null|None|Empty => setBox(defaultValueBox)
+    case null | None | Empty => setBox(defaultValueBox)
     case f: Failure => setBox(f)
     case o => setFromString(o.toString)
   }
 
   def setFromString(in: String): Box[Date] = formats.dateFormat.parse(in) match {
     case Some(d: Date) => setBox(Full(d))
-    case other => setBox(Failure("Invalid Date string: "+in))
+    case other => setBox(Failure("Invalid Date string: " + in))
   }
 
   def setFromJValue(jvalue: JValue): Box[Date] = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case JObject(JField("$dt", JString(s)) :: Nil) => setFromString(s)
     case other => setBox(FieldHelpers.expectedA("JObject", other))
   }
 
   private def elem =
-    S.fmapFunc(S.SFuncHolder(this.setFromAny(_))){funcName =>
-      <input type="text"
-        name={funcName}
-        value={valueBox.map(v => formats.dateFormat.format(v)) openOr ""}
-        tabindex={tabIndex.toString}/>
+    S.fmapFunc(S.SFuncHolder(this.setFromAny(_))) { funcName =>
+      <input type="text" name={ funcName } value={ valueBox.map(v => formats.dateFormat.format(v)) openOr "" } tabindex={ tabIndex.toString }/>
     }
 
   def toForm =
@@ -77,7 +74,7 @@ trait DateTypedField extends TypedField[Date] {
 }
 
 class DateField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
-  extends Field[Date, OwnerType] with MandatoryTypedField[Date] with DateTypedField {
+    extends Field[Date, OwnerType] with MandatoryTypedField[Date] with DateTypedField {
 
   def owner = rec
 
@@ -99,7 +96,7 @@ class DateField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
 }
 
 class OptionalDateField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
-  extends Field[Date, OwnerType] with OptionalTypedField[Date] with DateTypedField {
+    extends Field[Date, OwnerType] with OptionalTypedField[Date] with DateTypedField {
 
   def owner = rec
 

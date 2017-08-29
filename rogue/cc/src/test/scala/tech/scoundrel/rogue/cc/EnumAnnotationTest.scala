@@ -1,6 +1,6 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
-import me.sgrouples.rogue._
+import tech.scoundrel.rogue._
 import org.bson.{ BsonInt32, BsonString }
 import org.scalatest.{ FlatSpec, MustMatchers }
 

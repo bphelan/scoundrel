@@ -1,16 +1,16 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.util.UUID
 
 import io.fsq.rogue._
-import me.sgrouples.rogue.BsonFormats._
-import me.sgrouples.rogue.cc
+import tech.scoundrel.rogue.BsonFormats._
+import tech.scoundrel.rogue.cc
 import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, Matchers }
 import shapeless.tag
 import shapeless.tag.@@
-import me.sgrouples.rogue.cc._
-import me.sgrouples.rogue.cc.CcRogue._
+import tech.scoundrel.rogue.cc._
+import tech.scoundrel.rogue.cc.CcRogue._
 
 trait HasId[T] {
   type Id
@@ -55,7 +55,7 @@ class ObjectIdSubtypeSpec extends FlatSpec with Matchers {
   val X = new MetaA
   val t: Query[MetaA, cc.A.Id, Unordered with Unlimited with Unskipped with HasNoOrClause with Unhinted with ShardKeyNotSpecified with SelectedOne] = X.select(_.id)
 
-  "val t: Query[_, me.sgrouples.rogue.cc.A.Id, _] = X.select(_.id)" should compile
+  "val t: Query[_, tech.scoundrel.rogue.cc.A.Id, _] = X.select(_.id)" should compile
 
 }
 
@@ -102,6 +102,6 @@ class StringTaggedSpec extends FlatSpec with Matchers {
   val id: cc.B.Id = cc.B.Id.get()
   val t: Query[MetaB, cc.B.Id, _] = X.select(_.id).where(_.id eqs id)
 
-  "val t: Query[_, me.sgrouples.rogue.cc.B.Id, _] = X.select(_.id).where(_.id eqs id)" should compile
+  "val t: Query[_, tech.scoundrel.rogue.cc.B.Id, _] = X.select(_.id).where(_.id eqs id)" should compile
 
 }

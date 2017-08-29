@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import com.mongodb.async.client.{ MongoClient, MongoClients }
 import com.mongodb.{ MongoClient => MongoClientSync }

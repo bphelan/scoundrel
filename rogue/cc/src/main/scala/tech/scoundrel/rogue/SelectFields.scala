@@ -1,11 +1,11 @@
-package me.sgrouples.rogue
+package tech.scoundrel.rogue
 
 import java.time.{ Instant, LocalDateTime, ZoneOffset }
 import java.util.{ Currency, Date }
 
 import io.fsq.field.Field
 import io.fsq.rogue._
-import me.sgrouples.rogue.cc.CcMeta
+import tech.scoundrel.rogue.cc.CcMeta
 import org.bson.types.Decimal128
 import org.bson._
 

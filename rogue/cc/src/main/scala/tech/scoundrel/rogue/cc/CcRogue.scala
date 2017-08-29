@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 /**
  * Created by mar on 12.07.2016.
@@ -15,7 +15,7 @@ import io.fsq.rogue.MongoHelpers.AndCondition
 import io.fsq.rogue.index.IndexBuilder
 import java.util.{ Currency, Date, UUID }
 
-import me.sgrouples.rogue._
+import tech.scoundrel.rogue._
 import org.bson.types.ObjectId
 
 trait CcRogue {

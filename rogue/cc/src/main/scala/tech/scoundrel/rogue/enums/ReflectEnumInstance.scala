@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.enums
+package tech.scoundrel.rogue.enums
 
 trait ReflectEnumInstance[T <: Enumeration] {
 

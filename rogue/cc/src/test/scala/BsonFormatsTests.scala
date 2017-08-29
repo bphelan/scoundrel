@@ -1,10 +1,10 @@
-package me.sgrouples.rogue
+package tech.scoundrel.rogue
 import java.util.{ Locale, TimeZone }
 
 import org.bson.types.ObjectId
 import org.junit.Test
 import BsonFormats._
-import me.sgrouples.rogue.cc.{ ClaimStatus, VenueStatus }
+import tech.scoundrel.rogue.cc.{ ClaimStatus, VenueStatus }
 import org.bson.BsonDocument
 import org.specs2.matcher.JUnitMustMatchers
 

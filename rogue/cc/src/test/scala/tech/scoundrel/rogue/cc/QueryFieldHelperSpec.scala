@@ -1,12 +1,12 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
-import me.sgrouples.rogue.{ BsonFormats, EnumNameFormats }
+import tech.scoundrel.rogue.{ BsonFormats, EnumNameFormats }
 import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, MustMatchers }
-import me.sgrouples.rogue._
+import tech.scoundrel.rogue._
 import BsonFormats._
 import EnumNameFormats._
-import me.sgrouples.rogue.cc.Metas.VenueRMeta
+import tech.scoundrel.rogue.cc.Metas.VenueRMeta
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{ Seconds, Span }
 

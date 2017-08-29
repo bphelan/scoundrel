@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
 
-import net.liftweb.record.{Field, MandatoryTypedField, TypedField}
+import net.liftweb.record.{ Field, MandatoryTypedField, TypedField }
 import java.util.UUID
 
 import net.liftweb.common.Box
@@ -34,15 +34,14 @@ import org.bson.types.ObjectId
  * toForm produces a multi-select form element. You just need to supply the
  * options by overriding the options method.
  */
-abstract class MongoRefListField[OwnerType <: BsonRecord[OwnerType], RefType <: MongoRecord[RefType], MyType]
-  (rec: OwnerType)(implicit mf: Manifest[MyType]) extends MongoListField[OwnerType, MyType](rec) {
+abstract class MongoRefListField[OwnerType <: BsonRecord[OwnerType], RefType <: MongoRecord[RefType], MyType](rec: OwnerType)(implicit mf: Manifest[MyType]) extends MongoListField[OwnerType, MyType](rec) {
 
   /** The MongoMetaRecord of the referenced object **/
   def refMeta: MongoMetaRecord[RefType]
 
   /**
-    * Find the referenced objects
-    */
+   * Find the referenced objects
+   */
   def findAll = refMeta.findAllByList(this.value)
 
   /*

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 
@@ -48,7 +48,7 @@ trait MongoTestKit extends Specification with BeforeAfterEach {
 
   def dbName = "lift_record_"+this.getClass.getName
     .replace("$", "")
-    .replace("scoundrel.mongodb.record.", "")
+    .replace("tech.scoundrel.mongodb.record.", "")
     .replace(".", "_")
     .toLowerCase
 

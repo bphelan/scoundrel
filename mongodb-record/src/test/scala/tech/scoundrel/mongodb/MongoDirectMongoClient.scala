@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import org.specs2.mutable.Specification

@@ -1,11 +1,11 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.time.LocalDateTime
 import java.util.Currency
 import java.util.regex.Pattern
 
 import com.mongodb.async.client.MongoDatabase
-import me.sgrouples.rogue.cc.CcRogue._
+import tech.scoundrel.rogue.cc.CcRogue._
 import org.bson.types.ObjectId
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{ BeforeAndAfterEach, FlatSpec, MustMatchers }

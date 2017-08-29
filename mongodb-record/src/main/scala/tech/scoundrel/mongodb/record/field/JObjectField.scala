@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
@@ -25,23 +25,23 @@ import net.liftweb.record._
 import scala.xml.NodeSeq
 
 import net.liftweb.common._
-import net.liftweb.json.JsonAST.{JNothing, JNull}
+import net.liftweb.json.JsonAST.{ JNothing, JNull }
 import net.liftweb.json._
 
 import com.mongodb._
 import org.bson.Document
 
 class JObjectField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
-extends Field[JObject, OwnerType]
-with MandatoryTypedField[JObject]
-with MongoFieldFlavor[JObject] {
+    extends Field[JObject, OwnerType]
+    with MandatoryTypedField[JObject]
+    with MongoFieldFlavor[JObject] {
 
   def owner = rec
 
   def asJValue: JValue = valueBox openOr (JNothing: JValue)
 
   def setFromJValue(jvalue: JValue): Box[JObject] = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case jo: JObject => setBox(Full(jo))
     case other => setBox(FieldHelpers.expectedA("JObject", other))
   }

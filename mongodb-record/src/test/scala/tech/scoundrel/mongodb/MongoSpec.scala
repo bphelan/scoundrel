@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import net.liftweb.util.{ConnectionIdentifier, DefaultConnectionIdentifier}

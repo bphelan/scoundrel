@@ -11,23 +11,23 @@
 * limitations under the License.
 */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
 
 import scala.collection.JavaConverters._
 import scala.reflect.Manifest
-import scala.xml.{NodeSeq, Text}
+import scala.xml.{ NodeSeq, Text }
 
 import net.liftweb.common._
 import net.liftweb.json._
 import net.liftweb.record._
 import net.liftweb.util.Helpers
 
-import com.mongodb.{BasicDBList, DBObject}
+import com.mongodb.{ BasicDBList, DBObject }
 import org.bson.Document
-class MongoCaseClassField[OwnerType <: Record[OwnerType],CaseType](rec: OwnerType)( implicit mf: Manifest[CaseType]) extends Field[CaseType, OwnerType] with MandatoryTypedField[CaseType] with MongoFieldFlavor[CaseType] {
+class MongoCaseClassField[OwnerType <: Record[OwnerType], CaseType](rec: OwnerType)(implicit mf: Manifest[CaseType]) extends Field[CaseType, OwnerType] with MandatoryTypedField[CaseType] with MongoFieldFlavor[CaseType] {
 
   // override this for custom formats
   def formats: Formats = DefaultFormats
@@ -47,8 +47,8 @@ class MongoCaseClassField[OwnerType <: Record[OwnerType],CaseType](rec: OwnerTyp
   def asJValue: JValue = valueBox.map(v => Extraction.decompose(v)) openOr (JNothing: JValue)
 
   def setFromJValue(jvalue: JValue): Box[CaseType] = jvalue match {
-    case JNothing|JNull => setBox(Empty)
-    case s => setBox(Helpers.tryo[CaseType]{ s.extract[CaseType] })
+    case JNothing | JNull => setBox(Empty)
+    case s => setBox(Helpers.tryo[CaseType] { s.extract[CaseType] })
   }
 
   def asDBObject: DBObject = {
@@ -66,7 +66,7 @@ class MongoCaseClassField[OwnerType <: Record[OwnerType],CaseType](rec: OwnerTyp
   }
 
   override def setFromString(in: String): Box[CaseType] = {
-    Helpers.tryo{ JsonParser.parse(in).extract[CaseType] }
+    Helpers.tryo { JsonParser.parse(in).extract[CaseType] }
   }
 
   def setFromAny(in: Any): Box[CaseType] = in match {
@@ -74,13 +74,13 @@ class MongoCaseClassField[OwnerType <: Record[OwnerType],CaseType](rec: OwnerTyp
     case doc: org.bson.Document => setFromDocument(doc)
     case c if mf.runtimeClass.isInstance(c) => setBox(Full(c.asInstanceOf[CaseType]))
     case Full(c) if mf.runtimeClass.isInstance(c) => setBox(Full(c.asInstanceOf[CaseType]))
-    case null|None|Empty     => setBox(defaultValueBox)
-    case (failure: Failure)  => setBox(failure)
+    case null | None | Empty => setBox(defaultValueBox)
+    case (failure: Failure) => setBox(failure)
     case _ => setBox(defaultValueBox)
   }
 }
 
-class MongoCaseClassListField[OwnerType <: Record[OwnerType],CaseType](rec: OwnerType)( implicit mf: Manifest[CaseType]) extends Field[List[CaseType], OwnerType] with MandatoryTypedField[List[CaseType]] with MongoFieldFlavor[List[CaseType]] {
+class MongoCaseClassListField[OwnerType <: Record[OwnerType], CaseType](rec: OwnerType)(implicit mf: Manifest[CaseType]) extends Field[List[CaseType], OwnerType] with MandatoryTypedField[List[CaseType]] with MongoFieldFlavor[List[CaseType]] {
 
   // override this for custom formats
   def formats: Formats = DefaultFormats
@@ -100,12 +100,12 @@ class MongoCaseClassListField[OwnerType <: Record[OwnerType],CaseType](rec: Owne
   def asJValue: JValue = JArray(value.map(v => Extraction.decompose(v)))
 
   def setFromJValue(jvalue: JValue): Box[MyType] = jvalue match {
-    case JArray(contents) => setBox(Full(contents.flatMap(s => Helpers.tryo[CaseType]{ s.extract[CaseType] })))
+    case JArray(contents) => setBox(Full(contents.flatMap(s => Helpers.tryo[CaseType] { s.extract[CaseType] })))
     case _ => setBox(Empty)
   }
 
   def setFromDocumentList(list: java.util.List[Document]): Box[MyType] = {
-    val objs = list.asScala.map{ d => JObjectParser.serialize(d) }
+    val objs = list.asScala.map { d => JObjectParser.serialize(d) }
     setFromJValue(JArray(objs.toList))
   }
 
@@ -128,7 +128,7 @@ class MongoCaseClassListField[OwnerType <: Record[OwnerType],CaseType](rec: Owne
 
   def setFromAny(in: Any): Box[MyType] = in match {
     case dbo: DBObject => setFromDBObject(dbo)
-    case list@c::xs if mf.runtimeClass.isInstance(c) =>  setBox(Full(list.asInstanceOf[MyType]))
+    case list @ c :: xs if mf.runtimeClass.isInstance(c) => setBox(Full(list.asInstanceOf[MyType]))
     case jlist: java.util.List[_] => {
       if (!jlist.isEmpty) {
         val elem = jlist.get(0)

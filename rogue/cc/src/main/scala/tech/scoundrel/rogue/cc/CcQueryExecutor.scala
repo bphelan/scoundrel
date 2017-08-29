@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import com.mongodb.client.{ MongoCollection, MongoDatabase }
 import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }

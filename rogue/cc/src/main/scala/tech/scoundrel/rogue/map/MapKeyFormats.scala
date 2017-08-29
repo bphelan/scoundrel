@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.map
+package tech.scoundrel.rogue.map
 
 import org.bson.types.ObjectId
 

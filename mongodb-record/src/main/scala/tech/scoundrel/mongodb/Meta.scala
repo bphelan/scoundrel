@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
-import java.util.{Calendar, Date, GregorianCalendar, UUID}
+import java.util.{ Calendar, Date, GregorianCalendar, UUID }
 import java.util.regex.Pattern
 
 import net.liftweb.json.Formats
@@ -39,11 +39,11 @@ private[mongodb] object Meta {
     * These don't require a conversion and can be put directly into a DBObject
     */
     val primitives = Set[Class[_]](classOf[String], classOf[Int], classOf[Long], classOf[Double],
-                                  classOf[Float], classOf[Byte], classOf[BigInt], classOf[Boolean],
-                                  classOf[Short], classOf[java.lang.Integer], classOf[java.lang.Long],
-                                  classOf[java.lang.Double], classOf[java.lang.Float],
-                                  classOf[java.lang.Byte], classOf[java.lang.Boolean],
-                                  classOf[java.lang.Short], classOf[scala.Array[Byte]])
+      classOf[Float], classOf[Byte], classOf[BigInt], classOf[Boolean],
+      classOf[Short], classOf[java.lang.Integer], classOf[java.lang.Long],
+      classOf[java.lang.Double], classOf[java.lang.Float],
+      classOf[java.lang.Byte], classOf[java.lang.Boolean],
+      classOf[java.lang.Short], classOf[scala.Array[Byte]])
 
     def primitive_?(clazz: Class[_]) = primitives contains clazz
 
@@ -93,7 +93,8 @@ private[mongodb] object Meta {
     * Extended Mongo types.
     */
     val mongotypes = Set[Class[_]](
-      classOf[DBRef], classOf[ObjectId], classOf[Pattern], classOf[UUID])
+      classOf[DBRef], classOf[ObjectId], classOf[Pattern], classOf[UUID]
+    )
 
     def mongotype_?(clazz: Class[_]) = mongotypes contains clazz
 
@@ -121,7 +122,6 @@ private[mongodb] object Meta {
   @deprecated("use JsonObjectId.asJValue", "2.6")
   def objectIdAsJValue(oid: ObjectId, formats: Formats): JValue =
     JsonObjectId.asJValue(oid, formats)
-
 
 }
 

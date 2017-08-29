@@ -11,22 +11,21 @@
 * limitations under the License.
 */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
 
-import scala.xml.{NodeSeq, Text}
-import net.liftweb.common.{Box, Empty, Failure, Full}
-import net.liftweb.http.js.JE.{JsNull, Str}
+import scala.xml.{ NodeSeq, Text }
+import net.liftweb.common.{ Box, Empty, Failure, Full }
+import net.liftweb.http.js.JE.{ JsNull, Str }
 import net.liftweb.json._
-import net.liftweb.record.{Field, FieldHelpers, MandatoryTypedField, Record}
+import net.liftweb.record.{ Field, FieldHelpers, MandatoryTypedField, Record }
 import net.liftweb.util.Helpers.tryo
 import com.mongodb.DBObject
 
-abstract class JsonObjectField[OwnerType <: BsonRecord[OwnerType], JObjectType <: JsonObject[JObjectType]]
-  (rec: OwnerType, valueMeta: JsonObjectMeta[JObjectType])
-  extends Field[JObjectType, OwnerType] with MandatoryTypedField[JObjectType] with MongoFieldFlavor[JObjectType] {
+abstract class JsonObjectField[OwnerType <: BsonRecord[OwnerType], JObjectType <: JsonObject[JObjectType]](rec: OwnerType, valueMeta: JsonObjectMeta[JObjectType])
+    extends Field[JObjectType, OwnerType] with MandatoryTypedField[JObjectType] with MongoFieldFlavor[JObjectType] {
 
   def owner = rec
 
@@ -45,7 +44,7 @@ abstract class JsonObjectField[OwnerType <: BsonRecord[OwnerType], JObjectType <
   * Returns Empty or Failure if the value could not be set
   */
   def setFromJValue(jvalue: JValue): Box[JObjectType] = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case o: JObject => setBox(tryo(valueMeta.create(o)))
     case other => setBox(FieldHelpers.expectedA("JObject", other))
   }
@@ -59,7 +58,7 @@ abstract class JsonObjectField[OwnerType <: BsonRecord[OwnerType], JObjectType <
     case s: String => setFromString(s)
     case Some(s: String) => setFromString(s)
     case Full(s: String) => setFromString(s)
-    case null|None|Empty => setBox(defaultValueBox)
+    case null | None | Empty => setBox(defaultValueBox)
     case f: Failure => setBox(f)
     case o => setFromString(o.toString)
   }
@@ -68,7 +67,7 @@ abstract class JsonObjectField[OwnerType <: BsonRecord[OwnerType], JObjectType <
   def setFromString(in: String): Box[JObjectType] = tryo(JsonParser.parse(in)) match {
     case Full(jv: JValue) => setFromJValue(jv)
     case f: Failure => setBox(f)
-    case other => setBox(Failure("Error parsing String into a JValue: "+in))
+    case other => setBox(Failure("Error parsing String into a JValue: " + in))
   }
 
   /*

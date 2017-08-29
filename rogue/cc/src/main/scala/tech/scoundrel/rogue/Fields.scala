@@ -1,4 +1,4 @@
-package me.sgrouples.rogue
+package tech.scoundrel.rogue
 import java.time.{ Instant, LocalDateTime, ZoneOffset }
 import java.util.{ Currency, Locale, UUID }
 
@@ -6,9 +6,9 @@ import io.fsq.field.{ Field, OptionalField, RequiredField }
 import io.fsq.rogue.LatLong
 import shapeless._
 import labelled.{ FieldType, field }
-import me.sgrouples.rogue.cc.CcMeta
-import me.sgrouples.rogue.enums.ReflectEnumInstance
-import me.sgrouples.rogue.map.MapKeyFormat
+import tech.scoundrel.rogue.cc.CcMeta
+import tech.scoundrel.rogue.enums.ReflectEnumInstance
+import tech.scoundrel.rogue.map.MapKeyFormat
 import syntax.singleton._
 import record._
 import ops.record._

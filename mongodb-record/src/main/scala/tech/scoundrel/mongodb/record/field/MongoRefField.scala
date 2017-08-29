@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
@@ -43,13 +43,13 @@ trait MongoRefField[RefType <: MongoRecord[RefType], MyType] extends TypedField[
   def refMeta: MongoMetaRecord[RefType]
 
   /**
-    * Find the referenced object
-    */
+   * Find the referenced object
+   */
   def find = valueBox.flatMap(v => refMeta.findAny(v))
 
   /**
-    * Get the cacheable referenced object
-    */
+   * Get the cacheable referenced object
+   */
   def obj = synchronized {
     if (!_calcedObj) {
       _calcedObj = true
@@ -80,7 +80,7 @@ trait MongoRefField[RefType <: MongoRecord[RefType], MyType] extends TypedField[
   def emptyOptionLabel: String = ""
 
   def buildDisplayList: List[(Box[MyType], String)] = {
-    if (optional_?) (Empty, emptyOptionLabel)::options else options
+    if (optional_?) (Empty, emptyOptionLabel) :: options else options
   }
 
   private def elem = SHtml.selectObj[Box[MyType]](

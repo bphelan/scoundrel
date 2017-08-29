@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import scala.collection.JavaConversions._
@@ -28,11 +28,11 @@ import org.bson.types.ObjectId
 
 object JObjectParser extends SimpleInjector {
   /**
-    * Set this to override JObjectParser turning strings that are valid
-    * ObjectIds into actual ObjectIds. For example, place the following in Boot.boot:
-    *
-    * <code>JObjectParser.stringProcessor.default.set((s: String) => s)</code>
-    */
+   * Set this to override JObjectParser turning strings that are valid
+   * ObjectIds into actual ObjectIds. For example, place the following in Boot.boot:
+   *
+   * <code>JObjectParser.stringProcessor.default.set((s: String) => s)</code>
+   */
   val stringProcessor = new Inject(() => defaultStringProcessor _) {}
 
   def defaultStringProcessor(s: String): Object = {
@@ -56,7 +56,7 @@ object JObjectParser extends SimpleInjector {
       case x if primitive_?(x.getClass) => primitive2jvalue(x)
       case x if datetype_?(x.getClass) => datetype2jvalue(x)(formats)
       case x if mongotype_?(x.getClass) => mongotype2jvalue(x)(formats)
-      case x: BasicDBList => JArray(x.toList.map( x => serialize(x)(formats)))
+      case x: BasicDBList => JArray(x.toList.map(x => serialize(x)(formats)))
       case x: BasicDBObject => JObject(
         x.keySet.toList.map { f =>
           JField(f.toString, serialize(x.get(f.toString))(formats))
@@ -119,18 +119,16 @@ object JObjectParser extends SimpleInjector {
       case JNothing => sys.error("can't render 'nothing'")
       case JString(null) => "null"
       case JString(s) => stringProcessor.vend(s)
-      case _ =>  ""
+      case _ => ""
     }
 
     // FIXME: This is not ideal.
     private def renderInteger(i: BigInt): Object = {
       if (i <= java.lang.Integer.MAX_VALUE && i >= java.lang.Integer.MIN_VALUE) {
         new java.lang.Integer(i.intValue)
-      }
-      else if (i <= java.lang.Long.MAX_VALUE && i >= java.lang.Long.MIN_VALUE) {
+      } else if (i <= java.lang.Long.MAX_VALUE && i >= java.lang.Long.MIN_VALUE) {
         new java.lang.Long(i.longValue)
-      }
-      else {
+      } else {
         i.toString
       }
     }

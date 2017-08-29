@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.time.Instant
 
@@ -6,8 +6,8 @@ import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, Matchers }
 import shapeless.tag.@@
 import shapeless.tag
-import me.sgrouples.rogue.BsonFormats._
-import me.sgrouples.rogue.EnumNameFormats._
+import tech.scoundrel.rogue.BsonFormats._
+import tech.scoundrel.rogue.EnumNameFormats._
 
 trait User
 

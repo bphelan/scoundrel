@@ -1,8 +1,8 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import org.scalatest.{ FlatSpec, Matchers }
-import me.sgrouples.rogue.BsonFormats._
-import me.sgrouples.rogue.map.MapKeyFormat
+import tech.scoundrel.rogue.BsonFormats._
+import tech.scoundrel.rogue.map.MapKeyFormat
 import org.bson.types.ObjectId
 import shapeless.tag.@@
 import shapeless.tag

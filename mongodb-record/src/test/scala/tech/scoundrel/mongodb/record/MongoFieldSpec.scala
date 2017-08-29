@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 
@@ -38,7 +38,7 @@ import org.specs2.specification._
 import org.bson.Document
 import org.bson.types.ObjectId
 import org.joda.time.DateTime
-import scoundrel.mongodb.BsonDSL._
+import tech.scoundrel.mongodb.BsonDSL._
 import fixtures._
 
 /**

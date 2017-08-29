@@ -11,7 +11,7 @@
 * limitations under the License.
 */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 package field
@@ -20,15 +20,14 @@ import java.util.regex.Pattern
 import scala.xml.NodeSeq
 
 import net.liftweb.common._
-import net.liftweb.http.js.JE.{JsNull, Str}
+import net.liftweb.http.js.JE.{ JsNull, Str }
 import net.liftweb.json._
 import net.liftweb.record._
 import net.liftweb.util.Helpers.tryo
 
 class PatternField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
-  extends Field[Pattern, OwnerType]
-  with MandatoryTypedField[Pattern]
-{
+    extends Field[Pattern, OwnerType]
+    with MandatoryTypedField[Pattern] {
 
   def owner = rec
 
@@ -42,13 +41,13 @@ class PatternField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
     case s: String => setFromString(s)
     case Some(s: String) => setFromString(s)
     case Full(s: String) => setFromString(s)
-    case null|None|Empty => setBox(defaultValueBox)
+    case null | None | Empty => setBox(defaultValueBox)
     case f: Failure => setBox(f)
     case o => setFromString(o.toString)
   }
 
   def setFromJValue(jvalue: JValue): Box[Pattern] = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case JObject(JField("$regex", JString(s)) :: JField("$flags", JInt(f)) :: Nil) =>
       setBox(Full(Pattern.compile(s, f.intValue)))
     case other => setBox(FieldHelpers.expectedA("JObject", other))
@@ -58,7 +57,7 @@ class PatternField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)
   def setFromString(in: String): Box[Pattern] = tryo(JsonParser.parse(in)) match {
     case Full(jv: JValue) => setFromJValue(jv)
     case f: Failure => setBox(f)
-    case other => setBox(Failure("Error parsing String into a JValue: "+in))
+    case other => setBox(Failure("Error parsing String into a JValue: " + in))
   }
 
   def toForm: Box[NodeSeq] = Empty

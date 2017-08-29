@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import io.fsq.rogue.MongoHelpers.MongoSelect
 import org.bson.{ BsonArray, BsonDocument, BsonNull, BsonValue }

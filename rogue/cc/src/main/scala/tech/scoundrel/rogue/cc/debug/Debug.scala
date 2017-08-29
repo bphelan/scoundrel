@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc.debug
+package tech.scoundrel.rogue.cc.debug
 
 import scala.collection.{ TraversableLike, mutable }
 import scala.language.higherKinds

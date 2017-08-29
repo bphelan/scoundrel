@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 package record
 
@@ -38,13 +38,13 @@ trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   def id: Any
 
   /**
-  * The meta record (the object that contains the meta result for this type)
-  */
+   * The meta record (the object that contains the meta result for this type)
+   */
   def meta: MongoMetaRecord[MyType]
 
   /**
-  * Save the instance and return the instance
-  */
+   * Save the instance and return the instance
+   */
   def save(concern: WriteConcern): MyType = {
     runSafe {
       meta.save(this, concern)
@@ -53,30 +53,30 @@ trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   }
 
   /**
-    * Inserts record and returns Future that completes when mongo driver finishes operation
-    */
-  def insertAsync():Future[Boolean] = {
+   * Inserts record and returns Future that completes when mongo driver finishes operation
+   */
+  def insertAsync(): Future[Boolean] = {
     runSafe {
       meta.insertAsync(this)
     }
   }
 
- /**
-  * Save the instance and return the instance
-  */
+  /**
+   * Save the instance and return the instance
+   */
   override def saveTheRecord(): Box[MyType] = saveBox()
 
   /**
-  * Save the instance and return the instance
-  * @param safe - if true will use WriteConcern ACKNOWLEDGED else UNACKNOWLEDGED
-  */
+   * Save the instance and return the instance
+   * @param safe - if true will use WriteConcern ACKNOWLEDGED else UNACKNOWLEDGED
+   */
   def save(safe: Boolean = true): MyType = {
     save(if (safe) WriteConcern.ACKNOWLEDGED else WriteConcern.UNACKNOWLEDGED)
   }
 
   /**
-    * Try to save the instance and return the instance in a Box.
-    */
+   * Try to save the instance and return the instance in a Box.
+   */
   def saveBox(): Box[MyType] = tryo {
     runSafe {
       meta.save(this)
@@ -85,8 +85,8 @@ trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   }
 
   /**
-    * Update only the dirty fields
-    */
+   * Update only the dirty fields
+   */
   def update: MyType = {
     runSafe {
       meta.update(this)
@@ -95,8 +95,8 @@ trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   }
 
   /**
-    * Try to update only the dirty fields
-    */
+   * Try to update only the dirty fields
+   */
   def updateBox: Box[MyType] = tryo {
     runSafe {
       meta.update(this)
@@ -105,8 +105,8 @@ trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   }
 
   /**
-    * Delete the instance from backing store
-    */
+   * Delete the instance from backing store
+   */
   def delete_! : Boolean = {
     runSafe {
       meta.delete_!(this)
@@ -114,8 +114,8 @@ trait MongoRecord[MyType <: MongoRecord[MyType]] extends BsonRecord[MyType] {
   }
 
   /**
-    * Try to delete the instance from backing store
-    */
+   * Try to delete the instance from backing store
+   */
   def deleteBox_! : Box[Boolean] = tryo {
     runSafe {
       meta.delete_!(this)

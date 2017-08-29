@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, MustMatchers }
@@ -11,8 +11,8 @@ class CcMetaSpec extends FlatSpec with MustMatchers {
   "Meta R" should "work as expected" in {
     //reguired implicits for implicit call of BsonFormat[IdOneEnum] inside constructor of RCcMeta[IdOneEnum]
     implicit val ev = VenueStatus
-    import me.sgrouples.rogue.BsonFormats._
-    import me.sgrouples.rogue.EnumNameFormats._
+    import tech.scoundrel.rogue.BsonFormats._
+    import tech.scoundrel.rogue.EnumNameFormats._
     object IdOneEnumR extends RCcMeta[IdOneEnum]("idoneenum")
     val elem = IdOneEnum(new ObjectId(), "One", VenueStatus.closed)
     val bson = IdOneEnumR.write(elem)
@@ -24,7 +24,7 @@ class CcMetaSpec extends FlatSpec with MustMatchers {
 
   it should "find implicit format fo tagged ObjectId" in {
 
-    import me.sgrouples.rogue.BsonFormats._
+    import tech.scoundrel.rogue.BsonFormats._
 
     trait Tag
 

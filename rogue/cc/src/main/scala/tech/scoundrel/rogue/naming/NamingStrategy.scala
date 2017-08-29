@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.naming
+package tech.scoundrel.rogue.naming
 
 import scala.reflect.ClassTag
 

@@ -1,4 +1,4 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 // Copyright 2011 Foursquare Labs Inc. All Rights Reserved.
 
@@ -13,8 +13,8 @@ import javax.xml.crypto.dsig.Transform
 
 import com.mongodb.util.{ JSON, JSONSerializers }
 import io.fsq.field.Field
-import me.sgrouples.rogue.CClassListField
-import me.sgrouples.rogue.cc.Metas._
+import tech.scoundrel.rogue.CClassListField
+import tech.scoundrel.rogue.cc.Metas._
 import org.bson.{ BSON, BsonDateTime, BsonDocument, Transformer }
 import org.bson.types._
 import org.junit._

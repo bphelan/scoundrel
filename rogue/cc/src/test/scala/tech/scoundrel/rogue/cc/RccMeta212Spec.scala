@@ -1,8 +1,8 @@
-package me.sgrouples.rogue.cc
+package tech.scoundrel.rogue.cc
 
 import java.time.Instant
 
-import me.sgrouples.rogue.BsonFormats._
+import tech.scoundrel.rogue.BsonFormats._
 import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, Matchers }
 

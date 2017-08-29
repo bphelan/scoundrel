@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package scoundrel
-package mongodb 
-package record 
-package field 
+package tech.scoundrel
+package mongodb
+package record
+package field
 
-import scala.xml.{Node, NodeSeq, Text}
+import scala.xml.{ Node, NodeSeq, Text }
 
-import net.liftweb.common.{Box, Empty, Failure, Full}
+import net.liftweb.common.{ Box, Empty, Failure, Full }
 import net.liftweb.http.S
 import net.liftweb.http.js.JE._
-import net.liftweb.util.{FatLazy, FieldError, Helpers, Safe}
+import net.liftweb.util.{ FatLazy, FieldError, Helpers, Safe }
 
 import Helpers._
 
@@ -39,7 +39,7 @@ object Password extends JsonObjectMeta[Password] {
 object MongoPasswordField {
   val blankPw = "*******"
 
-  def encrypt(s: String, salt: String) = hash("{"+s+"} salt={" + salt + "}")
+  def encrypt(s: String, salt: String) = hash("{" + s + "} salt={" + salt + "}")
 }
 
 class MongoPasswordField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType, minLen: Int) extends JsonObjectField[OwnerType, Password](rec, Password) {
@@ -60,17 +60,15 @@ class MongoPasswordField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType, min
       if (p.salt.length == 0) // only encrypt the password if it hasn't already been encrypted
         Password(MongoPasswordField.encrypt(p.pwd, salt_i.get), salt_i.get)
       else
-        p
-    )
+        p)
   }
 
   override def validate: List[FieldError] = runValidation(validatorValue)
 
   private def elem = S.fmapFunc(S.SFuncHolder(this.setPassword(_))) {
-    funcName => <input type="password"
-      name={funcName}
-      value=""
-      tabindex={tabIndex.toString}/>}
+    funcName =>
+      <input type="password" name={ funcName } value="" tabindex={ tabIndex.toString }/>
+  }
 
   override def toForm: Box[NodeSeq] =
     uniqueFieldId match {

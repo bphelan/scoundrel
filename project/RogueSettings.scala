@@ -4,30 +4,32 @@ import Keys.{scalaVersion, _}
 
 object RogueSettings {
 
-  val nexus = "https://nexus.groupl.es/"
-  val nexusReleases = "releases" at nexus+"repository/maven-releases/"
-  val nexusSnapshots = "snapshots" at nexus+"repository/maven-snapshots/"
+  //val nexus = "https://nexus.groupl.es/"
+  //val nexusReleases = "releases" at nexus+"repository/maven-releases/"
+  //val nexusSnapshots = "snapshots" at nexus+"repository/maven-snapshots/"
 
   lazy val defaultSettings: Seq[Setting[_]] = Seq(
     version := "3.1.14",
-    organization := "me.sgrouples",
+    organization := "tech.scoundrel",
     crossScalaVersions := Seq("2.11.11","2.12.3"),
     scalaVersion := "2.12.3",
     isSnapshot := true,
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },
+    /*
     publishTo := version { v =>
       if (v.endsWith("-SNAPSHOT"))
         Some(nexusSnapshots)
       else
         Some(nexusReleases)
     }.value,
+    */
    
-    resolvers ++= Seq(nexusReleases, nexusSnapshots),
+    //resolvers ++= Seq(nexusReleases, nexusSnapshots),
     scalacOptions ++= Seq("-deprecation", "-unchecked"), //, "-Xlog-implicit-conversions"),
     scalacOptions ++= Seq("-feature", "-language:_"),
-    credentials += Credentials(Path.userHome / ".ivy2" / ".meweCredentials") ,
+    //credentials += Credentials(Path.userHome / ".ivy2" / ".meweCredentials") ,
     testOptions in Test ++= Seq(Tests.Setup(() => MongoEmbedded.start), Tests.Cleanup(()=> MongoEmbedded.stop))
 	)
 }
@@ -43,9 +45,9 @@ object RogueDependencies {
   )
   
   val liftRecordDeps = Seq(
-  "net.liftweb"              %% "lift-record"         % liftVersion  % "compile" intransitive(),
-  "net.liftweb"              %% "lift-mongodb-record" % liftVersion  % "compile" intransitive(),
-  "net.liftweb"              %% "lift-webkit"         % liftVersion  % "compile" intransitive()
+    "net.liftweb"              %% "lift-record"         % liftVersion  % "compile" intransitive(),
+    "net.liftweb"              %% "lift-mongodb-record" % liftVersion  % "compile" intransitive(),
+    "net.liftweb"              %% "lift-webkit"         % liftVersion  % "compile" intransitive()
   )
   
   

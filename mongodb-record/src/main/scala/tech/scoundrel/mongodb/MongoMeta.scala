@@ -11,7 +11,7 @@
 * limitations under the License.
 */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import net.liftweb.json._
@@ -56,10 +56,10 @@ trait MongoMeta[BaseDocument] extends JsonFormats {
   }
 
   /**
-  * The name of the database collection.  Override this method if you
-  * want to change the collection to something other than the name of
-  * the class with an 's' appended to the end.
-  */
+   * The name of the database collection.  Override this method if you
+   * want to change the collection to something other than the name of
+   * the class with an 's' appended to the end.
+   */
   def collectionName: String = fixCollectionName
 
   /*
@@ -80,12 +80,12 @@ trait MongoMeta[BaseDocument] extends JsonFormats {
   /*
   * Count documents by DBObject query
   */
-  def count(qry: DBObject):Long = useColl { coll => coll.getCount(qry) }
+  def count(qry: DBObject): Long = useColl { coll => coll.getCount(qry) }
 
   /*
   * Count documents by JObject query
   */
-  def count(qry: JObject):Long = count(JObjectParser.parse(qry))
+  def count(qry: JObject): Long = count(JObjectParser.parse(qry))
 
   /*
   * Count distinct records on a given field
@@ -113,7 +113,7 @@ trait MongoMeta[BaseDocument] extends JsonFormats {
   def delete(qry: JObject): Unit = delete(JObjectParser.parse(qry))
 
   /* drop this document collection */
-  def drop: Unit =  useColl { coll => coll.drop }
+  def drop: Unit = useColl { coll => coll.drop }
 
   def createIndex(keys: JObject, unique: Boolean = false): Unit = {
     val options = new BasicDBObject
@@ -151,7 +151,7 @@ trait MongoMeta[BaseDocument] extends JsonFormats {
       JObjectParser.parse(qry),
       JObjectParser.parse(newobj),
       db,
-      opts :_*
+      opts: _*
     )
   }
 
@@ -159,7 +159,7 @@ trait MongoMeta[BaseDocument] extends JsonFormats {
   * Update document with a JObject query.
   */
   def update(qry: JObject, newobj: JObject, opts: UpdateOption*) {
-    useDb { db => update(qry, newobj, db, opts :_*) }
+    useDb { db => update(qry, newobj, db, opts: _*) }
   }
 }
 

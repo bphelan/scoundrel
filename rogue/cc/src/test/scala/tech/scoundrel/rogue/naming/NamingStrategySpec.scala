@@ -1,8 +1,8 @@
-package me.sgrouples.rogue.naming
+package tech.scoundrel.rogue.naming
 
-import me.sgrouples.rogue.cc.RCcMeta
+import tech.scoundrel.rogue.cc.RCcMeta
 import org.scalatest.{ FlatSpec, MustMatchers }
-import me.sgrouples.rogue.BsonFormats._
+import tech.scoundrel.rogue.BsonFormats._
 
 /**
  * Created by mwielocha on 09/08/16.

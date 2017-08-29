@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package scoundrel
+package tech.scoundrel
 package mongodb
 
 import java.util.regex.Pattern
-import java.util.{Date, UUID}
+import java.util.{ Date, UUID }
 import scala.util.matching.Regex
 
 import net.liftweb.json._
