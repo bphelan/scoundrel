@@ -7,9 +7,9 @@ import io.fsq.rogue.{ DBCollectionFactory, MongoJavaDriverAdapter, Query, QueryE
 import io.fsq.rogue.MongoHelpers.MongoSelect
 import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }
 import net.liftweb.common.Box
-import net.liftweb.mongodb.MongoDB
-import net.liftweb.mongodb.record.{ BsonRecord, MongoMetaRecord, MongoRecord }
-import net.liftweb.mongodb.record.field.BsonRecordField
+import tech.scoundrel.mongodb.MongoDB
+import tech.scoundrel.mongodb.record.{ BsonRecord, MongoMetaRecord, MongoRecord }
+import tech.scoundrel.mongodb.record.field.BsonRecordField
 import org.bson.Document
 import org.bson.types.BasicBSONList
 import java.util

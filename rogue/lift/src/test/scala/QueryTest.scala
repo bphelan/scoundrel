@@ -10,8 +10,8 @@ import io.fsq.rogue.lift.LiftRogue._
 import java.util.regex.Pattern
 
 import io.fsq.field.Field
-import net.liftweb.mongodb.record._
-import net.liftweb.mongodb.record.field._
+import tech.scoundrel.mongodb.record._
+import tech.scoundrel.mongodb.record.field._
 import net.liftweb.record._
 import net.liftweb.record.field._
 import org.bson.types._

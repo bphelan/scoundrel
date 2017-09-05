@@ -4,8 +4,8 @@ import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }
 import io.fsq.rogue.MongoHelpers.MongoSelect
 import com.mongodb.DBObject
 import com.mongodb.async.client.MongoCollection
-import net.liftweb.mongodb.record.{ MongoMetaRecord, MongoRecord }
-import net.liftweb.mongodb.MongoAsync
+import tech.scoundrel.mongodb.record.{ MongoMetaRecord, MongoRecord }
+import tech.scoundrel.mongodb.MongoAsync
 import org.bson.Document
 import io.fsq.rogue._
 

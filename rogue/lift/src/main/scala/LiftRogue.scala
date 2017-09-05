@@ -54,8 +54,8 @@ import io.fsq.rogue.index.{ IndexBuilder, TextIndexBuilder }
 import java.util.Date
 import net.liftweb.common.Box.box2Option
 import net.liftweb.json.JsonAST.{ JArray, JInt }
-import net.liftweb.mongodb.record.{ BsonRecord, MongoMetaRecord, MongoRecord }
-import net.liftweb.mongodb.record.field.{
+import tech.scoundrel.mongodb.record.{ BsonRecord, MongoMetaRecord, MongoRecord }
+import tech.scoundrel.mongodb.record.field.{
   BsonRecordField,
   BsonRecordListField,
   MongoCaseClassField,

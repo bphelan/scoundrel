@@ -2,6 +2,6 @@
 
 package io.fsq.rogue.lift
 
-import net.liftweb.mongodb.record.MongoRecord
+import tech.scoundrel.mongodb.record.MongoRecord
 
 trait HasMongoForeignObjectId[RefType <: MongoRecord[RefType] with ObjectIdKey[RefType]]

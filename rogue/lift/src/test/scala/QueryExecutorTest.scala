@@ -5,7 +5,7 @@ package io.fsq.rogue.lift.test
 import io.fsq.rogue.{ InitialState, Query, RogueException }
 import io.fsq.rogue.MongoHelpers.AndCondition
 import io.fsq.rogue.lift.{ LiftAdapter, ObjectIdKey }
-import net.liftweb.mongodb.record.{ MongoMetaRecord, MongoRecord }
+import tech.scoundrel.mongodb.record.{ MongoMetaRecord, MongoRecord }
 import org.junit.{ Ignore, Test }
 import org.specs2.matcher.JUnitMustMatchers
 

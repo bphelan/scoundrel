@@ -7,8 +7,8 @@ import io.fsq.rogue.index.{ Asc, IndexedRecord, TwoD }
 import io.fsq.rogue.indexchecker.MongoIndexChecker
 import io.fsq.rogue.lift.LiftRogue._
 import io.fsq.rogue.lift.ObjectIdKey
-import net.liftweb.mongodb.record._
-import net.liftweb.mongodb.record.field._
+import tech.scoundrel.mongodb.record._
+import tech.scoundrel.mongodb.record.field._
 import net.liftweb.record._
 import net.liftweb.record.field.IntField
 import org.bson.types.ObjectId

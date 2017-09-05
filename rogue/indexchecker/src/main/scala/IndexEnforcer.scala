@@ -3,7 +3,7 @@
 // package io.fsq.rogue.indexchecker
 
 // import io.fsq.rogue.MongoHelpers.AndCondition
-// import net.liftweb.mongodb.record.{MongoRecord, MongoMetaRecord}
+// import tech.scoundrel.mongodb.record.{MongoRecord, MongoMetaRecord}
 // import net.liftweb.record.Field
 
 // // ***************************************************************************

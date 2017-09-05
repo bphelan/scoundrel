@@ -2,8 +2,8 @@
 
 package io.fsq.rogue.lift
 
-import net.liftweb.mongodb.record.MongoRecord
-import net.liftweb.mongodb.record.field.ObjectIdField
+import tech.scoundrel.mongodb.record.MongoRecord
+import tech.scoundrel.mongodb.record.field.ObjectIdField
 import org.bson.types.ObjectId
 
 /**
