@@ -1,23 +1,19 @@
 // Copyright 2011 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift.test
+package tech.scoundrel.rogue.lift.test
 
 import java.util.UUID
-
-import com.mongodb.ReadPreference
-import io.fsq.rogue._
-import io.fsq.rogue.lift.LiftRogue._
 import java.util.regex.Pattern
 
-import io.fsq.field.Field
-import tech.scoundrel.mongodb.record._
-import tech.scoundrel.mongodb.record.field._
-import net.liftweb.record._
-import net.liftweb.record.field._
+import org.specs2.matcher.JUnitMustMatchers
+
+import com.mongodb.ReadPreference
 import org.bson.types._
 import org.joda.time.{ DateTime, DateTimeZone }
 import org.junit._
-import org.specs2.matcher.JUnitMustMatchers
+import tech.scoundrel.field.Field
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.lift.LiftRogue._
 
 class QueryTest extends JUnitMustMatchers {
 
@@ -538,7 +534,7 @@ class QueryTest extends JUnitMustMatchers {
   def testDollarSelector {
     val i: Field[VenueClaimBson, Venue] = Venue.claims.$
     val j = i.subfield(_.status)
-    val k: SelectableDummyField[_root_.io.fsq.rogue.lift.test.ClaimStatus.Value, Venue] = Venue.claims.$.subfield(_.status)
+    val k: SelectableDummyField[_root_.tech.scoundrel.rogue.lift.test.ClaimStatus.Value, Venue] = Venue.claims.$.subfield(_.status)
 
     Venue.where(_.legacyid eqs 1)
       .and(_.claims.subfield(_.userid) contains 2)

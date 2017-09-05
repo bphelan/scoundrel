@@ -2,8 +2,7 @@ package tech.scoundrel.rogue.cc
 import java.time.{ Instant, LocalDateTime }
 import java.util.{ Currency, UUID }
 
-import io.fsq.rogue.EnumerationListModifyField
-import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.{ EnumerationListModifyField, _ }
 import org.bson.types.ObjectId
 import BsonFormats._
 import EnumNameFormats._

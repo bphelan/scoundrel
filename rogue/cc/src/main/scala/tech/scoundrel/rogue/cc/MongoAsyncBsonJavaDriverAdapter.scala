@@ -7,18 +7,19 @@ import com.mongodb.async.SingleResultCallback
 import com.mongodb.async.client.{ MongoCollection, MongoDatabase }
 import com.mongodb.client.model._
 import com.mongodb.client.result.{ DeleteResult, UpdateResult }
-import io.fsq.rogue.MongoHelpers.MongoBuilder._
-import io.fsq.rogue.{ FindAndModifyQuery, ModifyQuery, Query }
-import io.fsq.rogue.QueryHelpers._
-import io.fsq.rogue.index.UntypedMongoIndex
-import org.bson.{ BsonDocument }
+import tech.scoundrel.rogue.MongoHelpers.MongoBuilder._
+import tech.scoundrel.rogue.{ FindAndModifyQuery, ModifyQuery }
+import tech.scoundrel.rogue.QueryHelpers._
+import org.bson.BsonDocument
 import org.bson.conversions.Bson
-
 import scala.collection.JavaConverters._
 import scala.concurrent.{ Future, Promise }
 import scala.reflect.ClassTag
 import scala.util.Try
+
 import com.mongodb.ErrorCategory._
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.index.UntypedMongoIndex
 
 trait AsyncBsonDBCollectionFactory[MB] {
 

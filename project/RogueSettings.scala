@@ -14,6 +14,7 @@ object RogueSettings {
     crossScalaVersions := Seq("2.11.11","2.12.3"),
     scalaVersion := "2.12.3",
     isSnapshot := true,
+    parallelExecution in Test := false,
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },

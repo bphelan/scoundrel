@@ -1,9 +1,10 @@
 package tech.scoundrel.rogue.cc
 
 import com.mongodb.client.{ MongoCollection, MongoDatabase }
-import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }
-import io.fsq.rogue.{ Query, QueryHelpers }
+import tech.scoundrel.rogue.index.UntypedMongoIndex
 import org.bson.BsonDocument
+import tech.scoundrel.rogue.index.{ IndexedRecord, UntypedMongoIndex }
+import tech.scoundrel.rogue.{ Query, QueryHelpers }
 
 object CcDBCollectionFactory extends BsonDBCollectionFactory[CcMeta[_]] {
   type TCM = CcMeta[_]

@@ -1,19 +1,20 @@
-package io.fsq.rogue.test
+package tech.scoundrel.rogue.test
 
 import com.mongodb._
 import com.mongodb.async.client
-import com.mongodb.async.client.{ MongoClients, MongoCollection, MongoDatabase }
-import io.fsq.rogue.MongoHelpers.{ AndCondition, MongoSelect }
-import io.fsq.rogue.index.UntypedMongoIndex
-import io.fsq.rogue.test.TrivialORM.{ Meta, Record }
-import io.fsq.rogue.{ QueryOptimizer, RogueReadSerializer, RogueWriteSerializer, _ }
+import com.mongodb.async.client._
+import tech.scoundrel.rogue.MongoHelpers.{ AndCondition, MongoSelect }
+import tech.scoundrel.rogue.test.TrivialORM.{ Meta, Record }
+import tech.scoundrel.rogue.RogueWriteSerializer
 import org.bson.Document
 import org.junit.{ Before, Test }
 import org.specs2.matcher.JUnitMustMatchers
-
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.index.UntypedMongoIndex
 
 object TrivialAsyncORMTests {
 

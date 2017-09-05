@@ -9,14 +9,14 @@ package tech.scoundrel.rogue.cc
 
 import java.time.{ Instant, LocalDateTime }
 
-import io.fsq.field.{ RequiredField, Field => RField, OptionalField => ROptionalField }
-import io.fsq.rogue.{ BSONType, FindAndModifyQuery, LatLong, ListModifyField, ListQueryField, MandatorySelectField, MapModifyField, MapQueryField, ModifyField, ModifyQuery, NumericModifyField, NumericQueryField, ObjectIdQueryField, OptionalSelectField, Query, QueryField, QueryHelpers, Rogue, RogueException, SafeModifyField, SelectField, ShardingOk, StringQueryField, StringsListQueryField, Unlimited, Unordered, Unselected, Unskipped, _ }
-import io.fsq.rogue.MongoHelpers.AndCondition
-import io.fsq.rogue.index.IndexBuilder
+import tech.scoundrel.field.{ RequiredField, Field => RField, OptionalField => ROptionalField }
+import tech.scoundrel.rogue.MongoHelpers.AndCondition
 import java.util.{ Currency, Date, UUID }
 
-import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.{ RogueException, _ }
 import org.bson.types.ObjectId
+import tech.scoundrel.field.{ Field, OptionalField }
+import tech.scoundrel.rogue.index.IndexBuilder
 
 trait CcRogue {
   def OrQuery[M, R](subqueries: Query[M, R, _]*): Query[M, R, Unordered with Unselected with Unlimited with Unskipped with HasOrClause] = {
@@ -84,16 +84,16 @@ trait CcRogue {
     ccQuery.asInstanceOf[ExecutableQuery[MB, M, R, InitialState]]
   }
 
-  implicit def localDateTimeFieldToLocalDateTimeQueryField[O <: CcMeta[_]](f: RField[LocalDateTime, O]): LocalDateTimeQueryField[O] =
+  implicit def localDateTimeFieldToLocalDateTimeQueryField[O <: CcMeta[_]](f: Field[LocalDateTime, O]): LocalDateTimeQueryField[O] =
     new LocalDateTimeQueryField(f)
 
-  implicit def instantFieldToInstantQueryField[O <: CcMeta[_]](f: RField[Instant, O]): InstantQueryField[O] =
+  implicit def instantFieldToInstantQueryField[O <: CcMeta[_]](f: Field[Instant, O]): InstantQueryField[O] =
     new InstantQueryField(f)
 
-  implicit def currencyFieldToCurrencyQueryField[O <: CcMeta[_]](f: RField[Currency, O]): CurrencyQueryField[O] =
+  implicit def currencyFieldToCurrencyQueryField[O <: CcMeta[_]](f: Field[Currency, O]): CurrencyQueryField[O] =
     new CurrencyQueryField[O](f)
 
-  implicit def bigDecimalFieldToCurrencyQueryField[O <: CcMeta[_]](f: RField[BigDecimal, O]): BigDecimalQueryField[O] =
+  implicit def bigDecimalFieldToCurrencyQueryField[O <: CcMeta[_]](f: Field[BigDecimal, O]): BigDecimalQueryField[O] =
     new BigDecimalQueryField[O](f)
 
   implicit def caseClassFieldToQueryField[C, M <: CcMeta[C], O](f: CClassField[C, M, O]): CClassQueryField[C, M, O] =
@@ -120,7 +120,7 @@ trait CcRogue {
   implicit def optCcFieldToCcModifyField[C, M <: CcMeta[C], O](f: OptCClassField[C, M, O]): OptCClassModifyField[C, M, O] =
     new OptCClassModifyField[C, M, O](f)
 
-  implicit def uuidFieldToQueryField[O <: CcMeta[_]](f: RField[UUID, O]): QueryField[UUID, O] = new QueryField(f)
+  implicit def uuidFieldToQueryField[O <: CcMeta[_]](f: Field[UUID, O]): QueryField[UUID, O] = new QueryField(f)
 
   implicit def ccListFieldToCCSeqModifyField[C, M <: CcMeta[C], O](f: CClassListField[C, M, O]): CClassSeqModifyField[C, M, O] = new CClassSeqModifyField[C, M, O](f)
 
@@ -130,23 +130,23 @@ trait CcRogue {
 
   implicit def optCcArrayFieldToCCArrayModifyField[C, M <: CcMeta[C], O](f: OptCClassArrayField[C, M, O]): CClassArrayModifyField[C, M, O] = new CClassArrayModifyField[C, M, O](f)
 
-  implicit def localDateTimeFieldToLocalDateTimeModifyField[O <: CcMeta[_]](f: RField[LocalDateTime, O]): LocalDateTimeModifyField[O] =
+  implicit def localDateTimeFieldToLocalDateTimeModifyField[O <: CcMeta[_]](f: Field[LocalDateTime, O]): LocalDateTimeModifyField[O] =
     new LocalDateTimeModifyField(f)
 
-  implicit def instantFieldToLocalDateTimeModifyField[O <: CcMeta[_]](f: RField[Instant, O]): InstantModifyField[O] =
+  implicit def instantFieldToLocalDateTimeModifyField[O <: CcMeta[_]](f: Field[Instant, O]): InstantModifyField[O] =
     new InstantModifyField(f)
 
-  implicit def currencyFieldToCurrencyModifyField[O <: CcMeta[_]](f: RField[Currency, O]): CurrencyModifyField[O] =
+  implicit def currencyFieldToCurrencyModifyField[O <: CcMeta[_]](f: Field[Currency, O]): CurrencyModifyField[O] =
     new CurrencyModifyField[O](f)
 
-  implicit def bigDecimalFieldToCurrencyModifyField[O <: CcMeta[_]](f: RField[BigDecimal, O]): BigDecimalModifyField[O] =
+  implicit def bigDecimalFieldToCurrencyModifyField[O <: CcMeta[_]](f: Field[BigDecimal, O]): BigDecimalModifyField[O] =
     new BigDecimalModifyField[O](f)
 
   implicit def mandatoryFieldToSelectField[M, V](f: MCField[V, M]): SelectField[V, M] =
     new MandatorySelectField(f)
 
   implicit def optionalFieldToSelectField[M <: CcMeta[_], V](f: OCField[V, M]): SelectField[Option[V], M] =
-    new OptionalSelectField(new ROptionalField[V, M] {
+    new OptionalSelectField(new OptionalField[V, M] {
       override def name = f.name
       override def owner = f.owner
     })

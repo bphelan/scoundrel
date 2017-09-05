@@ -1,69 +1,26 @@
 // Copyright 2012 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift
+package tech.scoundrel.rogue.lift
 
-import io.fsq.field.{ Field => RField, OptionalField => ROptionalField }
-import io.fsq.rogue.{
-  BSONType,
-  BsonRecordListModifyField,
-  BsonRecordListQueryField,
-  BsonRecordModifyField,
-  BsonRecordQueryField,
-  DateModifyField,
-  DateQueryField,
-  EnumIdQueryField,
-  EnumNameQueryField,
-  EnumerationListModifyField,
-  EnumerationListQueryField,
-  EnumerationModifyField,
-  FindAndModifyQuery,
-  ForeignObjectIdQueryField,
-  GeoModifyField,
-  GeoQueryField,
-  HasOrClause,
-  InitialState,
-  LatLong,
-  ListModifyField,
-  ListQueryField,
-  MandatorySelectField,
-  MapModifyField,
-  MapQueryField,
-  ModifyField,
-  ModifyQuery,
-  NumericModifyField,
-  NumericQueryField,
-  ObjectIdQueryField,
-  OptionalSelectField,
-  Query,
-  QueryField,
-  QueryHelpers,
-  Rogue,
-  RogueException,
-  SafeModifyField,
-  SelectField,
-  ShardingOk,
-  StringQueryField,
-  StringsListQueryField,
-  Unlimited,
-  Unordered,
-  Unselected,
-  Unskipped
-}
-import io.fsq.rogue.MongoHelpers.AndCondition
-import io.fsq.rogue.index.{ IndexBuilder, TextIndexBuilder }
+import tech.scoundrel.field.{ Field => RField, OptionalField => ROptionalField }
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.MongoHelpers.AndCondition
+import tech.scoundrel.rogue.index.TextIndexBuilder
 import java.util.Date
+
 import net.liftweb.common.Box.box2Option
 import net.liftweb.json.JsonAST.{ JArray, JInt }
-import tech.scoundrel.mongodb.record.{ BsonRecord, MongoMetaRecord, MongoRecord }
-import tech.scoundrel.mongodb.record.field.{
-  BsonRecordField,
-  BsonRecordListField,
-  MongoCaseClassField,
-  MongoCaseClassListField
-}
-import net.liftweb.record.{ Field, MandatoryTypedField, OptionalTypedField, Record }
+
+import tech.scoundrel.mongodb.record._
+import tech.scoundrel.mongodb.record.field._
+import net.liftweb.record._
 import net.liftweb.record.field.EnumField
+
 import org.bson.types.ObjectId
+import tech.scoundrel
+import tech.scoundrel.field.{ OptionalField, RequiredField }
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.index.{ IndexBuilder, TextIndexBuilder }
 
 trait LiftRogue {
   def OrQuery[M <: MongoRecord[M], R](subqueries: Query[M, R, _]*): Query[M, R, Unordered with Unselected with Unlimited with Unskipped with HasOrClause] = {
@@ -139,7 +96,7 @@ trait LiftRogue {
   }
 
   implicit def rbsonRecordFieldToBsonRecordQueryField[M <: BsonRecord[M], B <: BsonRecord[B]](
-    f: RField[B, M]
+    f: scoundrel.field.Field[B, M]
   ): BsonRecordQueryField[M, B] = {
     // a hack to get at the embedded record
     val owner = f.owner
@@ -264,20 +221,20 @@ trait LiftRogue {
     new MandatorySelectField(f)
 
   implicit def optionalFieldToSelectField[M <: BsonRecord[M], V](f: Field[V, M] with OptionalTypedField[V]): SelectField[Option[V], M] =
-    new OptionalSelectField(new ROptionalField[V, M] {
+    new OptionalSelectField(new OptionalField[V, M] {
       override def name = f.name
       override def owner = f.owner
     })
 
   implicit def mandatoryLiftField2RequiredRecordv2Field[M <: BsonRecord[M], V](
     f: Field[V, M] with MandatoryTypedField[V]
-  ): io.fsq.field.RequiredField[V, M] = new io.fsq.field.RequiredField[V, M] {
+  ): RequiredField[V, M] = new RequiredField[V, M] {
     override def name = f.name
     override def owner = f.owner
     override def defaultValue = f.defaultValue
   }
 
-  implicit def liftField2Recordv2Field[M <: Record[M], V](f: Field[V, M]): io.fsq.field.Field[V, M] = new io.fsq.field.Field[V, M] {
+  implicit def liftField2Recordv2Field[M <: Record[M], V](f: Field[V, M]): scoundrel.field.Field[V, M] = new scoundrel.field.Field[V, M] {
     override def name = f.name
     override def owner = f.owner
   }

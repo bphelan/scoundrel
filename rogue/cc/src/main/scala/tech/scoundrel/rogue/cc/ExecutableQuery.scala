@@ -4,15 +4,15 @@ package tech.scoundrel.rogue.cc
 // Copyright 2016 Sgrouples Inc. All Rights Reserved.
 
 import com.mongodb.{ ReadPreference, WriteConcern }
-import io.fsq.field.Field
-import io.fsq.rogue.{ AddLimit, FindAndModifyQuery, Iter, ModifyQuery, Query, RequireShardKey, Required, ShardingOk, Unlimited, Unselected, Unskipped, _ }
-import io.fsq.rogue.MongoHelpers.MongoSelect
-
+import tech.scoundrel.rogue.{ AddLimit, Iter, RequireShardKey, Required, ShardingOk, Unlimited, Unskipped, _ }
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
 import com.mongodb.client.MongoDatabase
 import com.mongodb.async.client.{ MongoDatabase => MongoAsyncDatabase }
-
 import scala.concurrent.Future
 import scala.reflect.ClassTag
+
+import tech.scoundrel.field.Field
+import tech.scoundrel.rogue._
 
 case class ExecutableQuery[MB, M <: MB, R, State](
     query: Query[M, R, State],

@@ -1,13 +1,15 @@
-package io.fsq.rogue.lift
+package tech.scoundrel.rogue.lift
 
-import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }
-import io.fsq.rogue.MongoHelpers.MongoSelect
+import tech.scoundrel.rogue.index.UntypedMongoIndex
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
 import com.mongodb.DBObject
 import com.mongodb.async.client.MongoCollection
 import tech.scoundrel.mongodb.record.{ MongoMetaRecord, MongoRecord }
 import tech.scoundrel.mongodb.MongoAsync
 import org.bson.Document
-import io.fsq.rogue._
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.index.{ IndexedRecord, UntypedMongoIndex }
 
 object LiftAsyncDBCollectionFactory extends AsyncDBCollectionFactory[MongoRecord[_] with MongoMetaRecord[_], MongoRecord[_]] {
   override def getDBCollection[M <: MongoRecord[_] with MongoMetaRecord[_]](query: Query[M, _, _]): MongoCollection[Document] = {

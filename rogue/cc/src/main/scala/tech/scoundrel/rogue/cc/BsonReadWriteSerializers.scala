@@ -1,6 +1,6 @@
 package tech.scoundrel.rogue.cc
 
-import io.fsq.rogue.MongoHelpers.MongoSelect
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
 import org.bson.{ BsonArray, BsonDocument, BsonNull, BsonValue }
 
 /**

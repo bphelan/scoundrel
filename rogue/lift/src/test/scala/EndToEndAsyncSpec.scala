@@ -1,14 +1,15 @@
 // Copyright 2011 Foursquare Labs Inc. All Rights Reserved.
-package io.fsq.rogue.lift.test
+package tech.scoundrel.rogue.lift.test
 
 import java.util.regex.Pattern
 
 import com.mongodb.ReadPreference
-import io.fsq.rogue._
-import io.fsq.rogue.lift.LiftRogue._
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.lift.LiftRogue._
 import org.bson.types.ObjectId
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest._
+import tech.scoundrel.rogue.LatLong
 
 /**
  * Contains tests that test the interaction of Rogue with a real mongo.

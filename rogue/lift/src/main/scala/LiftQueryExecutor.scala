@@ -1,18 +1,22 @@
 // Copyright 2012 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift
+package tech.scoundrel.rogue.lift
 
 import com.mongodb.{ DBCollection, DBObject }
-import io.fsq.rogue.{ DBCollectionFactory, MongoJavaDriverAdapter, Query, QueryExecutor, QueryHelpers, QueryOptimizer, RogueReadSerializer, RogueWriteSerializer }
-import io.fsq.rogue.MongoHelpers.MongoSelect
-import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
+import tech.scoundrel.rogue.index.UntypedMongoIndex
 import net.liftweb.common.Box
+
 import tech.scoundrel.mongodb.MongoDB
-import tech.scoundrel.mongodb.record.{ BsonRecord, MongoMetaRecord, MongoRecord }
+import tech.scoundrel.mongodb.record._
 import tech.scoundrel.mongodb.record.field.BsonRecordField
 import org.bson.Document
 import org.bson.types.BasicBSONList
 import java.util
+
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.index.{ IndexedRecord, UntypedMongoIndex }
 
 object LiftDBCollectionFactory extends DBCollectionFactory[MongoRecord[_] with MongoMetaRecord[_], MongoRecord[_]] {
   override def getDBCollection[M <: MongoRecord[_] with MongoMetaRecord[_]](query: Query[M, _, _]): DBCollection = {

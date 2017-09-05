@@ -1,14 +1,16 @@
 package tech.scoundrel.rogue.cc
 
-import io.fsq.rogue.index.{ IndexedRecord, UntypedMongoIndex }
-import io.fsq.rogue.MongoHelpers.MongoSelect
+import tech.scoundrel.rogue.index.UntypedMongoIndex
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
 import com.mongodb.DBObject
 import com.mongodb.async.client.{ MongoCollection, MongoDatabase }
 import org.bson.{ BsonArray, BsonDocument, BsonNull, BsonValue }
-import io.fsq.rogue._
+import tech.scoundrel.rogue._
 import org.bson.codecs.configuration.CodecRegistries
-
 import scala.util.Try
+
+import tech.scoundrel.rogue.index.{ IndexedRecord, UntypedMongoIndex }
+import tech.scoundrel.rogue.{ Query, QueryHelpers }
 
 object CcAsyncDBCollectionFactory extends AsyncBsonDBCollectionFactory[CcMeta[_]] {
   type TCM = CcMeta[_]

@@ -1,13 +1,12 @@
 package tech.scoundrel.rogue
 
-import java.time.{ Instant, LocalDateTime, ZoneOffset }
+import java.time._
 import java.util.{ Currency, Date }
 
-import io.fsq.field.Field
-import io.fsq.rogue._
-import tech.scoundrel.rogue.cc.CcMeta
-import org.bson.types.Decimal128
 import org.bson._
+import org.bson.types.Decimal128
+import tech.scoundrel.field.Field
+import tech.scoundrel.rogue.cc.CcMeta
 
 /**
  * Trait representing a field and all the operations on it.

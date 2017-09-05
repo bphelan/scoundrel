@@ -7,12 +7,13 @@ import tech.scoundrel.rogue.cc.debug.Debug
 import org.bson.types.ObjectId
 import shapeless.tag
 import shapeless.tag._
-
 import scala.collection.mutable
 import scala.reflect.runtime.universe
 import scala.reflect.runtime.universe._
 import scala.reflect.{ ClassTag, api }
+
 import Debug.DefaultImplicits._
+import tech.scoundrel.field.Field
 import tech.scoundrel.rogue.map.MapKeyFormat
 
 private[cc] sealed trait Marker
@@ -61,7 +62,7 @@ trait QueryFieldHelpers[Meta] extends {
 
   private[this] val names: mutable.Map[Int, String] = mutable.Map.empty
 
-  private[this] val fields: mutable.Map[String, io.fsq.field.Field[_, _]] = mutable.Map.empty
+  private[this] val fields: mutable.Map[String, Field[_, _]] = mutable.Map.empty
 
   private[this] val resolved = new AtomicBoolean(false)
 
@@ -97,7 +98,7 @@ trait QueryFieldHelpers[Meta] extends {
 
     val decode: Symbol => String = _.name.decodedName.toString.trim
 
-    // we are looking for vals accessible from io.fsq.field.Field[_, _] and tagged with Marker
+    // we are looking for vals accessible from tech.scoundrel.field.Field[_, _] and tagged with Marker
 
     def returnsMarkedField(symbol: Symbol): Boolean = {
 
@@ -110,15 +111,15 @@ trait QueryFieldHelpers[Meta] extends {
             s"typeArgs: ${typeArgs.mkString("[", ", ", "]")}"
         )
 
-      if (!typeArgs.exists(_ <:< typeOf[io.fsq.field.Field[_, _]]))
+      if (!typeArgs.exists(_ <:< typeOf[Field[_, _]]))
         ignoredFields += Ignored(
           symbol,
-          s"!typeArgs.exists(_ <:< typeOf[io.fsq.field.Field[_, _]]), " +
+          s"!typeArgs.exists(_ <:< typeOf[tech.scoundrel.field.Field[_, _]]), " +
             s"typeArgs: ${typeArgs.mkString("[", ", ", "]")}"
         )
 
       typeArgs.exists(_ =:= typeOf[Marker]) &&
-        typeArgs.exists(_ <:< typeOf[io.fsq.field.Field[_, _]])
+        typeArgs.exists(_ <:< typeOf[Field[_, _]])
     }
 
     /*
@@ -168,12 +169,12 @@ trait QueryFieldHelpers[Meta] extends {
   /*
     This weird tagging by Marker trait is here because we need to filter out fields declared
     directly by calling constructors (like before we had this helper): `val name = new StringField("name", this)`
-    They are both vals and do return a type assignable from `io.fsq.field.Field[_, _]`, so to know that those
+    They are both vals and do return a type assignable from `tech.scoundrel.field.Field[_, _]`, so to know that those
     are not to be counted for name resolution, we must tag the right ones with a marking trait.
     Its complicated, I know, meta programming usually is... But Miles Sabin's @@ is awesome, don't you think?
    */
 
-  protected def named[T <: io.fsq.field.Field[_, _]](func: String => T): T @@ Marker = lock.synchronized {
+  protected def named[T <: Field[_, _]](func: String => T): T @@ Marker = lock.synchronized {
     if (!resolved.get()) resolve() // lets try one more time to find those names
 
     val nextId = nextNameId
@@ -186,7 +187,7 @@ trait QueryFieldHelpers[Meta] extends {
     tag[Marker][T](field)
   }
 
-  protected def named[T <: io.fsq.field.Field[_, _]](name: String)(func: String => T): T @@ Marker = lock.synchronized {
+  protected def named[T <: Field[_, _]](name: String)(func: String => T): T @@ Marker = lock.synchronized {
     if (!resolved.get()) resolve()
     names += nextNameId -> name
     val field = func(name)
@@ -212,7 +213,7 @@ trait QueryFieldHelpers[Meta] extends {
   private[this] def resolveError(id: Int): Nothing = throw new IllegalStateException(debugInfo(id))
 
   // utility methods, not sure if they are usefull...
-  def fieldByName[T <: io.fsq.field.Field[_, _]](name: String): T = fields(name).asInstanceOf[T]
+  def fieldByName[T <: Field[_, _]](name: String): T = fields(name).asInstanceOf[T]
 
   def fieldNames: Iterable[String] = Seq(names.values.toSeq: _*) // making sure its a copy
   def fieldNamesSorted: Seq[String] = Seq(names.toSeq.sortBy(_._1).map(_._2): _*) // making sure its a copy

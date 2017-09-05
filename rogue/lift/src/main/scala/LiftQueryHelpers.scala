@@ -1,6 +1,6 @@
 // Copyright 2014 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift
+package tech.scoundrel.rogue.lift
 
 import com.mongodb.DBObject
 import net.liftweb.json.{ Extraction, Formats, Serializer, TypeInfo }

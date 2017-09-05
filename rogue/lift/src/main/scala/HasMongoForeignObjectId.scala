@@ -1,6 +1,6 @@
 // Copyright 2012 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift
+package tech.scoundrel.rogue.lift
 
 import tech.scoundrel.mongodb.record.MongoRecord
 

@@ -1,17 +1,19 @@
 // Copyright 2011 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift.test
+package tech.scoundrel.rogue.lift.test
 
 import com.mongodb.ReadPreference
-import io.fsq.rogue._
-import io.fsq.rogue.Iter._
-import io.fsq.rogue.lift.LiftRogue._
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.Iter._
+import tech.scoundrel.rogue.lift.LiftRogue._
 import java.util.Calendar
 import java.util.regex.Pattern
 
 import org.bson.types.ObjectId
 import org.junit.{ After, Before, Ignore, Test }
 import org.specs2.matcher.JUnitMustMatchers
+
+import tech.scoundrel.rogue.LatLong
 
 /**
  * Contains tests that test the interaction of Rogue with a real mongo.

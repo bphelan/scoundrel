@@ -1,10 +1,10 @@
 // Copyright 2015 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.test
+package tech.scoundrel.rogue.test
 
 import com.mongodb.{ BasicDBObjectBuilder, DBObject }
-import io.fsq.field.OptionalField
 import org.bson.Document
+import tech.scoundrel.field.OptionalField
 
 /**
  * A trivial ORM layer that implements the interfaces rogue needs. The goal is

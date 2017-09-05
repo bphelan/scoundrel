@@ -4,9 +4,9 @@ import java.time.LocalDateTime
 import java.util.regex.Pattern
 
 import com.mongodb.client.MongoDatabase
-import io.fsq.rogue._
+import tech.scoundrel.rogue._
 import tech.scoundrel.rogue.LongField
-//import io.fsq.rogue.test.TrivialORMTests
+//import tech.scoundrel.rogue.test.TrivialORMTests
 import tech.scoundrel.rogue.cc.CcRogue._
 import org.bson.types.ObjectId
 import org.junit.{ After, Before, Test }

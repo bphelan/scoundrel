@@ -1,14 +1,14 @@
 // Copyright 2012 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift
-
-import com.mongodb.WriteConcern
-import io.fsq.field.Field
-import io.fsq.rogue._
-import io.fsq.rogue.MongoHelpers.MongoSelect
+package tech.scoundrel.rogue.lift
 
 import scala.concurrent.Future
 import scala.reflect.ClassTag
+
+import com.mongodb.WriteConcern
+import tech.scoundrel.field.Field
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
+import tech.scoundrel.rogue._
 
 case class ExecutableQuery[MB, M <: MB, RB, R, State](
     query: Query[M, R, State],

@@ -1,9 +1,8 @@
 package tech.scoundrel.rogue
-import java.time.{ Instant, LocalDateTime, ZoneOffset }
+import java.time._
 import java.util.{ Currency, Locale, UUID }
 
-import io.fsq.field.{ Field, OptionalField, RequiredField }
-import io.fsq.rogue.LatLong
+import tech.scoundrel.field.RequiredField
 import shapeless._
 import labelled.{ FieldType, field }
 import tech.scoundrel.rogue.cc.CcMeta
@@ -13,14 +12,15 @@ import syntax.singleton._
 import record._
 import ops.record._
 import org.bson.types.ObjectId
-import org.bson.{ BsonDocument, BsonNull, BsonValue }
+import org.bson._
 import shapeless.ops.hlist.LiftAll
 import shapeless.syntax.SingletonOps
-
 import scala.reflect.runtime.universe.TypeTag
-import shapeless.tag.@@
 
+import shapeless.tag.@@
 import scala.reflect.ClassTag
+
+import tech.scoundrel.field._
 
 abstract class CField[V, O](val name: String, val owner: O) extends Field[V, O]
 

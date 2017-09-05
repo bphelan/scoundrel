@@ -2,9 +2,9 @@ package tech.scoundrel.rogue.cc
 
 import java.util.UUID
 
-import io.fsq.rogue._
+import tech.scoundrel.rogue._
 import tech.scoundrel.rogue.BsonFormats._
-import tech.scoundrel.rogue.cc
+import tech.scoundrel.rogue._
 import org.bson.types.ObjectId
 import org.scalatest.{ FlatSpec, Matchers }
 import shapeless.tag

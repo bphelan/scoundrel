@@ -1,19 +1,19 @@
 package tech.scoundrel.rogue.cc
 
 import com.mongodb._
-import io.fsq.rogue.Iter._
-import io.fsq.rogue.index.UntypedMongoIndex
-
+import tech.scoundrel.rogue.Iter._
 import com.mongodb.client._
 import com.mongodb.client.model._
-import io.fsq.rogue.{ FindAndModifyQuery, ModifyQuery, Query, RogueException }
+import tech.scoundrel.rogue._
 import org.bson.BsonDocument
 import org.bson.conversions.Bson
-
 import scala.collection.mutable.ListBuffer
 import scala.collection.JavaConverters._
 import scala.reflect.ClassTag
-import scala.util.{ Failure, Success, Try }
+import scala.util._
+
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.index.UntypedMongoIndex
 
 trait BsonDBCollectionFactory[MB] {
   def getDBCollection[M <: MB](query: Query[M, _, _])(implicit db: MongoDatabase): MongoCollection[BsonDocument]
@@ -36,8 +36,8 @@ class MongoBsonJavaDriverAdapter[MB](
     decoderFactoryFunc: (MB) => DBDecoderFactory = (m: MB) => DefaultDBDecoder.FACTORY
 ) {
 
-  import io.fsq.rogue.MongoHelpers.MongoBuilder._
-  import io.fsq.rogue.QueryHelpers._
+  import tech.scoundrel.rogue.MongoHelpers.MongoBuilder._
+  import QueryHelpers._
 
   private[rogue] def runCommand[M <: MB, T](
     descriptionFunc: () => String,

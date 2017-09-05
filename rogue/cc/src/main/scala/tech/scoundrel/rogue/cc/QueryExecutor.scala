@@ -7,15 +7,15 @@ import java.util.function.Consumer
 import com.mongodb._
 import com.mongodb.async.client.{ MongoDatabase => MongoAsyncDatabase }
 import com.mongodb.client.MongoDatabase
-import io.fsq.field.Field
-import io.fsq.rogue.MongoHelpers.{ MongoModify, MongoSelect }
-import io.fsq.rogue._
-import io.fsq.spindle.types.MongoDisallowed
+import tech.scoundrel.rogue.MongoHelpers.{ MongoModify, MongoSelect }
+import tech.scoundrel.rogue._
 import org.bson.{ BsonDocument, BsonValue }
-
 import scala.concurrent.Future
 import scala.reflect.ClassTag
 import scala.collection.mutable.{ Builder, ListBuffer }
+
+import tech.scoundrel.field.Field
+import tech.scoundrel.rogue._
 
 trait RogueBsonRead[R] {
   def fromDocument(dbo: BsonDocument): R

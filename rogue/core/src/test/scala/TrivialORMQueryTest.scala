@@ -1,17 +1,20 @@
 // Copyright 2015 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.test
+package tech.scoundrel.rogue.test
 
 import com.mongodb._
-import io.fsq.rogue.MongoHelpers.{ AndCondition, MongoSelect }
-import io.fsq.rogue._
-import io.fsq.rogue.codecs.{ IntegerPrimitiveCodec, LongPrimitiveCodec }
-import io.fsq.rogue.index.UntypedMongoIndex
-import io.fsq.rogue.test.TrivialORM.{ Meta, Record }
+import tech.scoundrel.rogue.MongoHelpers.{ AndCondition, MongoSelect }
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.codecs.IntegerPrimitiveCodec
+import tech.scoundrel.rogue.test.TrivialORM.{ Meta, Record }
 import org.bson.Document
 import org.bson.codecs.configuration.CodecRegistries
 import org.junit.{ Before, Test }
 import org.specs2.matcher.JUnitMustMatchers
+
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.codecs.{ IntegerPrimitiveCodec, LongPrimitiveCodec }
+import tech.scoundrel.rogue.index.UntypedMongoIndex
 
 object TrivialSyncORM extends {
   val codecRegistry = CodecRegistries.fromRegistries(

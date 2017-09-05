@@ -4,9 +4,10 @@ import com.mongodb.MongoException
 import com.mongodb.async.client.{ MongoClient, MongoCollection, MongoDatabase }
 import com.mongodb.{ MongoClient => SyncMongoClient }
 import com.mongodb.client.{ MongoCollection => SyncMongoCollection, MongoDatabase => SyncMongoDatabase }
-import io.fsq.rogue.codecs.{ IntegerPrimitiveCodec, LongPrimitiveCodec }
+import tech.scoundrel.rogue.codecs.IntegerPrimitiveCodec
 import org.bson.BsonDocument
 import org.bson.codecs.configuration.CodecRegistries
+import tech.scoundrel.rogue.codecs.{ IntegerPrimitiveCodec, LongPrimitiveCodec }
 
 /**
  * Replacement of Mongo/MongoAsync from Lift

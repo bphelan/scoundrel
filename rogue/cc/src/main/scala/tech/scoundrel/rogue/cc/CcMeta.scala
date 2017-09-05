@@ -2,13 +2,13 @@ package tech.scoundrel.rogue.cc
 
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions
-import io.fsq.field.Field
 import tech.scoundrel.rogue.BsonFormat
 import tech.scoundrel.rogue.naming.{ LowerCase, NamingStrategy }
 import org.bson.{ BsonDocument, BsonInt32, BsonValue }
-
 import scala.concurrent.Future
 import scala.reflect.ClassTag
+
+import tech.scoundrel.field.Field
 
 trait CcMetaLike[-T] {
   type R

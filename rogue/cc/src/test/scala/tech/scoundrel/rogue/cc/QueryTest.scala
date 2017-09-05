@@ -2,25 +2,21 @@ package tech.scoundrel.rogue.cc
 
 // Copyright 2011 Foursquare Labs Inc. All Rights Reserved.
 
-import java.time.{ Instant, LocalDateTime, ZoneOffset }
+import java.time._
 import java.util.UUID
-
-import com.mongodb.ReadPreference
-import io.fsq.rogue._
-import CcRogue._
 import java.util.regex.Pattern
-import javax.xml.crypto.dsig.Transform
 
-import com.mongodb.util.{ JSON, JSONSerializers }
-import io.fsq.field.Field
-import tech.scoundrel.rogue.CClassListField
-import tech.scoundrel.rogue.cc.Metas._
-import org.bson.{ BSON, BsonDateTime, BsonDocument, Transformer }
+import org.specs2.matcher.JUnitMustMatchers
+
+import com.mongodb.util.JSON
+import org.bson._
 import org.bson.types._
 import org.junit._
-import org.specs2.matcher.JUnitMustMatchers
 import shapeless.tag
 import shapeless.tag.@@
+import tech.scoundrel.rogue._
+import tech.scoundrel.rogue.cc.CcRogue._
+import tech.scoundrel.rogue.cc.Metas._
 
 class QueryTest extends JUnitMustMatchers {
   // to make queries printable

@@ -1,13 +1,15 @@
 // Copyright 2011 Foursquare Labs Inc. All Rights Reserved.
 
-package io.fsq.rogue.lift.test
+package tech.scoundrel.rogue.lift.test
 
-import io.fsq.rogue.{ InitialState, Query, RogueException }
-import io.fsq.rogue.MongoHelpers.AndCondition
-import io.fsq.rogue.lift.{ LiftAdapter, ObjectIdKey }
+import tech.scoundrel.rogue.InitialState
+import tech.scoundrel.rogue.MongoHelpers.AndCondition
+import tech.scoundrel.rogue.lift.{ LiftAdapter, ObjectIdKey }
 import tech.scoundrel.mongodb.record.{ MongoMetaRecord, MongoRecord }
 import org.junit.{ Ignore, Test }
 import org.specs2.matcher.JUnitMustMatchers
+
+import tech.scoundrel.rogue.{ Query, RogueException }
 
 class LegacyQueryExecutorTest extends JUnitMustMatchers {
 
