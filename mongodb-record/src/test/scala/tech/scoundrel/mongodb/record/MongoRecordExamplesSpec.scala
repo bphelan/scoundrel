@@ -25,7 +25,7 @@ import net.liftweb.common.{ Box, Empty, Failure, Full }
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.JsonDSL._
 import net.liftweb.json.JsonAST.JObject
-import net.liftweb.record.field._
+import tech.scoundrel.record.field._
 import net.liftweb.util.TimeHelpers._
 import mongodb.record.field._
 

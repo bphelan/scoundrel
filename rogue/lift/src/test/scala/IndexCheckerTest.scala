@@ -2,23 +2,19 @@
 
 package tech.scoundrel.rogue.lift.test
 
-import tech.scoundrel.rogue.LatLong
-import tech.scoundrel.rogue.index._
-import tech.scoundrel.rogue.indexchecker.MongoIndexChecker
-import tech.scoundrel.rogue.lift.LiftRogue._
-import tech.scoundrel.rogue.lift.ObjectIdKey
-import tech.scoundrel.mongodb.record._
-import tech.scoundrel.mongodb.record.field._
-import net.liftweb.record._
-import net.liftweb.record.field.IntField
+import org.specs2.matcher.JUnitMustMatchers
 
 import org.bson.types.ObjectId
 import org.joda.time.DateTime
 import org.junit._
-import org.specs2.matcher.JUnitMustMatchers
-
-import tech.scoundrel.rogue._
+import tech.scoundrel.mongodb.record._
+import tech.scoundrel.mongodb.record.field._
+import tech.scoundrel.record.field.IntField
+import tech.scoundrel.rogue.{LatLong, _}
 import tech.scoundrel.rogue.index._
+import tech.scoundrel.rogue.indexchecker.MongoIndexChecker
+import tech.scoundrel.rogue.lift.LiftRogue._
+import tech.scoundrel.rogue.lift.ObjectIdKey
 
 class TestModel extends MongoRecord[TestModel] with ObjectIdKey[TestModel] {
   def meta = TestModel

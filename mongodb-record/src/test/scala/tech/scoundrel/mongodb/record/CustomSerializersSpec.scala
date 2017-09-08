@@ -30,7 +30,7 @@ import java.util.{ Calendar, Date }
 import org.bson.types.ObjectId
 import org.specs2.mutable.Specification
 
-import net.liftweb.record.field._
+import tech.scoundrel.record.field._
 import xml.{ Elem, NodeSeq }
 import net.liftweb.util.Helpers
 

@@ -28,7 +28,7 @@ import net.liftweb.http.js.JsExp
 import net.liftweb.http.{ LiftSession, S }
 import net.liftweb.json.JValue
 import net.liftweb.json.JsonAST._
-import net.liftweb.record._
+import tech.scoundrel.record._
 import net.liftweb.util.Helpers._
 import net.liftweb.util.{ FieldError, Helpers }
 import org.specs2.execute.AsResult

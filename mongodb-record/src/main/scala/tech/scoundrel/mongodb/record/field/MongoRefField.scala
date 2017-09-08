@@ -26,8 +26,8 @@ import net.liftweb.common._
 import net.liftweb.http.SHtml
 
 import org.bson.types.ObjectId
-import net.liftweb.record.TypedField
-import net.liftweb.record.field._
+import tech.scoundrel.record.TypedField
+import tech.scoundrel.record.field._
 
 /*
  * Trait for creating a Field for storing a "foreign key". Caches the
@@ -37,7 +37,7 @@ import net.liftweb.record.field._
  * toForm produces a select form element. You just need to supply the
  * options by overriding the options method.
  */
-trait MongoRefField[RefType <: MongoRecord[RefType], MyType] extends TypedField[MyType] {
+trait MongoRefField[RefType <: MongoRecord[RefType], ThisType] extends TypedField[ThisType] {
 
   /** The MongoMetaRecord of the referenced object **/
   def refMeta: MongoMetaRecord[RefType]
@@ -68,22 +68,22 @@ trait MongoRefField[RefType <: MongoRecord[RefType], MyType] extends TypedField[
   private var _obj: Box[RefType] = Empty
   private var _calcedObj = false
 
-  override def setBox(in: Box[MyType]): Box[MyType] = synchronized {
+  override def setBox(in: Box[ThisType]): Box[ThisType] = synchronized {
     _calcedObj = false // invalidate the cache
     super.setBox(in)
   }
 
   /** Options for select list **/
-  def options: List[(Box[MyType], String)] = Nil
+  def options: List[(Box[ThisType], String)] = Nil
 
   /** Label for the selection item representing Empty, show when this field is optional. Defaults to the empty string. */
   def emptyOptionLabel: String = ""
 
-  def buildDisplayList: List[(Box[MyType], String)] = {
+  def buildDisplayList: List[(Box[ThisType], String)] = {
     if (optional_?) (Empty, emptyOptionLabel) :: options else options
   }
 
-  private def elem = SHtml.selectObj[Box[MyType]](
+  private def elem = SHtml.selectObj[Box[ThisType]](
     buildDisplayList,
     Full(valueBox),
     setBox(_)

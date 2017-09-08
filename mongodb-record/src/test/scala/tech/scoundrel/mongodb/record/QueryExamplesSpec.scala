@@ -21,7 +21,7 @@ package record
 import BsonDSL._
 import net.liftweb.json.JObject
 import field._
-import net.liftweb.record.field._
+import tech.scoundrel.record.field._
 
 import java.util.{ Calendar, Date, UUID }
 import java.util.regex.Pattern

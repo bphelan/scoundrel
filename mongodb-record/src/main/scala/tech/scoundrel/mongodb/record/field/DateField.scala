@@ -23,7 +23,7 @@ import net.liftweb.http.S
 import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json.JsonAST._
 import net.liftweb.json.{ Formats, JValue }
-import net.liftweb.record._
+import tech.scoundrel.record._
 import net.liftweb.util.Helpers._
 
 trait DateTypedField extends TypedField[Date] {

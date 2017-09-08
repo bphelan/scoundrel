@@ -19,7 +19,7 @@ package mongodb
 package record
 package field
 
-import net.liftweb.record._
+import tech.scoundrel.record._
 
 import com.mongodb._
 import org.bson.Document

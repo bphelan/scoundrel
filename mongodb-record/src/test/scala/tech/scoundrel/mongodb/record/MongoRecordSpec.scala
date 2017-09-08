@@ -26,8 +26,8 @@ import net.liftweb.http.{ LiftSession, S }
 import net.liftweb.json.JsonAST.{ JArray, JNothing }
 import net.liftweb.json.JsonDSL._
 import net.liftweb.json.{ JObject, _ }
-import net.liftweb.record.RecordRules
-import net.liftweb.record.field.Countries
+import tech.scoundrel.record.RecordRules
+import tech.scoundrel.record.field.Countries
 import net.liftweb.util.Helpers.snakify
 import org.specs2.mutable.Specification
 

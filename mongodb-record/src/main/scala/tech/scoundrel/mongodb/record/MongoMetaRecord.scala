@@ -24,7 +24,7 @@ import scala.concurrent.{ Future, Promise }
 
 import net.liftweb.common._
 import net.liftweb.json.JsonAST._
-import net.liftweb.record.MandatoryTypedField
+import tech.scoundrel.record.MandatoryTypedField
 
 import com.mongodb._
 import com.mongodb.async.SingleResultCallback

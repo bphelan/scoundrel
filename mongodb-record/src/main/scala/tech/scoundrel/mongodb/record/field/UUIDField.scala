@@ -22,7 +22,7 @@ import net.liftweb.common._
 import net.liftweb.http.S
 import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json._
-import net.liftweb.record._
+import tech.scoundrel.record._
 import net.liftweb.util.Helpers._
 
 class UUIDField[OwnerType <: BsonRecord[OwnerType]](rec: OwnerType)

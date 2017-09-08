@@ -19,15 +19,16 @@ package mongodb
 package record
 package field
 
-import net.liftweb.common.{ Box, Empty, Failure, Full }
-import net.liftweb.http.js.JE.Str
-import net.liftweb.json.JsonAST.{ JNothing, JObject, JValue }
-import net.liftweb.record.{ Field, MandatoryTypedField, Record }
 import scala.xml.NodeSeq
 
-import com.mongodb.{ BasicDBObject, BasicDBObjectBuilder, DBObject, DBRef }
+import net.liftweb.common._
+import net.liftweb.http.js.JE.Str
+import net.liftweb.json.JsonAST.{ JNothing, JValue }
+
 import com.mongodb.util.JSON
+import com.mongodb.{ BasicDBObject, DBRef }
 import org.bson.types.ObjectId
+import tech.scoundrel.record.{ Field, MandatoryTypedField }
 
 /*
 * Field for storing a DBRef

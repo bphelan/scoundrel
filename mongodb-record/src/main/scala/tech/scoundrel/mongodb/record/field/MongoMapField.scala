@@ -21,14 +21,13 @@ package field
 
 import scala.xml.NodeSeq
 
-import net.liftweb.common.{ Box, Empty, Failure, Full }
-import net.liftweb.http.js.JE.{ JsNull, JsRaw }
+import net.liftweb.common._
 import net.liftweb.json._
-import net.liftweb.record._
 import net.liftweb.util.Helpers.tryo
 
 import com.mongodb._
 import org.bson.Document
+import tech.scoundrel.record._
 
 /**
  * Note: setting optional_? = false will result in incorrect equals behavior when using setFromJValue

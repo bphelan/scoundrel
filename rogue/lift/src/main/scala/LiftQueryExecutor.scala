@@ -2,19 +2,17 @@
 
 package tech.scoundrel.rogue.lift
 
-import com.mongodb.{ DBCollection, DBObject }
-import tech.scoundrel.rogue._
-import tech.scoundrel.rogue.MongoHelpers.MongoSelect
-import tech.scoundrel.rogue.index.UntypedMongoIndex
+import java.util
+
 import net.liftweb.common.Box
 
+import com.mongodb.{ DBCollection, DBObject }
+import org.bson.Document
+import org.bson.types.BasicBSONList
 import tech.scoundrel.mongodb.MongoDB
 import tech.scoundrel.mongodb.record._
 import tech.scoundrel.mongodb.record.field.BsonRecordField
-import org.bson.Document
-import org.bson.types.BasicBSONList
-import java.util
-
+import tech.scoundrel.rogue.MongoHelpers.MongoSelect
 import tech.scoundrel.rogue._
 import tech.scoundrel.rogue.index.{ IndexedRecord, UntypedMongoIndex }
 
@@ -136,7 +134,7 @@ class LiftQueryExecutor(
 object LiftQueryExecutor extends LiftQueryExecutor(LiftAdapter)
 
 object LiftQueryExecutorHelpers {
-  import net.liftweb.record.{ Field => LField }
+  import tech.scoundrel.record.{ Field => LField }
 
   def setInstanceFieldFromDboList(instance: BsonRecord[_], dbo: DBObject, fieldNames: List[String]): Option[_] = {
     fieldNames match {

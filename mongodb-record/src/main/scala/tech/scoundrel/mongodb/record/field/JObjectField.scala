@@ -21,7 +21,7 @@ package field
 
 import net.liftweb.util.Helpers.tryo
 
-import net.liftweb.record._
+import tech.scoundrel.record._
 import scala.xml.NodeSeq
 
 import net.liftweb.common._

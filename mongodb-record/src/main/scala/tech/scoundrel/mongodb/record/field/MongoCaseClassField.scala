@@ -22,7 +22,7 @@ import scala.xml.{ NodeSeq, Text }
 
 import net.liftweb.common._
 import net.liftweb.json._
-import net.liftweb.record._
+import tech.scoundrel.record._
 import net.liftweb.util.Helpers
 
 import com.mongodb.{ BasicDBList, DBObject }

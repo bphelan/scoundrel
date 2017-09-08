@@ -2,21 +2,19 @@
 
 package tech.scoundrel.rogue.lift.test
 
+import net.liftweb.util.ConnectionIdentifier
+
 import com.mongodb.MongoClient
+import org.bson.types.ObjectId
+import tech.scoundrel.mongodb.record._
+import tech.scoundrel.mongodb.record.field._
+import tech.scoundrel.mongodb.{ MongoAsync, MongoDB }
+import tech.scoundrel.record.field._
 import tech.scoundrel.rogue.index._
 import tech.scoundrel.rogue.lift.LiftRogue._
 import tech.scoundrel.rogue.lift.{ HasMongoForeignObjectId, ObjectIdKey }
 import tech.scoundrel.rogue.test.{ TrivialAsyncORMTests, TrivialSyncORM }
-import tech.scoundrel.rogue.{ ShardKey, Sharded }
-import tech.scoundrel.mongodb.record._
-import tech.scoundrel.mongodb.record.field._
-import tech.scoundrel.mongodb.{ MongoAsync, MongoDB }
-import net.liftweb.record.field._
-import net.liftweb.util.ConnectionIdentifier
-
-import org.bson.types.ObjectId
-import tech.scoundrel.rogue.LatLong
-import tech.scoundrel.rogue.index._
+import tech.scoundrel.rogue._
 
 /////////////////////////////////////////////////
 // Sample records for testing

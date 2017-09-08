@@ -26,7 +26,7 @@ import net.liftweb.common._
 import net.liftweb.http.SHtml
 import net.liftweb.json.JsonAST._
 import net.liftweb.json.{ JValue, JsonParser }
-import net.liftweb.record._
+import tech.scoundrel.record._
 import net.liftweb.util.Helpers._
 
 import com.mongodb._

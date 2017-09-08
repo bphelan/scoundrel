@@ -19,18 +19,16 @@ package mongodb
 package record
 package field
 
-import scala.xml.NodeSeq
-
 import java.util.Date
 
-import net.liftweb.common.{ Box, Empty, Failure, Full }
-import net.liftweb.http.js.JE.{ JsNull, JsObj, JsRaw, Str }
+import net.liftweb.common._
 import net.liftweb.http.S
+import net.liftweb.http.js.JE.{ JsNull, JsRaw }
 import net.liftweb.json._
-import net.liftweb.record.{ Field, FieldHelpers, MandatoryTypedField, Record }
 import net.liftweb.util.Helpers._
 
 import org.bson.types.ObjectId
+import tech.scoundrel.record._
 
 /*
 * Field for storing an ObjectId

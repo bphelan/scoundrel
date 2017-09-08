@@ -21,8 +21,8 @@ package record
 import java.util.regex.Pattern
 import scala.collection.JavaConversions._
 
-import net.liftweb.record._
-import net.liftweb.record.field._
+import tech.scoundrel.record._
+import tech.scoundrel.record.field._
 
 import com.mongodb._
 import java.util.prefs.BackingStoreException

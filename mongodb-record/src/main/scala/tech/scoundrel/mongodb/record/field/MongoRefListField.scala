@@ -19,10 +19,9 @@ package mongodb
 package record
 package field
 
-import net.liftweb.record.{ Field, MandatoryTypedField, TypedField }
 import java.util.UUID
 
-import net.liftweb.common.Box
+import net.liftweb.common._
 
 import org.bson.types.ObjectId
 

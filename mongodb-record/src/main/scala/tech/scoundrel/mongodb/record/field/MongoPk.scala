@@ -22,7 +22,8 @@ package field
 import java.util.UUID
 import scala.util.Random
 
-import net.liftweb.record.field._
+import tech.scoundrel.record.field._
+
 import net.liftweb.util.StringHelpers
 
 import org.bson.types.ObjectId

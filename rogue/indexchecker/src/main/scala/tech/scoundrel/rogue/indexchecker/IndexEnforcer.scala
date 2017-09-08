@@ -4,7 +4,7 @@
 
 // import tech.scoundrel.rogue.MongoHelpers.AndCondition
 // import tech.scoundrel.mongodb.record.{MongoRecord, MongoMetaRecord}
-// import net.liftweb.record.Field
+// import tech.scoundrel.record.Field
 
 // // ***************************************************************************
 // // *** Indexes

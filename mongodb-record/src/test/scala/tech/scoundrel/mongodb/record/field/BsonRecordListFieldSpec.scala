@@ -21,7 +21,7 @@ package field
 
 import org.specs2.mutable.Specification
 import net.liftweb.common._
-import net.liftweb.record.field.StringField
+import tech.scoundrel.record.field.StringField
 
 package bsonlistfieldspecs {
   class BookShelf extends MongoRecord[BookShelf] with ObjectIdPk[BookShelf] {

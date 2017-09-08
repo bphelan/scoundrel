@@ -26,9 +26,9 @@ import java.util.{ Date, UUID }
 import net.liftweb.common._
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.ext.{ EnumSerializer, JsonBoxSerializer }
-import net.liftweb.record._
-import net.liftweb.record.field._
-import net.liftweb.record.field.joda._
+import tech.scoundrel.record._
+import tech.scoundrel.record.field._
+import tech.scoundrel.record.field.joda._
 
 import org.joda.time.DateTime
 import tech.scoundrel.mongodb.record.field._

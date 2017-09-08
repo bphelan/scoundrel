@@ -19,15 +19,11 @@ package mongodb
 package record
 package field
 
-import org.bson.types.ObjectId
-import org.specs2.mutable.Specification
-
 import net.liftweb.common._
 import net.liftweb.json.ext.EnumNameSerializer
-import net.liftweb.record.field.{ EnumNameField, OptionalEnumNameField }
-import net.liftweb.util.Helpers._
+import org.specs2.mutable.Specification
 
-import com.mongodb._
+import tech.scoundrel.record.field.{ EnumNameField, OptionalEnumNameField }
 
 package enumnamefieldspecs {
   object WeekDay extends Enumeration {

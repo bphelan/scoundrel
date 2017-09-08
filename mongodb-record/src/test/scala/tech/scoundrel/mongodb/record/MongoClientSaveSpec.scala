@@ -19,7 +19,7 @@ package mongodb
 package record
 
 import net.liftweb.common._
-import net.liftweb.record.field._
+import tech.scoundrel.record.field._
 
 import org.specs2.mutable.Specification
 

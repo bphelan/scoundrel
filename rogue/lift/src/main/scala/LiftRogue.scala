@@ -2,23 +2,18 @@
 
 package tech.scoundrel.rogue.lift
 
-import tech.scoundrel.field.{ Field => RField, OptionalField => ROptionalField }
-import tech.scoundrel.rogue._
-import tech.scoundrel.rogue.MongoHelpers.AndCondition
-import tech.scoundrel.rogue.index.TextIndexBuilder
 import java.util.Date
 
-import net.liftweb.common.Box.box2Option
 import net.liftweb.json.JsonAST.{ JArray, JInt }
-
-import tech.scoundrel.mongodb.record._
-import tech.scoundrel.mongodb.record.field._
-import net.liftweb.record._
-import net.liftweb.record.field.EnumField
 
 import org.bson.types.ObjectId
 import tech.scoundrel
-import tech.scoundrel.field.{ OptionalField, RequiredField }
+import tech.scoundrel.field.{ Field => _, _ }
+import tech.scoundrel.mongodb.record._
+import tech.scoundrel.mongodb.record.field._
+import tech.scoundrel.record._
+import tech.scoundrel.record.field.EnumField
+import tech.scoundrel.rogue.MongoHelpers.AndCondition
 import tech.scoundrel.rogue._
 import tech.scoundrel.rogue.index.{ IndexBuilder, TextIndexBuilder }
 
