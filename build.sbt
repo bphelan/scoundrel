@@ -1,6 +1,6 @@
 import sbt.Keys.parallelExecution
 
-val scala = "2.12.3"
+val scala = "2.11.11"
 
 import RogueSettings._
 
@@ -21,6 +21,7 @@ lazy val mongodbRecord = (project in file("mongodb-record")).settings(
     "org.scala-lang.modules"  %%  "scala-xml"             % "1.0.5",
     "org.specs2"              %%  "specs2-core"           % "3.8.6" % "test"
   ),
+  version := "3.1.0",
   parallelExecution in Test := false
 )
 

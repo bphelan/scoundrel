@@ -10,7 +10,7 @@ import org.junit._
 import tech.scoundrel.mongodb.record._
 import tech.scoundrel.mongodb.record.field._
 import tech.scoundrel.record.field.IntField
-import tech.scoundrel.rogue.{LatLong, _}
+import tech.scoundrel.rogue.{ LatLong, _ }
 import tech.scoundrel.rogue.index._
 import tech.scoundrel.rogue.indexchecker.MongoIndexChecker
 import tech.scoundrel.rogue.lift.LiftRogue._

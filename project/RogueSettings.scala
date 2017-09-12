@@ -12,7 +12,7 @@ object RogueSettings {
     version := "3.1.14",
     organization := "tech.scoundrel",
     crossScalaVersions := Seq("2.11.11","2.12.3"),
-    scalaVersion := "2.12.3",
+    scalaVersion := "2.11.11",
     isSnapshot := true,
     parallelExecution in Test := false,
     publishMavenStyle := true,
@@ -45,7 +45,6 @@ object RogueDependencies {
   )
   
   val liftRecordDeps = Seq(
-    "net.liftweb"              %% "lift-record"         % liftVersion % "compile" intransitive(),
     "net.liftweb"              %% "lift-webkit"         % liftVersion % "compile" intransitive()
   )
   
