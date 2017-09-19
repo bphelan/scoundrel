@@ -13,8 +13,8 @@ lazy val mongodbRecord = (project in file("mongodb-record")).settings(
   name := "mongodb-record",
   scalaVersion := scala,
   libraryDependencies ++= Seq(
-    "org.mongodb"             %   "mongodb-driver"        % "3.4.1",
-    "org.mongodb"             %   "mongodb-driver-async"  % "3.4.1",
+    "org.mongodb"             %   "mongodb-driver"        % "3.4.3",
+    "org.mongodb"             %   "mongodb-driver-async"  % "3.4.3",
     "net.liftweb"             %%  "lift-record"           % "3.1.0",
     "net.liftweb"             %%  "lift-json-ext"         % "3.1.0",
     "net.liftweb"             %%  "lift-util"             % "3.1.0",
@@ -41,5 +41,3 @@ lazy val lift = (project in file("rogue/lift")).settings(defaultSettings).depend
 lazy val cc = (project in file("rogue/cc")).dependsOn(field, core).settings(defaultSettings)
 
 lazy val root = (project in file(".")).settings(defaultSettings).aggregate(mongodbRecord, field, core, index, indexchecker, lift, cc)
-
-

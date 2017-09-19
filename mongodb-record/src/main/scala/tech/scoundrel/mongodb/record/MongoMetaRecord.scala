@@ -30,6 +30,7 @@ import com.mongodb._
 import com.mongodb.async.SingleResultCallback
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.result.UpdateResult
+import com.mongodb.async.client.MongoCollection
 import org.bson.Document
 import org.bson.types.ObjectId
 
@@ -61,7 +62,7 @@ trait MongoMetaRecord[BaseRecord <: MongoRecord[BaseRecord]]
    */
   def useDb[T](f: DB => T): T = MongoDB.use(connectionIdentifier)(f)
 
-  def useCollAsync[T](f: com.mongodb.async.client.MongoCollection[Document] => T): T = {
+  def useCollAsync[T](f: MongoCollection[Document] => T): T = {
     MongoAsync.useCollection[T](connectionIdentifier, collectionName)(f)
   }
 
