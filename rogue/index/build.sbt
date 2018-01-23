@@ -1,3 +1,3 @@
 name := "rogue-index"
-
-libraryDependencies ++= RogueDependencies.coreDeps ++ RogueDependencies.testDeps
+description := "Scoundrel Rogue Index"
+libraryDependencies ++= ScoundrelDependencies.coreDeps ++ ScoundrelDependencies.testDeps

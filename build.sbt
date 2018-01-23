@@ -1,43 +1,25 @@
-import sbt.Keys.parallelExecution
-
-val scala = "2.11.11"
-
-import RogueSettings._
+import ScoundrelSettings._
 
 name := "scoundrel"
 
-version := "0.1-SNAPSHOT"
+Seq(ScoundrelSettings.defaultSettings: _*)
 
-lazy val mongodbRecord = (project in file("mongodb-record")).settings(
-  organization := "tech.scoundrel",
-  name := "mongodb-record",
-  scalaVersion := scala,
-  libraryDependencies ++= Seq(
-    "org.mongodb"             %   "mongodb-driver"        % "3.4.3",
-    "org.mongodb"             %   "mongodb-driver-async"  % "3.4.3",
-    "net.liftweb"             %%  "lift-record"           % "3.1.0",
-    "net.liftweb"             %%  "lift-json-ext"         % "3.1.0",
-    "net.liftweb"             %%  "lift-util"             % "3.1.0",
-    "org.scala-lang.modules"  %%  "scala-xml"             % "1.0.5",
-    "org.specs2"              %%  "specs2-core"           % "3.8.6" % "test"
-  ),
-  version := "3.1.0",
-  parallelExecution in Test := false
-)
+lazy val mongodbRecord = (project in file("mongodb-record")).settings(defaultSettings)
 
-Seq(RogueSettings.defaultSettings: _*)
+lazy val field = (project in file("rogue/field")).settings(rogueSettings).dependsOn(mongodbRecord)
 
-lazy val field = (project in file("rogue/field")).settings(defaultSettings).dependsOn(mongodbRecord)
+lazy val index = (project in file("rogue/index")).settings(rogueSettings).dependsOn(field)
 
-lazy val index = (project in file("rogue/index")).settings(defaultSettings).dependsOn(field)
+lazy val core = (project in file("rogue/core")).settings(rogueSettings).dependsOn(field, index % "compile;test->test;runtime->runtime")
 
-lazy val core = (project in file("rogue/core")).settings(defaultSettings).dependsOn(field, index % "compile;test->test;runtime->runtime")
+lazy val indexchecker = (project in file("rogue/indexchecker")).settings(rogueSettings).dependsOn(core)
 
-lazy val indexchecker = (project in file("rogue/indexchecker")).settings(defaultSettings).dependsOn(core)
+lazy val lift = (project in file("rogue/lift")).settings(rogueSettings).dependsOn(field, indexchecker, core % "compile;test->test;runtime->runtime")
 
-lazy val lift = (project in file("rogue/lift")).settings(defaultSettings).dependsOn(field, indexchecker, core % "compile;test->test;runtime->runtime")
-//lazy val spindle = (project in file("spindle")).settings(defaultSettings).dependsOn(core)
+lazy val cc = (project in file("rogue/cc")).dependsOn(field, core).settings(rogueSettings)
 
-lazy val cc = (project in file("rogue/cc")).dependsOn(field, core).settings(defaultSettings)
-
-lazy val root = (project in file(".")).settings(defaultSettings).aggregate(mongodbRecord, field, core, index, indexchecker, lift, cc)
+lazy val root = (project in file(".")).settings(defaultSettings).settings(
+  publishArtifact := false,
+  publish := {},
+  publishLocal := {}
+).aggregate(mongodbRecord, field, core, index, indexchecker, lift, cc)
