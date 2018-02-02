@@ -32,12 +32,10 @@ import net.liftweb.json.JValue
 import net.liftweb.json.JsonAST._
 
 /** Field that contains an entire record represented as an inline object value. Inspired by JSONSubRecordField */
-abstract class BsonRecordTypedField[OwnerType <: BsonRecord[OwnerType], SubRecordType <: BsonRecord[SubRecordType]]
-(val owner: OwnerType, valueMeta: BsonMetaRecord[SubRecordType])(implicit subRecordType: Manifest[SubRecordType])
-  extends Field[SubRecordType, OwnerType] {
+abstract class BsonRecordTypedField[OwnerType <: BsonRecord[OwnerType], SubRecordType <: BsonRecord[SubRecordType]](val owner: OwnerType, valueMeta: BsonMetaRecord[SubRecordType])(implicit subRecordType: Manifest[SubRecordType])
+    extends Field[SubRecordType, OwnerType] {
 
-  def this(owner: OwnerType, valueMeta: BsonMetaRecord[SubRecordType], value: Box[SubRecordType])
-          (implicit subRecordType: Manifest[SubRecordType]) = {
+  def this(owner: OwnerType, valueMeta: BsonMetaRecord[SubRecordType], value: Box[SubRecordType])(implicit subRecordType: Manifest[SubRecordType]) = {
     this(owner, valueMeta)
     setBox(value)
   }
@@ -62,7 +60,7 @@ abstract class BsonRecordTypedField[OwnerType <: BsonRecord[OwnerType], SubRecor
   def asJValue: JValue = valueBox.map(_.asJValue) openOr (JNothing: JValue)
 
   def setFromJValue(jvalue: JValue): Box[SubRecordType] = jvalue match {
-    case JNothing|JNull if optional_? => setBox(Empty)
+    case JNothing | JNull if optional_? => setBox(Empty)
     case _ => setBox(valueMeta.fromJValue(jvalue))
   }
 }
@@ -105,8 +103,7 @@ class BsonRecordField[OwnerType <: BsonRecord[OwnerType], SubRecordType <: BsonR
   }
 }
 
-class OptionalBsonRecordField[OwnerType <: BsonRecord[OwnerType], SubRecordType <: BsonRecord[SubRecordType]]
-(owner: OwnerType, valueMeta: BsonMetaRecord[SubRecordType])(implicit subRecordType: Manifest[SubRecordType])
+class OptionalBsonRecordField[OwnerType <: BsonRecord[OwnerType], SubRecordType <: BsonRecord[SubRecordType]](owner: OwnerType, valueMeta: BsonMetaRecord[SubRecordType])(implicit subRecordType: Manifest[SubRecordType])
   extends BsonRecordTypedField(owner, valueMeta) with OptionalTypedField[SubRecordType]
 
 /*

@@ -4,10 +4,10 @@ import sbt._
 object ScoundrelSettings {
 
   lazy val defaultSettings: Seq[Setting[_]] = Seq(
-    version := "3.1.14",
+    version := "3.2.0-SNAPSHOT",
     organization := "tech.scoundrel",
-    crossScalaVersions := Seq("2.11.11","2.12.3"),
-    scalaVersion := "2.11.11",
+    crossScalaVersions := Seq("2.11.11","2.12.4"),
+    scalaVersion := "2.12.4",
 
     parallelExecution in Test := false
 	) ++ SonatypeSettings.sonatypeSettings
@@ -21,7 +21,7 @@ object ScoundrelSettings {
 }
 
 object ScoundrelDependencies {
-  val liftVersion = "3.1.0"
+  val liftVersion = "3.2.0"
   val specsVer = "3.8.6"
 
   val liftMongoRecordDeps = Seq(
