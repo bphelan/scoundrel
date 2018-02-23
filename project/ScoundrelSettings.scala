@@ -10,7 +10,7 @@ object ScoundrelSettings {
     scalaVersion := "2.12.4",
 
     parallelExecution in Test := false
-	) ++ SonatypeSettings.sonatypeSettings
+	) ++ Publish.toVeact
 
   lazy val rogueSettings = Seq(
     scalacOptions ++= Seq("-deprecation", "-unchecked"), //, "-Xlog-implicit-conversions"),
