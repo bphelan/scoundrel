@@ -4,7 +4,7 @@ import sbt._
 object ScoundrelSettings {
 
   lazy val defaultSettings: Seq[Setting[_]] = Seq(
-    version := "3.2.0-SNAPSHOT",
+    version := "3.2.0",
     organization := "tech.scoundrel",
     crossScalaVersions := Seq("2.11.11","2.12.4"),
     scalaVersion := "2.12.4",
